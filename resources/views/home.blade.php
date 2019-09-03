@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://kit.fontawesome.com/14f88d1257.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ asset('css/animation.css') }} ">
     <link rel="stylesheet" href=" {{ asset('css/site.css') }} ">
     {{-- <link rel="icon" type="image/png" href=" {{ asset('/img/favicon.png') }} "> --}}
 

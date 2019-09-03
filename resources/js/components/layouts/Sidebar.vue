@@ -43,7 +43,7 @@ export default {
         return {
             navs: [
                 {name: 'home', title: 'Accueil', icon: 'fas fa-home'},
-                {name: '', title: 'Gestion du catalogue', icon: 'fas fa-list-ul'},
+                {name: 'catalog', title: 'Gestion du catalogue', icon: 'fas fa-list-ul'},
                 {name: '', title: 'Configuration', icon: 'fas fa-cogs'},
                 {name: '', title: 'Devis', icon: 'fas fa-receipt'},
                 {name: '', title: 'Clients', icon: 'fas fa-user-tag'},
