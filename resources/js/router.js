@@ -5,7 +5,7 @@ Vue.use(Router);
 import ExampleComponent from './components/ExampleComponent.vue'
 
 const routes = [
-    { name: "example", path: '/', component: ExampleComponent },
+    { name: "home", path: '/', component: ExampleComponent },
 ]
 
 export default new Router({
