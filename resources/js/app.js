@@ -1,6 +1,8 @@
 require('./bootstrap');
+// require("bootstrap-vue-datatable");
 import router from './router.js';
 import VueNoty from 'vuejs-noty'
+import DataTable from './components/layouts/DataTable.vue'
 
 window.Vue = require('vue');
 Vue.use(VueNoty, {
@@ -9,6 +11,7 @@ Vue.use(VueNoty, {
     progressBar: true,
     layout: 'topRight'
 })
+Vue.use(DataTable);
 
 /**
  * The following block of code may be used to automatically register your

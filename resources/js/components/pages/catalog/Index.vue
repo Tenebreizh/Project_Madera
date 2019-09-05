@@ -32,7 +32,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <table class="table table-striped table-hover">
+                                <!-- <table class="table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th class="border-0" scope="col">#</th>
@@ -84,7 +84,8 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
+                                <DataTable :data="comments" :columns="columns" :actions="actions" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
@@ -466,8 +467,39 @@
 </template>
 
 <script>
-export default {
+import moment from "moment";
 
+export default {
+    data() {
+        return {
+            loadingData: false,
+            columns: [
+                {name: "name", th: "Name"},
+                {name: "email", th: "Email"},
+            ],
+            comments: [],
+            actions: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    alert("See: " + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ]
+        }
+    },
+
+    mounted() {
+        this.loadingData = true
+        axios.get("https://jsonplaceholder.typicode.com/comments")
+        .then(response => {
+            this.comments = response.data
+            this.loadingData = false
+        })
+    }
 }
 </script>
 
