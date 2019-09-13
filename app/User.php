@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname', 'lastname', 'email', 'user_type_id', 'password',
     ];
 
     /**
@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userType()
+    {
+        return $this->belongsTo('App\Models\UserType');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
+    }
+
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
+    }
 }
