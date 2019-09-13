@@ -2068,7 +2068,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Sort Order
       asc: "asc",
       // Column For Sorting
-      sortColumn: null,
+      sortColumn: 'id',
       // Search Query
       query: '',
       // Table Headers
@@ -2811,11 +2811,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7786,7 +7781,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes spin {\nfrom {\n    transform: rotate(0deg);\n}\nto {\n    transform: rotate(359deg);\n}\n}\n@keyframes spin {\nfrom {\n    transform: rotate(0deg);\n}\nto {\n    transform: rotate(359deg);\n}\n}\n.data-table-loading {\n  align-items: center;\n  display: flex;\n  height: 200px;\n  flex-flow: column;\n  justify-content: center;\n  position: relative;\n  width: 100%;\n}\n.data-table-loading-spinner {\n  -webkit-animation: spin 1s linear infinite;\n          animation: spin 1s linear infinite;\n  border-radius: 999px;\n  border: 2px solid #007bff;\n  border-top-color: transparent;\n  content: \"\";\n  height: 75px;\n  margin-bottom: 15px;\n  width: 75px;\n}\n.data-table-loading-text {\n  font-weight: 300;\n  text-trnasform: uppercase;\n}\n.data-table-control .custom-select {\n  width: initial;\n}\n.data-table .table-responsive {\n  margin-bottom: 30px;\n}\n.data-table .table-responsive::-webkit-scrollbar {\n  -webkit-apperance: none;\n  height: 15px;\n  width: 15px;\n}\n.data-table .table-responsive::-webkit-scrollbar-track {\n  background: #eee;\n  border-radius: 999px;\n}\n.data-table .table-responsive::-webkit-scrollbar-thumb {\n  background: #ccc;\n  border-radius: 999px;\n  border: 3px solid #eee;\n}\n.data-table .table-responsive::-webkit-scrollbar-thumb:focus {\n  background: #ccc;\n}\n.data-table .table.straight {\n  white-space: nowrap;\n}\n.data-table .table thead th.sortable {\n  cursor: pointer;\n  padding-right: 30px;\n  position: relative;\n}\n.data-table .table thead th.sortable:before, .data-table .table thead th.sortable:after {\n  border: 5px solid transparent;\n  content: \"\";\n  display: block;\n  opacity: 0.3;\n  position: absolute;\n  right: 10px;\n}\n.data-table .table thead th.sortable:before {\n  border-bottom-color: currentColor;\n  top: 10px;\n}\n.data-table .table thead th.sortable:after {\n  bottom: 10px;\n  border-top-color: currentColor;\n}\n.data-table .table thead th.sort {\n  font-weight: 700;\n}\n.data-table .table thead th.sort.asc:before {\n  opacity: 1;\n}\n.data-table .table thead th.sort.desc:after {\n  opacity: 1;\n}\n.data-table .table tbody tr.clickable {\n  cursor: pointer;\n}\n.data-table .table-filters {\n  margin-bottom: 15px;\n}\n.data-table .table-filter {\n  background: #fff;\n  border-radius: 3px;\n  cursor: pointer;\n  color: #777;\n  display: inline-block;\n  font-size: 12px;\n  padding: 5px 15px;\n  margin: 0 0 3px 3px;\n}\n.data-table .table-filter:hover {\n  background: #aaa;\n  color: #fff;\n}\n.data-table .table-filter.active {\n  background: #337ab7;\n  color: #fff;\n}", ""]);
+exports.push([module.i, "@-webkit-keyframes spin {\nfrom {\n    transform: rotate(0deg);\n}\nto {\n    transform: rotate(359deg);\n}\n}\n@keyframes spin {\nfrom {\n    transform: rotate(0deg);\n}\nto {\n    transform: rotate(359deg);\n}\n}\n.data-table-loading {\n  align-items: center;\n  display: flex;\n  height: 200px;\n  flex-flow: column;\n  justify-content: center;\n  position: relative;\n  width: 100%;\n}\n.data-table-loading-spinner {\n  -webkit-animation: spin 1s linear infinite;\n          animation: spin 1s linear infinite;\n  border-radius: 999px;\n  border: 2px solid #007bff;\n  border-top-color: transparent;\n  content: \"\";\n  height: 75px;\n  margin-bottom: 15px;\n  width: 75px;\n}\n.data-table-loading-text {\n  font-weight: 300;\n  text-trnasform: uppercase;\n}\n.data-table-control .custom-select {\n  width: initial;\n}\n.data-table .table-responsive {\n  margin-bottom: 30px;\n}\n.data-table .table-responsive::-webkit-scrollbar {\n  -webkit-apperance: none;\n  height: 15px;\n  width: 15px;\n}\n.data-table .table-responsive::-webkit-scrollbar-track {\n  background: #eee;\n  border-radius: 999px;\n}\n.data-table .table-responsive::-webkit-scrollbar-thumb {\n  background: #ccc;\n  border-radius: 999px;\n  border: 3px solid #eee;\n}\n.data-table .table-responsive::-webkit-scrollbar-thumb:focus {\n  background: #ccc;\n}\n.data-table .table.straight {\n  white-space: nowrap;\n}\n.data-table .table thead th.sortable {\n  cursor: pointer;\n  padding-right: 30px;\n  position: relative;\n}\n.data-table .table thead th.sortable:before, .data-table .table thead th.sortable:after {\n  border: 5px solid transparent;\n  content: \"\";\n  display: block;\n  opacity: 0.3;\n  position: absolute;\n  right: 10px;\n}\n.data-table .table thead th.sortable:before {\n  border-bottom-color: currentColor;\n  top: 10px;\n}\n.data-table .table thead th.sortable:after {\n  bottom: 10px;\n  border-top-color: currentColor;\n}\n.data-table .table thead th.sort {\n  font-weight: 700;\n}\n.data-table .table thead th.sort.asc:before {\n  opacity: 1;\n}\n.data-table .table thead th.sort.desc:after {\n  opacity: 1;\n}\n.data-table .table tbody tr.clickable {\n  cursor: pointer;\n}\n.data-table .table-filters {\n  margin-bottom: 15px;\n}\n.data-table .table-filter {\n  background: #fff;\n  border-radius: 3px;\n  cursor: pointer;\n  color: #777;\n  display: inline-block;\n  padding: 5px 15px;\n  margin: 0 0 3px 3px;\n}\n.data-table .table-filter:hover {\n  background: #aaa;\n  color: #fff;\n}\n.data-table .table-filter.active {\n  background: #337ab7;\n  color: #fff;\n}", ""]);
 
 // exports
 
@@ -58221,7 +58216,7 @@ var render = function() {
                               expression: "query"
                             }
                           ],
-                          staticClass: "form-control form-control-sm",
+                          staticClass: "form-control",
                           attrs: { type: "text", placeholder: "Search..." },
                           domProps: { value: _vm.query },
                           on: {
@@ -58863,23 +58858,22 @@ var render = function() {
                           data: _vm.comments,
                           columns: _vm.columns,
                           actions: _vm.actions,
+                          index: false,
                           loading: _vm.loadingData
                         }
                       })
                     ],
                     1
                   )
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
+                ])
               ]
             ),
             _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
             _vm._m(3),
             _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5)
+            _vm._m(4)
           ])
         ])
       ])
@@ -58984,88 +58978,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                                  Ajouter\n                              "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-4 justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("form", { attrs: { action: "#" } }, [
-          _c("legend", [_vm._v("Ajouter une gamme")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-lg-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "lorem",
-                  placeholder: "Finition Extérieure"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-lg-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "lorem",
-                  placeholder: "Type Isolant"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-lg-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "lorem",
-                  placeholder: "Type de couverture"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-lg-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "lorem",
-                  placeholder: "Qualité huisserie"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-lg-6" }, [
-              _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  attrs: { name: "", id: "lorem" }
-                },
-                [
-                  _c("option", { attrs: { selected: "", disabled: "" } }, [
-                    _vm._v(" Règles ")
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group text-right" }, [
-            _c("button", { staticClass: "btn btn-success" }, [
-              _c("i", { staticClass: "fas fa-plus" }),
-              _vm._v(
-                "\n                                          Ajouter\n                                      "
-              )
-            ])
-          ])
-        ])
       ])
     ])
   },

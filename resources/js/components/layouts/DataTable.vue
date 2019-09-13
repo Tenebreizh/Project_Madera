@@ -28,7 +28,7 @@
 				</div>
 				<div class="col-md-6" v-if="searchable">
 					<div class="form-group">
-						<input type="text" class="form-control form-control-sm" placeholder="Search..." @keyup="search(query)" v-model="query">
+						<input type="text" class="form-control" placeholder="Search..." @keyup="search(query)" v-model="query">
 					</div>
 				</div>
 				<div class="col-auto ml-auto" v-if="showFilters">
@@ -166,7 +166,7 @@ export default {
 			// Sort Order
 			asc: "asc",
 			// Column For Sorting
-			sortColumn: null,
+			sortColumn: 'id',
 			// Search Query
 			query: '',
 			// Table Headers
@@ -641,7 +641,6 @@ export default {
 	to
 		transform: rotate(359deg)
 .data-table
-	// font-size: 14px
 	&-loading
 		align-items: center
 		display: flex
@@ -729,7 +728,6 @@ export default {
 			cursor: pointer
 			color: #777
 			display: inline-block
-			font-size: 12px
 			padding: 5px 15px
 			margin: 0 0 3px 3px
 			&:hover

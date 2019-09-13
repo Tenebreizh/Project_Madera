@@ -85,37 +85,32 @@
                                         </tr>
                                     </tbody>
                                 </table> -->
-                                <DataTable :data="comments" :columns="columns" :actions="actions" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columns" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
-                        <div class="row mt-4 justify-content-center">
+                        <!-- <div class="row mt-4 justify-content-center">
                             <div class="col-lg-6">
                                 <form action="#">
                                     <legend>Ajouter une gamme</legend>
                                     <div class="form-row">
                                         <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
                                             <input type="text" class="form-control" id="lorem" placeholder="Finition Extérieure">
                                         </div>
 
                                         <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
                                             <input type="text" class="form-control" id="lorem" placeholder="Type Isolant">
                                         </div>
 
                                         <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
                                             <input type="text" class="form-control" id="lorem" placeholder="Type de couverture">
                                         </div>
 
                                         <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
                                             <input type="text" class="form-control" id="lorem" placeholder="Qualité huisserie">
                                         </div>
 
                                         <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
                                             <select class="form-control" name="" id="lorem">
                                                 <option selected disabled> Règles </option>
                                             </select>
@@ -130,7 +125,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="tab-pane fade" id="nav-composants" role="tabpanel" aria-labelledby="nav-composants-tab">
