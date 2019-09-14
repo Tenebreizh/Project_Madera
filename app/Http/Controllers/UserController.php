@@ -19,8 +19,7 @@ class UserController extends Controller
 
         // Add the data of the user type in the json
         foreach ($users as $user) {
-            $userType = UserType::find($user->user_type_id);
-            $user->userType = $userType;
+            $user->userType = $this->getUserType($user);
         }
 
         return $users;
@@ -69,5 +68,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    private function getUserType($user)
+    {
+        return UserType::find($user->user_type_id);
     }
 }
