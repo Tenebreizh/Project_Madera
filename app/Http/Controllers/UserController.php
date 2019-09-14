@@ -16,12 +16,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-
-        // Add the data of the user type in the json
-        foreach ($users as $user) {
-            $user->userType = $this->getUserType($user);
-        }
-
         return $users;
     }
 
