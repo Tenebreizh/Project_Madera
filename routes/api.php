@@ -27,3 +27,14 @@ Route::post('userType', 'UserTypeController@store');
 Route::get('userType/{userType}', 'UserTypeController@show');
 Route::put('userType/{userType}', 'UserTypeController@update');
 Route::delete('userType/{userType}', 'UserTypeController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| User route
+|--------------------------------------------------------------------------
+*/
+Route::get('users', 'UserController@index');
+Route::post('user', 'UserController@store');
+Route::get('user/{user}', 'UserController@show');
+Route::put('user/{user}', 'UserController@update');
+Route::delete('user/{user}', 'UserController@destroy');
