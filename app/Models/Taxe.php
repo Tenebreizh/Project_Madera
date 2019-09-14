@@ -15,8 +15,6 @@ class Taxe extends Model
         'name', 'description', 'rate',
     ];
 
-    public $timestamps = false;
-
     public function quotationLines()
     {
         return $this->hasMany('App\Models\QuotationLine');

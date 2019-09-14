@@ -15,9 +15,7 @@ class ComponentType extends Model
         'name', 'description',
     ];
 
-    public $timestamps = false;
-
-    public function components()
+    public function component()
     {
         return $this->hasMany('App\Models\Component');
     }
