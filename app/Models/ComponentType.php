@@ -17,7 +17,7 @@ class ComponentType extends Model
 
     public $timestamps = false;
 
-    public function component()
+    public function components()
     {
         return $this->hasMany('App\Models\Component');
     }
