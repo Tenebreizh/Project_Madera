@@ -26,6 +26,7 @@ Route::get('/component_types', 'ComponentTypeController@index');
 Route::post('/component_type', 'ComponentTypeController@store');
 Route::get('/component_type/{componentType}', 'ComponentTypeController@show');
 Route::put('/component_type/{componentType}', 'ComponentTypeController@update');
+Route::get('/component_type/{componentType}/components', 'ComponentTypeController@components');
 Route::delete('/component_type/{componentType}', 'ComponentTypeController@destroy');
 
 /*
@@ -37,4 +38,5 @@ Route::get('/components', 'ComponentController@index');
 Route::post('/component', 'ComponentController@store');
 Route::get('/component/{component}', 'ComponentController@show');
 Route::put('/component/{component}', 'ComponentController@update');
+Route::get('/component/{component}/componentType', 'ComponentController@componentType');
 Route::delete('/component/{component}', 'ComponentController@destroy');

@@ -14,7 +14,9 @@ class ComponentTypeController extends Controller
      */
     public function index()
     {
-        return ComponentType::all();
+        $componentTypes = ComponentType::all();
+
+        return $componentTypes;
     }
 
     /**
@@ -73,5 +75,12 @@ class ComponentTypeController extends Controller
         return response()->json([
             "message" => "Component type successfully deleted"
         ], 200);
+    }
+
+    public function components(ComponentType $componentType)
+    {
+        $components = $componentType->components;
+
+        return $components;
     }
 }

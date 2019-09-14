@@ -14,19 +14,9 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $results = [];
+        $components = Component::all();
 
-        foreach (Component::all() as $key => $component) {
-            array_push($results, [
-                'id' => $component->id,
-                'name' => $component->name,
-                'description' => $component->description,
-                'component_type_name' => $component->componentType->name,
-                'component_type_description' => $component->componentType->description,
-            ]);
-        }
-
-        return $results;
+        return $components;
     }
 
     /**
@@ -54,13 +44,7 @@ class ComponentController extends Controller
      */
     public function show(Component $component)
     {
-        return [
-            'id' => $component->id,
-            'name' => $component->name,
-            'description' => $component->description,
-            'component_type_name' => $component->componentType->name,
-            'component_type_description' => $component->componentType->description,
-        ];
+        return $component;
     }
 
     /**
@@ -93,5 +77,12 @@ class ComponentController extends Controller
         return response()->json([
             "message" => "Component successfully deleted"
         ], 200);
+    }
+
+    public function componentType(Component $component)
+    {
+        $componentType = $component->componentType;
+
+        return $componentType;
     }
 }
