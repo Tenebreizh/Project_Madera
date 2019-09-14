@@ -38,3 +38,14 @@ Route::post('user', 'UserController@store');
 Route::get('user/{user}', 'UserController@show');
 Route::put('user/{user}', 'UserController@update');
 Route::delete('user/{user}', 'UserController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Action route
+|--------------------------------------------------------------------------
+*/
+Route::get('actions', 'ActionController@index');
+Route::post('action', 'ActionController@store');
+Route::get('action/{action}', 'ActionController@show');
+Route::put('action/{action}', 'ActionController@update');
+Route::delete('action/{action}', 'ActionController@destroy');
