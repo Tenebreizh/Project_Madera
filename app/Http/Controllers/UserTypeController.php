@@ -15,7 +15,6 @@ class UserTypeController extends Controller
     public function index()
     {
         $userTypes = UserType::all();
-
         return $userTypes;
     }
 
@@ -27,7 +26,12 @@ class UserTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userType = UserType::create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+        return $userType;
     }
 
     /**
@@ -38,7 +42,7 @@ class UserTypeController extends Controller
      */
     public function show(UserType $userType)
     {
-        //
+        return $userType;
     }
 
     /**
@@ -50,7 +54,10 @@ class UserTypeController extends Controller
      */
     public function update(Request $request, UserType $userType)
     {
-        //
+        $userType->name = $request->name;
+        $userType->description = $request->description;
+        $userType->save();
+        return $userType;
     }
 
     /**
@@ -61,6 +68,11 @@ class UserTypeController extends Controller
      */
     public function destroy(UserType $userType)
     {
-        //
+        $userType->delete();
+
+        return response()->json([
+                "message" => "User type successfully deleted"
+            ], 
+            200);
     }
 }
