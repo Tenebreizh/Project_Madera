@@ -40,3 +40,14 @@ Route::get('/component/{component}', 'ComponentController@show');
 Route::put('/component/{component}', 'ComponentController@update');
 Route::get('/component/{component}/componentType', 'ComponentController@componentType');
 Route::delete('/component/{component}', 'ComponentController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Taxe Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/taxes', 'TaxeController@index');
+Route::post('/taxe', 'TaxeController@store');
+Route::get('/taxe/{taxe}', 'TaxeController@show');
+Route::put('/taxe/{taxe}', 'TaxeController@update');
+Route::delete('/taxe/{taxe}', 'TaxeController@destroy');
