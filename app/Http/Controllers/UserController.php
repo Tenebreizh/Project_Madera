@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Models\UserType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -27,7 +28,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'email' => $request->email,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'password' => Hash::make($request->password),
+            'user_type_id' => $request->userTypeId
+        ]);
+
+        return $user;
     }
 
     /**
@@ -38,7 +47,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -50,7 +59,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->email = $request->email;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->password = Hash::make($request->password);
+        $user->user_type_id = $request->userTypeId;
+
+        $user->save();
+
+        return $user;
     }
 
     /**
@@ -61,11 +78,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
-    }
+        $user->delete();
 
-    private function getUserType($user)
-    {
-        return UserType::find($user->user_type_id);
+        return response()->json([
+                "message" => "User successfully deleted"
+            ], 
+            200);
     }
 }
