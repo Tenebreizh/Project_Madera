@@ -73,3 +73,14 @@ Route::post('/taxe', 'TaxeController@store');
 Route::get('/taxe/{taxe}', 'TaxeController@show');
 Route::put('/taxe/{taxe}', 'TaxeController@update');
 Route::delete('/taxe/{taxe}', 'TaxeController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Client Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/clients', 'ClientController@index');
+Route::post('/client', 'ClientController@store');
+Route::get('/client/{client}', 'ClientController@show');
+Route::put('/client/{client}', 'ClientController@update');
+Route::delete('/client/{client}', 'ClientController@destroy');
