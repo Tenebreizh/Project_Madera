@@ -49,3 +49,14 @@ Route::post('action', 'ActionController@store');
 Route::get('action/{action}', 'ActionController@show');
 Route::put('action/{action}', 'ActionController@update');
 Route::delete('action/{action}', 'ActionController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Log route
+|--------------------------------------------------------------------------
+*/
+Route::get('logs', 'LogController@index');
+Route::post('log', 'LogController@store');
+Route::get('log/{log}', 'LogController@show');
+Route::put('log/{log}', 'LogController@update');
+Route::delete('log/{log}', 'LogController@destroy');
