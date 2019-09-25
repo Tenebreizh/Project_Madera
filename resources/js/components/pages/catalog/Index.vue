@@ -32,60 +32,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <!-- <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-0" scope="col">#</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
-                                <DataTable :data="comments" :columns="columns" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnsRange" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
@@ -137,59 +84,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-0" scope="col">#</th>
-                                            <th class="border-0" scope="col">Finition extérieure</th>
-                                            <th class="border-0" scope="col">Type d'isolant</th>
-                                            <th class="border-0" scope="col">Type de couverture</th>
-                                            <th class="border-0" scope="col">Qualité huisserie</th>
-                                            <th class="border-0" scope="col">Règles</th>
-                                            <th class="border-0" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <DataTable :data="comments" :columns="columnsComponents" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
@@ -246,59 +141,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-0" scope="col">#</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <DataTable :data="comments" :columns="columnSuppliers" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
@@ -355,59 +198,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-0" scope="col">#</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Name</th>
-                                            <th class="border-0" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>
-                                                <button class="btn btn-pill btn-primary">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <button class="btn btn-pill btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <DataTable :data="comments" :columns="columnsModules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         
@@ -458,7 +249,7 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -468,9 +259,32 @@ export default {
     data() {
         return {
             loadingData: false,
-            columns: [
-                {name: "name", th: "Name"},
+            columnsRange: [
+                {name: "reference",         th: "Référence"},
+                {name: "external_finition", th: "Finition extérieure"},
+                {name: "insulator",         th: "Type d'isolant"},
+                {name: "covering",          th: "Type de couverture"},
+                {name: "window_frame",      th: "Qualité huisserie"},
+                {name: "rule",              th: "Règles"},
+            ],
+            columnsComponents: [
+                {name: "name",              th: "Nom de la famille"},
+                {name: "description",       th: "Description"},
+            ],
+            columnSuppliers: [
+                {name: "firstname", th: "Nom"},
+                {name: "lastname", th: "Prénom"},
+                {name: "street", th: "Adresse"},
                 {name: "email", th: "Email"},
+                {name: "phone", th: "Téléphone"},
+                {name: "fax", th: "Fax"},
+
+            ],
+            columnsModules: [
+                {name: "name", th: "Référence"},
+                {name: "description", th: "Description"},
+                {name: "tva", th: "TVA"},
+                {name: "price", th: "Prix"},
             ],
             comments: [],
             actions: [
