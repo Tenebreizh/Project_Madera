@@ -7,7 +7,7 @@
             <ul class="navbar-nav border-left">   
                 <li class="nav-item text-center">
                     <a class="nav-link" href='#'>
-                        <i class="fa fa-cog fa_custom fa-4x"></i>
+                        <i class="fa fa-cog fa_custom fa-3x"></i>
                     </a>
                 </li>
             </ul>

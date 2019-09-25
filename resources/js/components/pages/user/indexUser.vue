@@ -30,8 +30,6 @@
                                 </div>
                             </div>
                         </div>
-
-            
                         <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left mb-4">
@@ -45,12 +43,11 @@
                                 </div>
                             </div>
                         </div>
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
