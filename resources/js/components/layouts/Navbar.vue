@@ -3,6 +3,14 @@
         <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">  
             <div class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"></div>
 
+
+            <ul class="navbar-nav border-left">   
+                <li class="nav-item text-center">
+                    <a class="nav-link" href='#'>
+                        <i class="fa fa-cog fa_custom fa-4x"></i>
+                    </a>
+                </li>
+            </ul>
             <ul class="navbar-nav border-left flex-row ">
                 <!-- <li class="nav-item border-right dropdown notifications">
                     <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +48,7 @@
                         <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
                     </div>
                 </li> -->
-
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle mr-2" src="/images/avatar/1.jpg" alt="User Avatar">

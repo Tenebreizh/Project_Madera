@@ -46,8 +46,8 @@ export default {
                 {name: 'catalog', title: 'Gestion du catalogue', icon: 'fas fa-list-ul'},
                 {name: '', title: 'Configuration', icon: 'fas fa-cogs'},
                 {name: '', title: 'Devis', icon: 'fas fa-receipt'},
-                {name: '', title: 'Clients', icon: 'fas fa-user-tag'},
-                {name: '', title: 'Utilisateurs', icon: 'fas fa-users'},
+                {name: 'customer', title: 'Clients', icon: 'fas fa-user-tag'},
+                {name: 'user', title: 'Utilisateurs', icon: 'fas fa-users'},
             ]
         }
     },
