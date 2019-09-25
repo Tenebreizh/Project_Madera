@@ -24,8 +24,8 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddCustomerLabel">Création d'un client</h5>
@@ -35,34 +35,39 @@
                     </div>
                     <div class="modal-body">
                         <form action="/action_page.php">
-
-                            <div class="form-group">
-                                <label for="firstname">Nom:</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname">
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="firstname">Nom:</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="lastname">Prénom:</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="lastname">Prénom:</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname">
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="numero">N°:</label>
+                                    <input type="text" class="form-control" id="numero" name="numero">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="street">Adresse:</label>
+                                    <input type="text" class="form-control" id="street" name="street">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="numero">N°:</label>
-                                <input type="text" class="form-control" id="numero" name="numero">
-                            </div>
-                            <div class="form-group">
-                                <label for="street">Adresse:</label>
-                                <input type="text" class="form-control" id="street" name="street">
-                            </div>
-                            <div class="form-group">
-                                <label for="cp">CP:</label>
-                                <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000">
-                            </div>
-                            <div class="form-group">
-                                <label for="city">Ville:</label>
-                                <input type="text" class="form-control" id="city" name="city">
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Pays:</label>
-                                <input type="text" class="form-control" id="country" name="country">
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="cp">CP:</label>
+                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="city">Ville:</label>
+                                    <input type="text" class="form-control" id="city" name="city">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="country">Pays:</label>
+                                    <input type="text" class="form-control" id="country" name="country">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Téléphone:</label>
