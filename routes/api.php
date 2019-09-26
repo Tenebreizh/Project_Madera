@@ -150,3 +150,14 @@ Route::post('covering', 'CoveringController@store');
 Route::get('covering/{covering}', 'CoveringController@show');
 Route::put('covering/{covering}', 'CoveringController@update');
 Route::delete('covering/{covering}', 'CoveringController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Window frame route
+|--------------------------------------------------------------------------
+*/
+Route::get('windowFrames', 'WindowFrameController@index');
+Route::post('windowFrame', 'WindowFrameController@store');
+Route::get('windowFrame/{windowFrame}', 'WindowFrameController@show');
+Route::put('windowFrame/{windowFrame}', 'WindowFrameController@update');
+Route::delete('windowFrame/{windowFrame}', 'WindowFrameController@destroy');
