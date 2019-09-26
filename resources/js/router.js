@@ -7,6 +7,8 @@ import Catalog          from './components/pages/catalog/Index.vue'
 import Customer         from './components/pages/customer/indexCustomer.vue'
 import User             from './components/pages/user/indexUser.vue'
 import Configuration    from './components/pages/configuation/indexConfiguration.vue'
+import Devis            from './components/pages/quotation/indexQuotation.vue'
+import CreateDevis      from './components/pages/quotation/CreateQuotation.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -18,6 +20,10 @@ const routes = [
     { name: "user", path: '/user', component: User},
 
     { name: "configuration", path: '/config', component: Configuration},
+
+    { name: "quotation", path: '/devis', component: Devis},
+
+    { name: "quotation.create", path: '/devis/create', component: CreateDevis},
 ]
 
 export default new Router({
