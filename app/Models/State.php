@@ -15,6 +15,8 @@ class State extends Model
         'label', 'description',
     ];
 
+    public $timestamps = false;
+
     public function countries()
     {
         return $this->hasMany('App\Models\Country');
