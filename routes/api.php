@@ -117,3 +117,14 @@ Route::post('project', 'ProjectController@store');
 Route::get('project/{project}', 'ProjectController@show');
 Route::put('project/{project}', 'ProjectController@update');
 Route::delete('project/{project}', 'ProjectController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| External finition route
+|--------------------------------------------------------------------------
+*/
+Route::get('externalFinitions', 'ExternalFinitionController@index');
+Route::post('externalFinition', 'ExternalFinitionController@store');
+Route::get('externalFinition/{externalFinition}', 'ExternalFinitionController@show');
+Route::put('externalFinition/{externalFinition}', 'ExternalFinitionController@update');
+Route::delete('externalFinition/{externalFinition}', 'ExternalFinitionController@destroy');
