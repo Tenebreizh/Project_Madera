@@ -72,7 +72,7 @@
                                 <a href="#" data-toggle="modal" data-target="#AddDroit" class="button"><i class="fa fa-plus"></i>Ajouter un droit</a>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="droit"  :actions="actionsDroits" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="droit"  :actions="actionsDroit" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </form>
                     </div>
