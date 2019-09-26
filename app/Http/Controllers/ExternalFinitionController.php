@@ -32,8 +32,8 @@ class ExternalFinitionController extends Controller
             'description' => $request->description,
             'reference' => $request->reference
         ]);
-
-        return $externalFinition->save();
+            
+        return $externalFinition;
     }
 
     /**
