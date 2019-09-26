@@ -1,7 +1,7 @@
 <template>
-  <div class="row py-4">
-      <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-        <div class="card text-center">
+    <div class="row py-4">
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="card text-center">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs justify-content-center nav-justified">
                     <li class="nav-item">
@@ -26,7 +26,7 @@
                     <div class="tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
                         <div class="row">
                             <div class="col-lg-12 text-left mb-4">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#AddGamme">
                                     <i class="fas fa-plus"></i>
                                     Ajouter
                                 </button>
@@ -35,50 +35,12 @@
                                 <DataTable :data="comments" :columns="columnsRange" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
-                        
-                        <!-- <div class="row mt-4 justify-content-center">
-                            <div class="col-lg-6">
-                                <form action="#">
-                                    <legend>Ajouter une gamme</legend>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-6">
-                                            <input type="text" class="form-control" id="lorem" placeholder="Finition Extérieure">
-                                        </div>
-
-                                        <div class="form-group col-lg-6">
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type Isolant">
-                                        </div>
-
-                                        <div class="form-group col-lg-6">
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type de couverture">
-                                        </div>
-
-                                        <div class="form-group col-lg-6">
-                                            <input type="text" class="form-control" id="lorem" placeholder="Qualité huisserie">
-                                        </div>
-
-                                        <div class="form-group col-lg-6">
-                                            <select class="form-control" name="" id="lorem">
-                                                <option selected disabled> Règles </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-success">
-                                            <i class="fas fa-plus"></i>
-                                            Ajouter
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> -->
                     </div>
 
                     <div class="tab-pane fade" id="nav-composants" role="tabpanel" aria-labelledby="nav-composants-tab">
                         <div class="row">
                             <div class="col-lg-12 text-left mb-4">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#AddFamComp">
                                     <i class="fas fa-plus"></i>
                                     Ajouter
                                 </button>
@@ -87,55 +49,12 @@
                                 <DataTable :data="comments" :columns="columnsComponents" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
-                        
-                        <div class="row mt-4 justify-content-center">
-                            <div class="col-lg-6">
-                                <form action="#">
-                                    <legend>Ajouter une famille de composants</legend>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Finition Extérieure">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type Isolant">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type de couverture">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Qualité huisserie">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <select class="form-control" name="" id="lorem">
-                                                <option selected disabled> Règles </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                        
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-success">
-                                            <i class="fas fa-plus"></i>
-                                            Ajouter
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="nav-fournisseurs" role="tabpanel" aria-labelledby="nav-fournisseurs-tab">
                         <div class="row">
                             <div class="col-lg-12 text-left mb-4">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#AddSupplier">
                                     <i class="fas fa-plus"></i>
                                     Ajouter
                                 </button>
@@ -144,55 +63,12 @@
                                 <DataTable :data="comments" :columns="columnSuppliers" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
-                        
-                        <div class="row mt-4 justify-content-center">
-                            <div class="col-lg-6">
-                                <form action="#">
-                                    <legend>Ajouter un fournisseur</legend>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Finition Extérieure">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type Isolant">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type de couverture">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Qualité huisserie">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <select class="form-control" name="" id="lorem">
-                                                <option selected disabled> Règles </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                        
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-success">
-                                            <i class="fas fa-plus"></i>
-                                            Ajouter
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="nav-modules" role="tabpanel" aria-labelledby="nav-modules-tab">
                         <div class="row">
                             <div class="col-lg-12 text-left mb-4">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#AddModule">
                                     <i class="fas fa-plus"></i>
                                     Ajouter
                                 </button>
@@ -201,49 +77,203 @@
                                 <DataTable :data="comments" :columns="columnsModules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
-                        
-                        <div class="row mt-4 justify-content-center">
-                            <div class="col-lg-6">
-                                <form action="#">
-                                    <legend>Ajouter un module</legend>
-                                    <div class="form-row">
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Finition Extérieure">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type Isolant">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Type de couverture">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <input type="text" class="form-control" id="lorem" placeholder="Qualité huisserie">
-                                        </div>
-                        
-                                        <div class="form-group col-lg-6">
-                                            <!-- <label for="feLastName">Truc</label> -->
-                                            <select class="form-control" name="" id="lorem">
-                                                <option selected disabled> Règles </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                        
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-success">
-                                            <i class="fas fa-plus"></i>
-                                            Ajouter
-                                        </button>
-                                    </div>
-                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal gammes -->
+        <div class="modal fade bd-example-modal-lg" id="AddGamme" tabindex="-1" role="dialog" aria-labelledby="AddGammeLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddGammeLabel">Ajout d'une gamme</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label for="reference">Référence:</label>
+                                    <input type="text" class="form-control" id="reference" name="reference">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea name="description" class="form-control" id="description"></textarea>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label for="external_finition">Finition extérieur:</label>
+                                    <select name="external_finition" class="form-control"></select>
+                                </div>
+                                <div class="col form-group">
+                                    <label for="isolation">Type d'isolation:</label>
+                                    <select name="isolation" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label for="covering">Type de couverture:</label>
+                                    <select name="covering" class="form-control"></select>
+                                </div>
+                                <div class="col form-group">
+                                    <label for="window_frame">Qualité huisserie:</label>
+                                    <select name="window_frame" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col form-group">
+                                <label for="regle">Règle:</label>
+                                <input type="text" class="form-control" id="regle" name="regle">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal famille de composant -->
+        <div class="modal fade" id="AddFamComp" tabindex="-1" role="dialog" aria-labelledby="AddFamCompLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddFamCompLabel">Ajout d'une famille de composant</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="col form-group">
+                                <label for="reference">Référence:</label>
+                                <input type="text" class="form-control" id="reference" name="reference">
+                            </div>
+                            <div class="col form-group">
+                                <label for="description">Description:</label>
+                                <textarea name="description" class="form-control" id="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal fournisseur -->
+        <div class="modal fade" id="AddSupplier" tabindex="-1" role="dialog" aria-labelledby="AddSupplierLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddSupplierLabel">Ajout d'un fournisseur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="firstname">Nom:</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="lastname">Prénom:</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="numero">N°:</label>
+                                    <input type="text" class="form-control" id="numero" name="numero">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="street">Adresse:</label>
+                                    <input type="text" class="form-control" id="street" name="street">
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="cp">CP:</label>
+                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="city">Ville:</label>
+                                    <input type="text" class="form-control" id="city" name="city">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="country">Pays:</label>
+                                    <input type="text" class="form-control" id="country" name="country">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label for="phone">Téléphone:</label>
+                                    <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="fax">Fax:</label>
+                                    <input type="number" class="form-control" id="fax" name="fax"  placeholder="00 00 00 00 00">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal module -->
+        <div class="modal fade" id="AddModule" tabindex="-1" role="dialog" aria-labelledby="AddModuleLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddModuleLabel">Ajout d'une huisserie</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="col form-group">
+                                <label for="reference">Référence:</label>
+                                <input type="text" class="form-control" id="reference" name="reference">
+                            </div>
+                            <div class="col form-group">
+                                <label for="description">Description:</label>
+                                <textarea name="description" class="form-control" id="description"></textarea>
+                            </div>
+                            <div class="col form-group">
+                                <label for="tva">TVA:</label>
+                                <input type="text" class="form-control" id="tva" name="tva">
+                            </div>
+                            <div class="col form-group">
+                                <label for="price">Prix:</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="price">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="price">€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valder</button>
                     </div>
                 </div>
             </div>

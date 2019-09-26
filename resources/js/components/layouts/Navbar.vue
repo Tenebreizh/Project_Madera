@@ -6,9 +6,9 @@
 
             <ul class="navbar-nav border-left">   
                 <li class="nav-item text-center">
-                    <a class="nav-link" href='#'>
+                    <router-link :to="{name: navs[0].name}" class="nav-link">
                         <i class="fa fa-cog fa_custom fa-3x"></i>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
             <ul class="navbar-nav border-left flex-row ">
@@ -78,7 +78,11 @@ export default {
         return {
             user: {
                 name: 'John Doe',
-            }
+            },
+            navs: [
+                {name: 'parametre', title: 'Paramètre', icon: 'fas fa-home'},
+                {name: 'client', title: 'Paramètre', icon: 'fas fa-home'},
+            ]
         }
     },
 
