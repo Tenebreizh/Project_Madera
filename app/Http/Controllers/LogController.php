@@ -28,8 +28,8 @@ class LogController extends Controller
     public function store(Request $request)
     {
         $log = Log::create([
-            'user_id' => $request->userId,
-            'action_id' => $request->actionId,
+            'user_id' => $request->user_id,
+            'action_id' => $request->action_id,
             'name' => $request->name,
             'description' => $request->description,
             'table' => $request->table
@@ -58,11 +58,15 @@ class LogController extends Controller
      */
     public function update(Request $request, Log $log)
     {
-        $log->user_id = $request->userId;
-        $log->action_id = $request->actionId;
+        $log->user_id = $request->user_id;
+        $log->action_id = $request->action_id;
         $log->name = $request->name;
         $log->description = $request->description;
         $log->table = $request->table;
+
+        $log->save();
+
+        return $log;
     }
 
     /**
