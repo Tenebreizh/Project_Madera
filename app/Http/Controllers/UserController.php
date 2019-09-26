@@ -33,7 +33,7 @@ class UserController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'password' => Hash::make($request->password),
-            'user_type_id' => $request->userTypeId
+            'user_type_id' => $request->user_type_id
         ]);
 
         return $user;
@@ -63,7 +63,7 @@ class UserController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->password = Hash::make($request->password);
-        $user->user_type_id = $request->userTypeId;
+        $user->user_type_id = $request->user_type_id;
 
         $user->save();
 
