@@ -105,3 +105,14 @@ Route::post('log', 'LogController@store');
 Route::get('log/{log}', 'LogController@show');
 Route::put('log/{log}', 'LogController@update');
 Route::delete('log/{log}', 'LogController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Project route
+|--------------------------------------------------------------------------
+*/
+Route::get('projects', 'ProjectController@index');
+Route::post('project', 'ProjectController@store');
+Route::get('project/{project}', 'ProjectController@show');
+Route::put('project/{project}', 'ProjectController@update');
+Route::delete('project/{project}', 'ProjectController@destroy');
