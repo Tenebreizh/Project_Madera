@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Tenebreizh/Project_Madera.svg?branch=master)](https://travis-ci.org/Tenebreizh/Project_Madera)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0b7cac7dbb2409d371e5)
 
 # Project_Madera
 
