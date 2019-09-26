@@ -59,7 +59,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/action_page.php">
+                        <form>
                             <div class="col form-group">
                                 <label for="name">Nom:</label>
                                 <input type="text" class="form-control" id="name" name="name">
@@ -88,13 +88,38 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddUserLabel">Création d'un client</h5>
+                        <h5 class="modal-title" id="AddUserLabel">Création d'un utilisateur</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        
+                        <form>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <label for="firstname">Nom:</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="lastname">Prénom:</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label for='pwd'>Mot de passe</label>
+                                    <input type="password" class="form-control" id="epwdmail" name="pwd">
+                                </div>
+                                <div class="col-lg-6 form-group">
+                                    <label for="roles">Rôles:</label>
+                                    <select name="roles" class="form-control"></select>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Valder</button>
@@ -113,9 +138,13 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <label for="droit">droit:</label>
-                        <select name="droit"></select>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="form-group">
+                                <label for="roles">Rôles:</label>
+                                <select name="roles" class="form-control"></select>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Valder</button>

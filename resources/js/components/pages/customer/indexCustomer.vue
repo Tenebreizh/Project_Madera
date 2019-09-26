@@ -34,7 +34,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/action_page.php">
+                        <form>
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="firstname">Nom:</label>

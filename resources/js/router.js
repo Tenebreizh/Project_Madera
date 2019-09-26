@@ -7,6 +7,7 @@ import Catalog          from './components/pages/catalog/Index.vue'
 import Customer         from './components/pages/customer/indexCustomer.vue'
 import User             from './components/pages/user/indexUser.vue'
 import Configuration    from './components/pages/configuation/indexConfiguration.vue'
+import Parametre        from './components/pages/parametre/indexParametre.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -18,6 +19,8 @@ const routes = [
     { name: "user", path: '/user', component: User},
 
     { name: "configuration", path: '/config', component: Configuration},
+
+    { name: "parametre", path: '/param', component: Parametre},
 ]
 
 export default new Router({
