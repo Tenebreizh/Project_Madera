@@ -88,4 +88,17 @@ class ClientController extends Controller
             "message" => "Client successfully deleted"
         ], 200);
     }
+
+    public function quotations(Client $client)
+    {
+        $projects = $client->projects;
+
+        $quotations = [];
+
+        foreach ($projects as $project) {
+            $quotations[$project->name] = $project->quotations;
+        }
+
+        return $quotations;
+    }
 }
