@@ -128,3 +128,25 @@ Route::post('externalFinition', 'ExternalFinitionController@store');
 Route::get('externalFinition/{externalFinition}', 'ExternalFinitionController@show');
 Route::put('externalFinition/{externalFinition}', 'ExternalFinitionController@update');
 Route::delete('externalFinition/{externalFinition}', 'ExternalFinitionController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Insulator route
+|--------------------------------------------------------------------------
+*/
+Route::get('insulators', 'InsulatorController@index');
+Route::post('insulator', 'InsulatorController@store');
+Route::get('insulator/{insulator}', 'InsulatorController@show');
+Route::put('insulator/{insulator}', 'InsulatorController@update');
+Route::delete('insulator/{insulator}', 'InsulatorController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Covering route
+|--------------------------------------------------------------------------
+*/
+Route::get('coverings', 'CoveringController@index');
+Route::post('covering', 'CoveringController@store');
+Route::get('covering/{covering}', 'CoveringController@show');
+Route::put('covering/{covering}', 'CoveringController@update');
+Route::delete('covering/{covering}', 'CoveringController@destroy');
