@@ -38,6 +38,7 @@ Route::post('user', 'UserController@store');
 Route::get('user/{user}', 'UserController@show');
 Route::put('user/{user}', 'UserController@update');
 Route::delete('user/{user}', 'UserController@destroy');
+Route::delete('user/{user}/logs', 'UserController@deleteLogs');
 
 /*
 |--------------------------------------------------------------------------

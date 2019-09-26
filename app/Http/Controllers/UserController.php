@@ -85,4 +85,14 @@ class UserController extends Controller
             ], 
             200);
     }
+
+    public function deleteLogs(User $user)
+    {
+        $user->logs()->delete();
+
+        return response()->json([
+            "message" => "Every logs of this user has been successfully deleted"
+        ], 
+        200);
+    }
 }
