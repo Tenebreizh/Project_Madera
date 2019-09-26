@@ -24,6 +24,7 @@ PFR Cesi RIL-DEVOPS 2018/2020
 ### Installation Laravel
 
 ```console
+$ cd Le/chemin/du/projet
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
@@ -32,6 +33,15 @@ $ php artisan key:generate
 #### Base de données
 
 Ici on va construire la base de données
+
+Dans un premier temps ouvrir le fichier .env.
+Modifier les lignes suivantes :
+
+```
+APP_NAME=Madera
+DB_DATABASE=madera
+DB_USERNAME=root
+```
 
 ```console
 $ php artisan migrate:fresh
@@ -65,6 +75,7 @@ L'ajout d'un virutal host sur Wamp va permettre de raccourcir l'URL saisie dans 
 1. Choisir un nom pour le virtual host avec un "." dedans (exemple : madera.test).
 1. Saisir le chemin complet jusqu'à votre application (la récupérer depuis un explorateur).
 1. Générer le virtual host.
+1. Modifier la ligne suivante
 
 ### Extensions visual studio code
 
