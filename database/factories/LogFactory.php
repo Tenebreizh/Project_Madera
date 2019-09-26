@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Log::class, function (Faker $faker) {
     return [
-        'user_id' => factory(App\Models\User::class)->create(),
+        'user_id' => factory(App\User::class)->create(),
         'action_id' => factory(App\Models\Action::class)->create(),
         'name' => $faker->text(10),
         'description' => $faker->text(30),
