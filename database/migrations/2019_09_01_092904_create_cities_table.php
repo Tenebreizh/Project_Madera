@@ -19,7 +19,7 @@ class CreateCitiesTable extends Migration
             $table->string('zipcode', 10);
             $table->string('name', 64);
             // $table->string('insee');
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });

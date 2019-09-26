@@ -22,7 +22,7 @@ class CreateQuotationLinesTable extends Migration
             $table->string('description', 64);
             $table->float('price', 6, 2);
             $table->integer('quantity');
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('custom_module_id')->references('id')->on('custom_modules')->onDelete('cascade');
             $table->foreign('quotation_id')->references('id')->on('quotations')->onDelete('cascade');

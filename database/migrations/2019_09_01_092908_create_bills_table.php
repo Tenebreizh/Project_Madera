@@ -17,7 +17,7 @@ class CreateBillsTable extends Migration
             $table->integer('id', true);
             $table->integer('project_id');
             $table->string('blueprint_number', 64);
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
