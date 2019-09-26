@@ -38,6 +38,7 @@ Route::post('user', 'UserController@store');
 Route::get('user/{user}', 'UserController@show');
 Route::put('user/{user}', 'UserController@update');
 Route::delete('user/{user}', 'UserController@destroy');
+Route::get('user/{user}/quotations', 'UserController@quotations');
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,8 @@ Route::post('/client', 'ClientController@store');
 Route::get('/client/{client}', 'ClientController@show');
 Route::put('/client/{client}', 'ClientController@update');
 Route::delete('/client/{client}', 'ClientController@destroy');
+Route::get('client/{client}/quotations', 'ClientController@quotations');
+
 /*
 |--------------------------------------------------------------------------
 | Action route
@@ -116,3 +119,14 @@ Route::post('project', 'ProjectController@store');
 Route::get('project/{project}', 'ProjectController@show');
 Route::put('project/{project}', 'ProjectController@update');
 Route::delete('project/{project}', 'ProjectController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Quotation route
+|--------------------------------------------------------------------------
+*/
+Route::get('quotations', 'QuotationController@index');
+Route::post('quotation', 'QuotationController@store');
+Route::get('quotation/{quotation}', 'QuotationController@show');
+Route::put('quotation/{quotation}', 'QuotationController@update');
+Route::delete('quotation/{quotation}', 'QuotationController@destroy');

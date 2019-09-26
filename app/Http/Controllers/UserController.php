@@ -85,4 +85,17 @@ class UserController extends Controller
             ], 
             200);
     }
+
+    public function quotations(User $user)
+    {
+        $projects = $user->projects;
+
+        $quotations = [];
+
+        foreach ($projects as $project) {
+            $quotations[$project->name] = $project->quotations;
+        }
+
+        return $quotations;
+    }
 }

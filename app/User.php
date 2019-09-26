@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Project');
     }
+
+    public function quotations()
+    {
+        return $this->hasMany('App\Models\Quotation');
+    }
 }
