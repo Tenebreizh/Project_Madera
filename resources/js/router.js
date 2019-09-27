@@ -16,6 +16,7 @@ import GammeShow        from './components/pages/catalog/showGamme.vue'
 import FamilleCompShow  from './components/pages/catalog/showFamComp.vue'
 import FournisseurShow  from './components/pages/catalog/showSupplier.vue'
 import ModuleShow       from './components/pages/catalog/showModule.vue'
+import ConfigModule     from './components/pages/configuation/configModule.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -45,6 +46,8 @@ const routes = [
     { name: "fournisseur.show", path: '/fournisseur/{id}}', component: FournisseurShow},
 
     { name: "module.show", path: '/module/{id}}', component: ModuleShow},
+
+    { name: "configModule", path: '/configModule', component: ConfigModule},
 
 ]
 

@@ -1,0 +1,117 @@
+<template>
+    <div class="row py-4">
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs justify-content-center nav-justified">
+                        <li class="nav-item">
+                            <router-link :to="{name: navs[0].name}" class="nav-item nav-link ">
+                                Configuration gammes
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{name: navs[1].name}" class="nav-item nav-link ">
+                                Configuration modules
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="row tab-content">
+                        <div class="col-sm-12 tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
+                            <div class="row">
+                                <div class="col-lg-12 text-left m-2">
+                                    <h3>Modules</h3>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#addModule">
+                                        <i class="fas fa-plus"></i>
+                                        Ajouter
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <DataTable :data="comments" :columns="modules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal module -->
+        <div class="modal fade" id="addModule" tabindex="-1" role="dialog" aria-labelledby="addModuleLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModuleLabel">Ajout d'un module</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="col form-group">
+                                <label for="reference">Référence:</label>
+                                <input type="text" class="form-control" id="reference" name="reference">
+                            </div>
+                            <div class="col form-group">
+                                <label for="description">Description:</label>
+                                <textarea name="description" class="form-control" id="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+import moment from "moment";
+
+export default {
+    data() {
+        return {
+            loadingData: false,
+            modules: [
+                {name: "reference",     th: "Référence"},
+                {name: "coupPrincipe",  th: "Coupe de pricipe"},
+                {name: "cctp",   th: "Coupe CCTP"},
+            ],
+            comments: [],
+            actions: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    alert("See: " + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            navs: [
+                { name: 'configuration', path: '/config'},
+
+                { name: 'configModule', path: '/configModule'},
+            ]
+        }
+    },
+
+    mounted() {
+        this.loadingData = true
+        axios.get("https://jsonplaceholder.typicode.com/comments")
+        .then(response => {
+            this.comments = response.data
+            this.loadingData = false
+        })
+    }
+}
+</script>
+
+<style>
+
+</style>
