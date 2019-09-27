@@ -80,8 +80,8 @@
         </div>
 
         <!-- Modal Finition extérieur -->
-        <div class="modal fade" id="AddExternal_finition" tabindex="-1" role="dialog" aria-labelledby="AddExternal_finitionLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddExternal_finition" tabindex="-1" role="dialog" aria-labelledby="AddExternal_finitionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddExternal_finitionLabel">Ajout d'une finition extérieur</h5>
@@ -102,15 +102,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal type d'isolant -->
-        <div class="modal fade" id="AddIsolation" tabindex="-1" role="dialog" aria-labelledby="AddIsolationLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddIsolation" tabindex="-1" role="dialog" aria-labelledby="AddIsolationLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddIsolationLabel">Ajout d'un type d'isolant</h5>
@@ -131,15 +131,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal type de couverture -->
-        <div class="modal fade" id="AddCoverings" tabindex="-1" role="dialog" aria-labelledby="AddCoveringsLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddCoverings" tabindex="-1" role="dialog" aria-labelledby="AddCoveringsLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddCoveringsLabel">Ajout d'un type de couverture</h5>
@@ -160,7 +160,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
