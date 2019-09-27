@@ -9,6 +9,9 @@ import User             from './components/pages/user/indexUser.vue'
 import Configuration    from './components/pages/configuation/indexConfiguration.vue'
 import Parametre        from './components/pages/parametre/indexParametre.vue'
 import Connexion        from './components/pages/connexion/indexConnexion.vue'
+import CustomerShow     from './components/pages/customer/pageClient.vue'
+import UserShow         from './components/pages/user/showUser.vue'
+import RoleShow         from './components/pages/user/showRole.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -24,6 +27,13 @@ const routes = [
     { name: "parametre", path: '/param', component: Parametre},
 
     { name: "connexion", path: '/login', component: Connexion},
+
+    { name: "customer.show", path: '/customer/{id}}', component: CustomerShow},
+
+    { name: "user.show", path: '/user/{id}}', component: UserShow},   
+    
+    { name: "role.show", path: '/role/{id}}', component: RoleShow},
+
 ]
 
 export default new Router({
