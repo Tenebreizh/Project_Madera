@@ -12,6 +12,10 @@ import Connexion        from './components/pages/connexion/indexConnexion.vue'
 import CustomerShow     from './components/pages/customer/pageClient.vue'
 import UserShow         from './components/pages/user/showUser.vue'
 import RoleShow         from './components/pages/user/showRole.vue'
+import GammeShow        from './components/pages/catalog/showGamme.vue'
+import FamilleCompShow  from './components/pages/catalog/showFamComp.vue'
+import FournisseurShow  from './components/pages/catalog/showSupplier.vue'
+import ModuleShow       from './components/pages/catalog/showModule.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -33,6 +37,14 @@ const routes = [
     { name: "user.show", path: '/user/{id}}', component: UserShow},   
     
     { name: "role.show", path: '/role/{id}}', component: RoleShow},
+
+    { name: "gamme.show", path: '/gamme/{id}}', component: GammeShow},
+    
+    { name: "famcomp.show", path: '/familleComposant/{id}}', component: FamilleCompShow},
+
+    { name: "fournisseur.show", path: '/fournisseur/{id}}', component: FournisseurShow},
+
+    { name: "module.show", path: '/module/{id}}', component: ModuleShow},
 
 ]
 
