@@ -91,8 +91,8 @@
         </div>
 
         <!-- Modal compasant -->
-        <div class="modal fade" id="AddComposant" tabindex="-1" role="dialog" aria-labelledby="AddComposantLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddComposant" tabindex="-1" role="dialog" aria-labelledby="AddComposantLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddComposantLabel">Ajout d'une gamme</h5>
@@ -113,15 +113,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal TVA -->
-        <div class="modal fade" id="AddTVA" tabindex="-1" role="dialog" aria-labelledby="AddTVALabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddTVA" tabindex="-1" role="dialog" aria-labelledby="AddTVALabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddTVALabel">Ajout d'une famille de composant</h5>
@@ -142,15 +142,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal Etat de pièce -->
-        <div class="modal fade" id="AddEtat" tabindex="-1" role="dialog" aria-labelledby="AddEtatLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddEtat" tabindex="-1" role="dialog" aria-labelledby="AddEtatLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddEtatLabel">Ajout d'un fournisseur</h5>
@@ -171,15 +171,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal module -->
-        <div class="modal fade" id="AddModule" tabindex="-1" role="dialog" aria-labelledby="AddModuleLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddModule" tabindex="-1" role="dialog" aria-labelledby="AddModuleLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddModuleLabel">Ajout d'une huisserie</h5>
@@ -200,7 +200,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>

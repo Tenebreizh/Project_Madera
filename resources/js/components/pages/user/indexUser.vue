@@ -77,7 +77,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
@@ -122,15 +122,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal droit -->
-        <div class="modal fade" id="AddDroit" tabindex="-1" role="dialog" aria-labelledby="AddDroitLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddDroit" tabindex="-1" role="dialog" aria-labelledby="AddDroitLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddDroitLabel">Ajout d'un droit</h5>
@@ -147,7 +147,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>

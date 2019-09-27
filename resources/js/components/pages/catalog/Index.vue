@@ -132,15 +132,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal famille de composant -->
-        <div class="modal fade" id="AddFamComp" tabindex="-1" role="dialog" aria-labelledby="AddFamCompLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddFamComp" tabindex="-1" role="dialog" aria-labelledby="AddFamCompLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddFamCompLabel">Ajout d'une famille de composant</h5>
@@ -161,15 +161,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal fournisseur -->
-        <div class="modal fade" id="AddSupplier" tabindex="-1" role="dialog" aria-labelledby="AddSupplierLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddSupplier" tabindex="-1" role="dialog" aria-labelledby="AddSupplierLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddSupplierLabel">Ajout d'un fournisseur</h5>
@@ -231,15 +231,15 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal module -->
-        <div class="modal fade" id="AddModule" tabindex="-1" role="dialog" aria-labelledby="AddModuleLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="AddModule" tabindex="-1" role="dialog" aria-labelledby="AddModuleLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddModuleLabel">Ajout d'une huisserie</h5>
@@ -273,7 +273,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valder</button>
+                        <button type="button" class="btn btn-primary">Valider</button>
                     </div>
                 </div>
             </div>
