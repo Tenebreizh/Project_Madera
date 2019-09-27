@@ -8,7 +8,10 @@
                             <a class="nav-item nav-link active" id="nav-roles-tab" data-toggle="tab" href="#nav-gammes" role="tab" aria-controls="nav-roles" aria-selected="true">Configuration gammes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link " id="nav-user-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-user" aria-selected="false">Configuration modules</a>
+                            <router-link :to="{name: navs[0].name}" class="nav-item nav-link ">
+                                Configuration modules
+                            </router-link>
+                            <!--<a class="nav-item nav-link " id="nav-user-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-user" aria-selected="false">Configuration modules</a>-->
                         </li>
                     </ul>
                 </div>
@@ -232,7 +235,11 @@ export default {
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
                 }},
+            ],
+            navs: [
+                { name: 'configModule', path: '/configModule'},
             ]
+            
         }
     },
 
