@@ -32,7 +32,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsRange" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsComponents" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnsComponents" :actions="actionsFamComp" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnSuppliers" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsModules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnsModules" :actions="actionsModule" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -317,9 +317,42 @@ export default {
                 {name: "price", th: "Prix"},
             ],
             comments: [],
-            actions: [
+            actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
-                    alert("See: " + row.id);
+                    this.$router.push({name:"gamme.show", params:{id:row.id}})
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsFamComp: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"famcomp.show", params:{id:row.id}})
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsFournisseur: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"fournisseur.show", params:{id:row.id}})
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsModule: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"module.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     alert("Delete: " + row.id);
