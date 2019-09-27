@@ -26,7 +26,7 @@
                                     </button>
                                 </div>
                                 <div class="col-lg-12">
-                                    <DataTable :data="comments" :columns="columnsRole" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="comments" :columns="columnsRole" :actions="actionsRôles" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddRoleLabel">Création d'un client</h5>
+                        <h5 class="modal-title" id="AddRoleLabel">Création d'un rôle</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -177,9 +177,20 @@ export default {
                 {name: "desciption",  th: "Description"},
             ],
             comments: [],
+            actionsRôles: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"role.show", params:{id:row.id}})
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
-                    alert("See: " + row.id);
+                    this.$router.push({name:"user.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     alert("Delete: " + row.id);
