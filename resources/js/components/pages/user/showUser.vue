@@ -5,7 +5,7 @@
                 <div class="row card-body">
                     <div class="col-sm-2 mt-5">
                         <div class="col">        
-                            <img src="./../../../../../public/images/Capture.png" class="rounded-circle border" alt="Cinque Terre" width="" height="230"> 
+                            <img src="./../../../../../public/images/avatar/Capture.png" class="rounded-circle border" alt="Cinque Terre" width="" height="230"> 
                         </div>
                     </div>
                     <div class="col-sm-10">
