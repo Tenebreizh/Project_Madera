@@ -17,6 +17,8 @@ import FamilleCompShow  from './components/pages/catalog/showFamComp.vue'
 import FournisseurShow  from './components/pages/catalog/showSupplier.vue'
 import ModuleShow       from './components/pages/catalog/showModule.vue'
 import ConfigModule     from './components/pages/configuation/configModule.vue'
+import Devis            from './components/pages/quotation/indexQuotation.vue'
+import CreateDevis      from './components/pages/quotation/CreateQuotation.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -49,6 +51,10 @@ const routes = [
 
     { name: "configModule", path: '/configModule', component: ConfigModule},
 
+
+    { name: "quotation", path: '/devis', component: Devis},
+
+    { name: "quotation.create", path: '/devis/create', component: CreateDevis},
 ]
 
 export default new Router({
