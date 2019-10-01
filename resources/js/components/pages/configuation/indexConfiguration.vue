@@ -18,7 +18,7 @@
 
                 <div class="card-body">
                     <div class="row tab-content">
-                        <div class="col-sm-6 border tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
+                        <div class="col-sm-6 border tab-pane fade show active" id="nav-External_finition" role="tabpanel" aria-labelledby="nav-External_finition-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Finition extérieur</h3>
@@ -28,11 +28,11 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="external_finitions" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="comments" :columns="external_finitions" :actions="actionsFinitions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 border tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
+                        <div class="col-sm-6 border tab-pane fade show active" id="nav-Isolation" role="tabpanel" aria-labelledby="nav-Isolation-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Type d'isolant</h3>
@@ -42,11 +42,11 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="isolators" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="comments" :columns="isolators" :actions="actionsIsolators" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 border tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
+                        <div class="col-sm-6 border tab-pane fade show active" id="nav-Coverings" role="tabpanel" aria-labelledby="nav-Coverings-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Type de couverture</h3>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 border tab-pane fade show active" id="nav-gammes" role="tabpanel" aria-labelledby="nav-gammes-tab">
+                        <div class="col-sm-6 border tab-pane fade show active" id="nav-WindowFrame" role="tabpanel" aria-labelledby="nav-WindowFrame-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Huisserie</h3>
@@ -70,7 +70,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="windows_frames" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="comments" :columns="windows_frames" :actions="actionsFrames" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -227,8 +227,45 @@ export default {
             comments: [],
             actionsFinitions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    //alert("See: " + row.id);
-                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                    alert("See: " + row.id);
+                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+
+            actionsIsolators: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    alert("See: " + row.id);
+                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsCovering: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    alert("See: " + row.id);
+                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsFrames: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    alert("See: " + row.id);
+                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
@@ -240,43 +277,6 @@ export default {
 
             navs: [
                 { name: 'configModule', path: '/configModule'},
-            ],
-            
-            actionsIsolators: [
-                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    //alert("See: " + row.id);
-                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
-                }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
-                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
-                }},
-            ],
-            actionsCovering: [
-                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    //alert("See: " + row.id);
-                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
-                }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
-                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
-                }},
-            ],
-            actionsFrames: [
-                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    //alert("See: " + row.id);
-                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
-                }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
-                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
-                }},
             ],
         }
     },

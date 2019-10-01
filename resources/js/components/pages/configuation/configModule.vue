@@ -167,7 +167,7 @@ export default {
             comments: [],
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
+                    this.$router.push({name:"configurationDetail", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);

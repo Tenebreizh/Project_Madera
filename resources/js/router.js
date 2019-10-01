@@ -52,7 +52,6 @@ const routes = [
 
     { name: "configModule", path: '/configModule', component: ConfigModule},
 
-
     { name: "configurationDetail", path: '/config/:id', component: ConfigurationDetail, props: true},
 
     { name: "quotation", path: '/devis', component: Devis},
