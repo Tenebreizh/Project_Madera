@@ -6,66 +6,18 @@
 
             <ul class="navbar-nav border-left">   
                 <li class="nav-item text-center">
-                    <a class="nav-link" href='#'>
+                    <router-link :to="{name: navs[0].name}" class="nav-link">
                         <i class="fa fa-cog fa_custom fa-3x"></i>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
             <ul class="navbar-nav border-left flex-row ">
-                <!-- <li class="nav-item border-right dropdown notifications">
-                    <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="nav-link-icon__wrapper">
-                        <i class="material-icons">&#xE7F4;</i>
-                        <span class="badge badge-pill badge-danger">2</span>
-                        </div>
-                    </a>
-                    
-                    <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                            <div class="notification__icon">
-                            <i class="material-icons">&#xE6E1;</i>
-                            </div>
-                        </div>
-                        <div class="notification__content">
-                            <span class="notification__category">Analytics</span>
-                            <p>Your website’s active users count increased by
-                            <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                        </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                        <div class="notification__icon-wrapper">
-                            <div class="notification__icon">
-                            <i class="material-icons">&#xE8D1;</i>
-                            </div>
-                        </div>
-                        <div class="notification__content">
-                            <span class="notification__category">Sales</span>
-                            <p>Last week your store’s sales count decreased by
-                            <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                        </div>
-                        </a>
-                        <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                    </div>
-                </li> -->
-                
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    
+                    <router-link :to="{name: navs[1].name}" class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle mr-2" src="/images/avatar/1.jpg" alt="User Avatar">
                         <span class="d-none d-md-inline-block"> {{ user.name }} </span>
-                    </a>
-
-                    <!-- <div class="dropdown-menu dropdown-menu-small">
-                        <a class="dropdown-item" href="user-profile-lite.html">
-                        <i class="material-icons">&#xE7FD;</i> Profile</a>
-                        <a class="dropdown-item" href="components-blog-posts.html">
-                        <i class="material-icons">vertical_split</i> Blog Posts</a>
-                        <a class="dropdown-item" href="add-new-post.html">
-                        <i class="material-icons">note_add</i> Add New Post</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#">
-                        <i class="material-icons text-danger">&#xE879;</i> Logout </a>
-                    </div> -->
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -78,7 +30,12 @@ export default {
         return {
             user: {
                 name: 'John Doe',
-            }
+            },
+            navs: [
+                { name: 'parametre', title: 'Paramètre', icon: 'fas fa-home'},
+
+                { name: "user.show", path: '/user/{id}}'},
+            ]
         }
     },
 
