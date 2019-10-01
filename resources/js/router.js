@@ -17,6 +17,7 @@ import FamilleCompShow  from './components/pages/catalog/showFamComp.vue'
 import FournisseurShow  from './components/pages/catalog/showSupplier.vue'
 import ModuleShow       from './components/pages/catalog/showModule.vue'
 import ConfigModule     from './components/pages/configuation/configModule.vue'
+import ConfigurationDetail from './components/pages/configuation/detailConfiguration.vue'
 import Devis            from './components/pages/quotation/indexQuotation.vue'
 import CreateDevis      from './components/pages/quotation/CreateQuotation.vue'
 
@@ -51,6 +52,8 @@ const routes = [
 
     { name: "configModule", path: '/configModule', component: ConfigModule},
 
+
+    { name: "configurationDetail", path: '/config/:id', component: ConfigurationDetail, props: true},
 
     { name: "quotation", path: '/devis', component: Devis},
 
