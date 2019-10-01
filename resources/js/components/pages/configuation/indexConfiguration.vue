@@ -237,12 +237,11 @@ export default {
                     alert("Edit :" + row.id);
                 }},
             ],
-<<<<<<< HEAD
+
             navs: [
                 { name: 'configModule', path: '/configModule'},
-            ]
+            ],
             
-=======
             actionsIsolators: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     //alert("See: " + row.id);
@@ -279,7 +278,6 @@ export default {
                     alert("Edit :" + row.id);
                 }},
             ],
->>>>>>> FrontDevis
         }
     },
 

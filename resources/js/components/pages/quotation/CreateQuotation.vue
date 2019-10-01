@@ -86,8 +86,8 @@
                                     <div class="col-lg-12">
                                         <h3>Détails</h3>
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#AddCustomer">Ajouter</button>
-                                        <button class="btn"
-                                        <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData" ></DataTable>
+                                        <button class="btn"></button>
+                                        <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                     </div>
                                 </div>
                             </div>
@@ -132,10 +132,10 @@
                             <div class='row'>
                                 <div class="col form-group">
                                     <select v-model="selectedModuleName" class="custom-select">
-                                        <option selected disabled value="0">Nom</option>
-                                        <option :value="nameModule.id" v-for="nameModule in dataModules.names">
+                                        <!--<option selected disabled value="0">Nom</option>-->
+                                        <!--<option :value="nameModule.id" v-for="nameModule in dataModules.names">
                                             {{nameModule.username}}
-                                        </option>
+                                        </option>-->
                                     </select>
                                 </div>
                                 <div class="col form-group">
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                             <div class='row'>
-                                 <div class="col form-group">
+                                    <div class="col form-group">
                                     <input type="text" placeholder="Description" class="form-control">
                                 </div>
                                 <div class="col form-group">
@@ -165,8 +165,8 @@
                                 <thead>
                                 <tr>
                                     <th>Référence</th>
-                                     <th>Coupe de principe</th>
-                                      <th>Coupe CCTP</th>
+                                    <th>Coupe de principe</th>
+                                    <th>Coupe CCTP</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -218,11 +218,6 @@
                         </form>
                     </div>
 
-
-
-
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Valder</button>
                     </div>
@@ -230,7 +225,6 @@
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -283,8 +277,8 @@ export default {
     },
     methods: {
         loadDataModules: async function() {
-           let response = await axios.get("https://jsonplaceholder.typicode.com/users")
-           this.dataModules.names = response.data
+            let response = await axios.get("https://jsonplaceholder.typicode.com/users")
+            this.dataModules.names = response.data
         },
         save: function() {
             console.log('Validation des data ex : ')
