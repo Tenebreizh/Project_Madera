@@ -7,6 +7,7 @@ import Catalog          from './components/pages/catalog/Index.vue'
 import Customer         from './components/pages/customer/indexCustomer.vue'
 import User             from './components/pages/user/indexUser.vue'
 import Configuration    from './components/pages/configuation/indexConfiguration.vue'
+import ConfigurationDetail from './components/pages/configuation/detailConfiguration.vue'
 import Devis            from './components/pages/quotation/indexQuotation.vue'
 import CreateDevis      from './components/pages/quotation/CreateQuotation.vue'
 
@@ -20,6 +21,8 @@ const routes = [
     { name: "user", path: '/user', component: User},
 
     { name: "configuration", path: '/config', component: Configuration},
+
+    { name: "configurationDetail", path: '/config/:id', component: ConfigurationDetail, props: true},
 
     { name: "quotation", path: '/devis', component: Devis},
 

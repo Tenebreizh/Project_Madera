@@ -53,7 +53,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="coverings" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="comments" :columns="coverings" :actions="actionsCovering" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -102,9 +102,10 @@ export default {
                 {name: "description",   th: "Description"},
             ],
             comments: [],
-            actions: [
+            actionsFinitions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
+                    //alert("See: " + row.id);
+                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
@@ -112,7 +113,43 @@ export default {
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
                 }},
-            ]
+            ],
+            actionsIsolators: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    //alert("See: " + row.id);
+                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsCovering: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    //alert("See: " + row.id);
+                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsFrames: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
+                    //alert("See: " + row.id);
+                    this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
         }
     },
 
