@@ -3869,6 +3869,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3880,7 +3894,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         refProjet: '',
         type: '',
         refClient: '',
-        finitionExterieur: '',
+        externalFinitions: '',
         date: ''
       },
       dataModules: {
@@ -61164,24 +61178,14 @@ var render = function() {
                         attrs: { id: "container-detail" }
                       },
                       [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "col-lg-12" },
                           [
-                            _c("h3", [_vm._v("Détails")]),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: {
-                                  "data-toggle": "modal",
-                                  "data-target": "#AddCustomer"
-                                }
-                              },
-                              [_vm._v("Ajouter")]
-                            ),
-                            _vm._v(" "),
                             _c("DataTable", {
                               attrs: {
                                 data: _vm.comments,
@@ -61199,7 +61203,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(5),
+                _vm._m(6),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -61245,11 +61249,11 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "AddCustomerLabel" }
                   },
-                  [_c("center", [_vm._v("Création d'un devis")])],
+                  [_c("center", [_vm._v("Choix des modules")])],
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(6)
+                _vm._m(7)
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
@@ -61311,12 +61315,10 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
-                    _vm._m(8)
+                    _vm._m(9)
                   ]),
-                  _vm._v(" "),
-                  _vm._m(9),
                   _vm._v(" "),
                   _vm._m(10),
                   _vm._v(" "),
@@ -61326,11 +61328,13 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(13),
                   _vm._v(" "),
-                  _vm._m(14)
+                  _vm._m(14),
+                  _vm._v(" "),
+                  _vm._m(15)
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(15)
+              _vm._m(16)
             ])
           ]
         )
@@ -61525,23 +61529,76 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h3", { staticClass: "col-lg-1 float-left" }, [_vm._v("Détails")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "offset-10 btn btn-primary",
+          attrs: { "data-toggle": "modal", "data-target": "#AddCustomer" }
+        },
+        [_vm._v("Ajouter")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row border", attrs: { id: "footer" } }, [
       _c(
         "div",
         { staticClass: "col-lg-12 mt-2 ml-2", attrs: { id: "footer-detail" } },
         [
+          _c("h3", [_vm._v("Pied")]),
+          _vm._v(" "),
           _c("div", { staticClass: "col-lg-6 pull-left" }, [
-            _c("h3", [_vm._v("Pied")]),
-            _vm._v(" "),
             _c("form", [
               _c("div", { staticClass: "form-group row" }, [
                 _c(
                   "label",
                   {
                     staticClass: "col-sm-2 col-form-label",
-                    attrs: { for: "montantHT" }
+                    attrs: { for: "montantHt" }
                   },
                   [_vm._v("Montant H.T.")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "", id: "inputMontantHT", placeholder: "" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 col-form-label",
+                    attrs: { for: "TVA" }
+                  },
+                  [_vm._v("T.V.A.")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "", id: "inputMontantHT", placeholder: "" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 col-form-label",
+                    attrs: { for: "montantTtc" }
+                  },
+                  [_vm._v("Montant T.T.C.")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-sm-10" }, [
@@ -78615,8 +78672,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\LAB\Project_Madera\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\LAB\Project_Madera\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Lab - Projects\Project_Madera\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Lab - Projects\Project_Madera\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
