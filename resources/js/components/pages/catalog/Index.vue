@@ -19,6 +19,10 @@
                     <li class="nav-item">
                         <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" id="nav-article-tab" data-toggle="tab" href="#nav-article" role="tab" aria-controls="nav-article" aria-selected="false">Articles</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
@@ -75,6 +79,20 @@
                             </div>
                             <div class="col-lg-12">
                                 <DataTable :data="comments" :columns="columnsModules" :actions="actionsModule" :index="false" :loading="loadingData"></DataTable>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
+                        <div class="row">
+                            <div class="col-lg-12 text-left mb-4">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#AddArticle">
+                                    <i class="fas fa-plus"></i>
+                                    Ajouter
+                                </button>
+                            </div>
+                            <div class="col-lg-12">
+                                <DataTable :data="comments" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -278,6 +296,66 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal article -->
+        <div class="modal fade bd-example-modal-lg" id="AddArticle" tabindex="-1" role="dialog" aria-labelledby="AddArticleLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddArticleLabel">Ajout d'un article</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="col form-group">
+                                <label for="reference">Référence:</label>
+                                <input type="text" class="form-control" id="reference" name="reference">
+                            </div>
+                            <div class="col form-group">
+                                <label for="description">Description:</label>
+                                <textarea name="description" class="form-control" id="description"></textarea>
+                            </div>
+                            <div class="m-4">
+                                <a href="#" data-toggle="modal" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
+                            </div>
+                            <div class="col-lg-12">
+                                <DataTable :data="comments" :columns="ModalAddSuppliers"  :actions="actionsSuppliers" :index="false" :loading="loadingData"></DataTable>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal fournisseurs -->
+        <div class="modal fade bd-example-modal-lg" id="AddSuppliers" tabindex="-1" role="dialog" aria-labelledby="AddSuppliersLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddSuppliersLabel">Ajout d'un fournisseur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="form-group">
+                                <label for="roles">Fournisseurs:</label>
+                                <select name="roles" class="form-control"></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -308,13 +386,22 @@ export default {
                 {name: "email", th: "Email"},
                 {name: "phone", th: "Téléphone"},
                 {name: "fax", th: "Fax"},
-
+            ],
+            ModalAddSuppliers: [
+                {name: "firstname", th: "Nom"},
+                {name: "lastname", th: "Prénom"},
+                {name: "email", th: "Email"},
             ],
             columnsModules: [
                 {name: "name", th: "Référence"},
                 {name: "description", th: "Description"},
                 {name: "tva", th: "TVA"},
                 {name: "price", th: "Prix"},
+            ],
+            columnsArticles: [
+                {name: "name", th: "Référence"},
+                {name: "description", th: "Description"},
+                {name: "suppliers", th: "Fournisseur"},
             ],
             comments: [],
             actionsGamme: [
@@ -359,6 +446,22 @@ export default {
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+            ],
+            actionsArticle: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"article.show", params:{id:row.id}})
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+            ],
+            actionsSuppliers: [
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ]
         }
