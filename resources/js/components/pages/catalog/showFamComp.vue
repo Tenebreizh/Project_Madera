@@ -3,6 +3,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
             <div class="card">
                 <form>
+                    <h2 class="m-2 text-center">Famille composant</h2>
                     <div class="row card-body">
                         <div class="col-sm-10">
                             <div class="col form-group">
