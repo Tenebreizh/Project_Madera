@@ -5,7 +5,7 @@
                 <form>
                     <h2 class="m-2 text-center">Rôle</h2>
                     <div class="row card-body">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <div class="col-sm-12">
                                 <h2>Rôle</h2>
                                 <div class="row mt-5">
