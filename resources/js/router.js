@@ -7,6 +7,10 @@ import Catalog              from './components/pages/catalog/Index.vue'
 import Customer             from './components/pages/customer/indexCustomer.vue'
 import User                 from './components/pages/user/indexUser.vue'
 import Configuration        from './components/pages/configuation/indexConfiguration.vue'
+import CoveringShow         from './components/pages/configuation/CoveringShow.vue'
+import IsolatorShow         from './components/pages/configuation/IsolationShow.vue'
+import ExternalFinitionShow from './components/pages/configuation/ExternalFinitionShow.vue'
+import WindowsFrameShow     from './components/pages/configuation/WindowFrameShow.vue'
 import Parametre            from './components/pages/parametre/indexParametre.vue'
 import Connexion            from './components/pages/connexion/indexConnexion.vue'
 import CustomerShow         from './components/pages/customer/pageClient.vue'
@@ -59,7 +63,15 @@ const routes = [
 
     { name: "quotation.create", path: '/devis/create', component: CreateDevis},
 
-    { name: "article.show", path: '/article/:id', component: ArticleShow}
+    { name: "article.show", path: '/article/:id', component: ArticleShow},
+
+    { name: "isolator.show", path: '/isolator/:id', component: IsolatorShow},
+
+    { name: "covering.show", path: '/covering/:id', component: CoveringShow},
+
+    { name: "WindowsFrame.show", path: '/WindowsFrame/:id', component: WindowsFrameShow},
+
+    { name: "ExternalFinition.show", path: '/ExternalFinition/:id', component: ExternalFinitionShow},
 ]
 
 export default new Router({

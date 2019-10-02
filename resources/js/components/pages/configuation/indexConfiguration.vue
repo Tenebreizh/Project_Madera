@@ -227,8 +227,7 @@ export default {
             comments: [],
             actionsFinitions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
-                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                    this.$router.push({ name: "ExternalFinition.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
@@ -240,8 +239,7 @@ export default {
 
             actionsIsolators: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
-                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                    this.$router.push({ name: "isolator.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
@@ -252,8 +250,7 @@ export default {
             ],
             actionsCovering: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
-                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                    this.$router.push({ name: "covering.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
@@ -264,8 +261,7 @@ export default {
             ],
             actionsFrames: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
-                    alert("See: " + row.id);
-                    //this.$router.push({ name: "configurationDetail", params: {'id': row.id} })
+                    this.$router.push({ name: "WindowsFrame.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
                     alert("Delete: " + row.id);
