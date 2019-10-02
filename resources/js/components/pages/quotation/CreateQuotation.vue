@@ -82,11 +82,13 @@
                             </div>
 
                             <div id="details" class="row border">
-                                <div id="container-detail" class="col-lg-12 mt-2 ml-2">          
+                                <div id="container-detail" class="col-lg-12 mt-2 ml-2">
+                                     <div class="row">
+                                        <h3 class="col-lg-1 float-left">Détails</h3>
+                                        <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddCustomer">Ajouter</button>
+                                     </div>
+                                     <br>        
                                     <div class="col-lg-12">
-                                        <h3>Détails</h3>
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#AddCustomer">Ajouter</button>
-                                        <button class="btn"></button>
                                         <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                     </div>
                                 </div>
@@ -97,12 +99,24 @@
                                     <div class="col-lg-6 pull-left">
                                         <h3>Pied</h3>
                                         <form>
-                                            <div class="form-group row">
-                                                <label for="montantHT" class="col-sm-2 col-form-label">Montant H.T.</label>
+                                             <div class="form-group row">
+                                                <label for="montantHt" class="col-sm-2 col-form-label">Montant H.T.</label>
                                                 <div class="col-sm-10">
                                                 <input type="" class="form-control" id="inputMontantHT" placeholder="">
                                                 </div>
                                             </div>
+                                             <div class="form-group row">
+                                                <label for="TVA" class="col-sm-2 col-form-label">T.V.A.</label>
+                                                <div class="col-sm-10">
+                                                <input type="" class="form-control" id="inputMontantHT" placeholder="">
+                                                </div>
+                                            </div>
+                                             <div class="form-group row">
+                                                <label for="montantTtc" class="col-sm-2 col-form-label">Montant T.T.C.</label>
+                                                <div class="col-sm-10">
+                                                <input type="" class="form-control" id="inputMontantHT" placeholder="">
+                                                </div>
+                                             </div>
                                         </form>
                                     </div>
                                 </div>
