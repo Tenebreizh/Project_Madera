@@ -36,19 +36,19 @@ const routes = [
 
     { name: "connexion", path: '/login', component: Connexion},
 
-    { name: "customer.show", path: '/customer/{id}}', component: CustomerShow},
+    { name: "customer.show", path: '/customer/:id', component: CustomerShow},
 
-    { name: "user.show", path: '/user/{id}}', component: UserShow},   
+    { name: "user.show", path: '/user/:id', component: UserShow},   
     
-    { name: "role.show", path: '/role/{id}}', component: RoleShow},
+    { name: "role.show", path: '/role/:id', component: RoleShow},
 
-    { name: "gamme.show", path: '/gamme/{id}}', component: GammeShow},
+    { name: "gamme.show", path: '/gamme/:id', component: GammeShow},
     
-    { name: "famcomp.show", path: '/familleComposant/{id}}', component: FamilleCompShow},
+    { name: "famcomp.show", path: '/familleComposant/:id', component: FamilleCompShow},
 
-    { name: "fournisseur.show", path: '/fournisseur/{id}}', component: FournisseurShow},
+    { name: "fournisseur.show", path: '/fournisseur/:id', component: FournisseurShow},
 
-    { name: "module.show", path: '/module/{id}}', component: ModuleShow},
+    { name: "module.show", path: '/module/:id', component: ModuleShow},
 
     { name: "configModule", path: '/configModule', component: ConfigModule},
 

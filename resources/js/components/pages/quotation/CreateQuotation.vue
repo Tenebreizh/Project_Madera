@@ -11,48 +11,57 @@
                                     <h2><center>Création d'un devis</center></h2>
                                 </div>
                             </div>
+     
+                                <div id="container-haut" class="card-body">
+                                     <div class="row">
+                                          <div class="col-lg-8 pt-2 pl-2">
+                                             <h3 class="text-center ml-5 mb-5 mr-5">Informations générales</h3>
+                                          </div>
+                                          <div class="col-lg-4 pt-2 pl-2">
+                                             <h3 class="text-center ml-5 mb-5 mr-5">Plan</h3>
+                                          </div>
+                                     </div>
+                                </div> 
+                                   <form>
+                                        <div id="container-entete-left" class="col-lg-8 pt-2 pl-2">
+                                             <div class='row'>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Nom du projet" class="form-control" v-model="infoGeneral.projectName">
+                                                  </div>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Référence de gamme" class="custom-select" v-model="infoGeneral.RefGamme">            
+                                                  </div>
+                                             </div>
+                                             <div class='row'>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Référence du projet" class="form-control" v-model="infoGeneral.Refproject">            
+                                                  </div>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Type de remplissage" class="custom-select" v-model="infoGeneral.TypeFilling">            
+                                                  </div>
+                                             </div>
+                                             <div class='row'>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Référence du client" class="form-control" v-model="infoGeneral.refClient">
+                                                  </div>
+                                                  <div class="col form-group">
+                                                       <input type="text" placeholder="Finitions extérieures et intérieures" class="custom-select" v-model="infoGeneral.externalFinitions">            
+                                                  </div>
+                                             </div>
+                                             <div class='row'>
+                                                  <div class="col-6 form-group">
+                                                       <input type="text" placeholder="Date" class="form-control" v-model="infoGeneral.date">
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div id="container-entete-right" class="col-lg-4 pt-2 pr-2"> 
+                                              <div class='row'>
+                                                       <button class="btn btn-success" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
+                                             </div>
+                                        </div>
+                                   </form>
 
-                            <div id="container-entete" class="row border">
-                                <div id="container-entete-left" class="col-lg-8 pt-2 pl-2">
-                                        <h3>Informations générales</h3>
 
-                                            <form>
-                                                <div class='row'>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Nom du projet" class="form-control"  v-model="infoGeneral.projectName">
-                                                    </div>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Référence de gamme" class="custom-select" id="RefGammeSelect" name="RefGamme">            
-                                                    </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Référence du projet" class="form-control" id="Refproject" name="Refproject">            
-                                                    </div>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Type de remplissage" class="custom-select" id="TypeOfFilling" name="TypeFilling">            
-                                                    </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Référence du client" class="form-control" id="refClient" name="refClient">
-                                                    </div>
-                                                    <div class="col form-group">
-                                                        <input type="text" placeholder="Finitions extérieures et intérieures" class="custom-select" id="externalFinitions" name="externalFinitions">            
-                                                    </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class="col-6 form-group">
-                                                        <input type="text" placeholder="Date" class="form-control" id="date" name="date">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                </div>
-                            <div id="container-entete-right" class="col-lg-4 pt-2 pr-2">  
-                                    <h3>Plan</h3>
-                                        <form>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
-                                        </form> 
 
                                     <div class="modal fade" id="AddPlan" tabindex="-1" role="dialog" aria-labelledby="AddPlanLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -79,7 +88,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
                             <div id="details" class="row border">
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
@@ -95,9 +103,9 @@
                             </div>
 
                             <div id="footer" class="row border">
-                                <div id="footer-detail" class="col-lg-12 mt-2 ml-2">          
+                                <div id="footer-detail" class="col-lg-12 mt-2 ml-2">                                         
+                                     <h3>Pied</h3>         
                                     <div class="col-lg-6 pull-left">
-                                        <h3>Pied</h3>
                                         <form>
                                              <div class="form-group row">
                                                 <label for="montantHt" class="col-sm-2 col-form-label">Montant H.T.</label>
@@ -122,21 +130,22 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-lg btn-block btn-success" @click="save()">Ajouter/enregistrer le devis</button>
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" @click="save()">Valider</button>
+                         </div>
 
                         </div>  
                     </div>
                 </div>
             </div>
         </div>
-        
 
         <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddCustomerLabel"><center>Création d'un devis</center></h5>
+                        <h5 class="modal-title" id="AddCustomerLabel"><center>Choix des modules</center></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -254,7 +263,7 @@ export default {
                 refProjet: '',
                 type: '',
                 refClient: '',
-                finitionExterieur: '',
+                externalFinitions: '',
                 date: ''
             },
             dataModules: {
