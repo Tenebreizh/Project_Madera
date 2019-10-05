@@ -2,9 +2,11 @@ require('./bootstrap');
 // require("bootstrap-vue-datatable");
 import router from './router.js';
 import VueNoty from 'vuejs-noty'
+import auth from './auth/auth.js';
 import DataTable from './components/layouts/DataTable.vue'
 
 window.Vue = require('vue');
+window.auth = auth;
 Vue.use(VueNoty, {
     timeout: 3000,
     theme: "bootstrap-v4",
@@ -12,6 +14,7 @@ Vue.use(VueNoty, {
     layout: 'topRight'
 })
 Vue.use(DataTable);
+axios.defaults.baseURL = process.env.MIX_APP_URL;
 
 /**
  * The following block of code may be used to automatically register your

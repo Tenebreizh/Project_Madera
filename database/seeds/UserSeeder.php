@@ -11,6 +11,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // 4 random users
         factory(App\User::class, 4)->create();
+
+        // Special test user
+        factory(App\User::class)->create([
+            'email' => 'test@test.com',
+        ]);
     }
 }
