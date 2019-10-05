@@ -51,9 +51,9 @@ const routes = [
     
     { name: "famcomp.show", path: '/familleComposant/:id', component: FamilleCompShow},
 
-    { name: "fournisseur.show", path: '/fournisseur/:id}', component: FournisseurShow},
+    { name: "fournisseur.show", path: '/fournisseur/:id', component: FournisseurShow},
 
-    { name: "module.show", path: '/module/:id}', component: ModuleShow},
+    { name: "module.show", path: '/module/:id', component: ModuleShow},
 
     { name: "configModule", path: '/configModule', component: ConfigModule},
 
