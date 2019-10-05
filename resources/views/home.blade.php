@@ -33,6 +33,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="{{ asset('js/shards-dashboards.1.1.0.js') }}"></script>
     {{-- <script src="{{ asset('js/extras.1.1.0.min.js') }}"></script> --}}
