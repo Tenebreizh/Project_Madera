@@ -229,11 +229,11 @@ export default {
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "ExternalFinition.show", params: {'id': row.id} })
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
 
@@ -241,33 +241,33 @@ export default {
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "isolator.show", params: {'id': row.id} })
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsCovering: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "covering.show", params: {'id': row.id} })
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsFrames: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "WindowsFrame.show", params: {'id': row.id} })
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
 

@@ -3246,17 +3246,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsFamComp: [{
@@ -3273,17 +3273,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsFournisseur: [{
@@ -3300,17 +3300,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsModule: [{
@@ -3327,17 +3327,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsArticle: [{
@@ -3354,17 +3354,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsSuppliers: [{
@@ -3491,17 +3491,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }]
     };
@@ -4109,17 +4109,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-1",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-1",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       navs: [{
@@ -4521,17 +4521,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-1",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-1",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsIsolators: [{
@@ -4548,17 +4548,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-1",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-1",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsCovering: [{
@@ -4575,17 +4575,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-1",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-1",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsFrames: [{
@@ -4602,17 +4602,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-1",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-1",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       navs: [{
@@ -4811,17 +4811,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }]
     };
@@ -5194,17 +5194,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }]
     };
@@ -5530,17 +5530,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       comments: [],
       actions: [{
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }]
     };
@@ -5745,17 +5745,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }]
     };
@@ -5988,17 +5988,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actions: [{
@@ -6015,17 +6015,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
-        icon: "fas fa-trash-alt",
-        color: "danger btn-pill mr-2",
-        action: function action(row, index) {
-          alert("Delete: " + row.id);
-        }
-      }, {
-        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
           alert("Edit :" + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
         }
       }],
       actionsDroit: [{

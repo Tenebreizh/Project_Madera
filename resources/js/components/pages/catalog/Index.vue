@@ -408,55 +408,55 @@ export default {
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsFamComp: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"famcomp.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsFournisseur: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"fournisseur.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsModule: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"module.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsArticle: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"article.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ],
             actionsSuppliers: [

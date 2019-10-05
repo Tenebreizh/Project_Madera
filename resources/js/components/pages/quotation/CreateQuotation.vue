@@ -279,11 +279,11 @@ export default {
             ],
             comments: [],
             actions: [
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
-                }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
                 }},
             ]
         }
