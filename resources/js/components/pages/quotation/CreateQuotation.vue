@@ -138,7 +138,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
