@@ -3359,6 +3359,22 @@ __webpack_require__.r(__webpack_exports__);
         action: function action(row, index) {
           alert("Edit :" + row.id);
         }
+<<<<<<< Updated upstream
+=======
+      }],
+      actionsArticle: [{
+        text: "",
+        icon: "fas fa-eye",
+        color: "primary btn-pill mr-2",
+        action: function action(row, index) {
+          _this.$router.push({
+            name: "article.show",
+            params: {
+              id: row.id
+            }
+          });
+        }
+>>>>>>> Stashed changes
       }, {
         text: "",
         icon: "fas fa-trash-alt",
@@ -3366,6 +3382,16 @@ __webpack_require__.r(__webpack_exports__);
         action: function action(row, index) {
           alert("Delete: " + row.id);
         }
+<<<<<<< Updated upstream
+=======
+      }, {
+        text: "",
+        icon: "fas fa-edit",
+        color: "success btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Edit :" + row.id);
+        }
+>>>>>>> Stashed changes
       }],
       actionsSuppliers: [{
         text: "",
@@ -3374,6 +3400,8 @@ __webpack_require__.r(__webpack_exports__);
         action: function action(row, index) {
           alert("Delete: " + row.id);
         }
+<<<<<<< Updated upstream
+=======
       }]
     };
   },
@@ -3491,6 +3519,232 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-edit",
+        color: "success btn-pill mr-2",
+        action: function action(row, index) {
+          alert("Edit :" + row.id);
+        }
+>>>>>>> Stashed changes
+      }]
+    };
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.loadingData = true;
+    axios.get("https://jsonplaceholder.typicode.com/comments").then(function (response) {
+      _this2.comments = response.data;
+      _this2.loadingData = false;
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/catalog/showArticle.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/catalog/showArticle.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+<<<<<<< Updated upstream
+=======
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/catalog/showGamme.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/catalog/showGamme.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/catalog/showModule.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/catalog/showModule.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> Stashed changes
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+<<<<<<< Updated upstream
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    var _this = this;
+
+    return {
+      loadingData: false,
+      comments: [],
+      columnSuppliers: [{
+        name: "firstname",
+        th: "Nom"
+      }, {
+        name: "lastname",
+        th: "Prénom"
+      }, {
+        name: "street",
+        th: "Adresse"
+      }, {
+        name: "email",
+        th: "Email"
+      }, {
+        name: "phone",
+        th: "Téléphone"
+      }, {
+        name: "fax",
+        th: "Fax"
+      }],
+      actionsFournisseur: [{
+        text: "",
+        icon: "fas fa-eye",
+        color: "primary btn-pill mr-2",
+        action: function action(row, index) {
+          _this.$router.push({
+            name: "fournisseur.show",
+            params: {
+              id: row.id
+            }
+          });
+        }
+      }, {
+        text: "",
         icon: "fas fa-edit",
         color: "success btn-pill mr-2",
         action: function action(row, index) {
@@ -3516,6 +3770,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 });
+=======
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+>>>>>>> Stashed changes
 
 /***/ }),
 
@@ -3623,14 +3884,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/catalog/showModule.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/catalog/showModule.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/CoveringShow.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/CoveringShow.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+>>>>>>> Stashed changes
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3661,6 +3930,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/ExternalFinitionShow.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/ExternalFinitionShow.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -3699,6 +3981,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/IsolationShow.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/IsolationShow.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -3724,6 +4019,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/WindowFrameShow.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/WindowFrameShow.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -3749,6 +4057,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/configModule.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/configModule.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3832,6 +4155,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< Updated upstream
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -3845,6 +4169,179 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    var _this = this;
+
+    return {
+      loadingData: false,
+      modules: [{
+        name: "reference",
+        th: "Référence"
+      }, {
+        name: "coupPrincipe",
+        th: "Coupe de pricipe"
+      }, {
+        name: "cctp",
+        th: "Coupe CCTP"
+      }],
+      comments: [],
+      actions: [{
+        text: "",
+        icon: "fas fa-eye",
+        color: "primary btn-pill mr-1",
+        action: function action(row, index) {
+          _this.$router.push({
+            name: "configurationDetail",
+            params: {
+              id: row.id
+            }
+          });
+        }
+      }, {
+        text: "",
+        icon: "fas fa-trash-alt",
+        color: "danger btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Delete: " + row.id);
+        }
+      }, {
+        text: "",
+        icon: "fas fa-edit",
+        color: "success btn-pill mr-1",
+        action: function action(row, index) {
+          alert("Edit :" + row.id);
+        }
+      }],
+      navs: [{
+        name: 'configuration',
+        path: '/config'
+      }, {
+        name: 'configModule',
+        path: '/configModule'
+      }]
+    };
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.loadingData = true;
+    axios.get("https://jsonplaceholder.typicode.com/comments").then(function (response) {
+      _this2.comments = response.data;
+      _this2.loadingData = false;
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/configuation/detailConfiguration.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/configuation/detailConfiguration.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+>>>>>>> Stashed changes
 //
 //
 //
@@ -65479,7 +65976,7 @@ var staticRenderFns = [
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "form-control mt-3",
+                    staticClass: "form-control btn-primary mt-3",
                     attrs: { type: "submit", value: "Log In" }
                   })
                 ])
@@ -85884,8 +86381,13 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< Updated upstream
 __webpack_require__(/*! D:\Lab\Project_Madera\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Lab\Project_Madera\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! D:\PFR\Project_Madera\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\PFR\Project_Madera\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> Stashed changes
 
 
 /***/ })
