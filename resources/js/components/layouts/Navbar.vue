@@ -14,7 +14,7 @@
             <ul class="navbar-nav border-left flex-row ">
                 <li class="nav-item dropdown">
                     
-                    <router-link :to="{name: navs[1].name}" class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <router-link :to="{name: navs[1].name}" class="nav-link text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle mr-2" src="/images/avatar/1.jpg" alt="User Avatar">
                         <span class="d-none d-md-inline-block"> {{ user.name }} </span>
                     </router-link>
