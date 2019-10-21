@@ -14,7 +14,7 @@
                             <textarea name="description" class="form-control" id="description"></textarea>
                         </div>
                         <div class="col-sm-12 text-right">
-                            <button type="button" class="btn btn-primary btn-lg">Valder</button>
+                            <button type="button" class="btn btn-primary btn-lg">Valider</button>
                         </div>
                     </div>
                 </form>

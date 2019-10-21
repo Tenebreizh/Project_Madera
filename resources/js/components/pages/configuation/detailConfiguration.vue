@@ -94,7 +94,7 @@
                 </div>
                 <div class=" text-right">
                     <button type="button" class="btn btn-success">Modification</button>
-                    <button type="button" class="btn btn-primary">Valder</button>
+                    <button type="button" class="btn btn-primary">Valider</button>
                 </div>
             </form>
         </div>
