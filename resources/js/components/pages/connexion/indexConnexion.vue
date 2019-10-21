@@ -14,7 +14,7 @@
                                     <input type="password" id="password" class="form-control" name="password" placeholder="password">
                                 </div>
                             </div>
-                            <input type="submit" class="form-control btn-primary mt-3" value="Log In">
+                            <input type="submit" class="form-control mt-3 btn-success" value="Log In">
                         </div>
                     </form>
                     <div id="formFooter">

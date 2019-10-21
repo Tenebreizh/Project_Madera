@@ -18,7 +18,7 @@
 
                 <div class="card-body">
                     <div class="row tab-content">
-                        <div class="col-sm-65  tab-pane fade show active" id="nav-External_finition" role="tabpanel" aria-labelledby="nav-External_finition-tab">
+                        <div class="col-lg-6  tab-pane fade show active" id="nav-External_finition" role="tabpanel" aria-labelledby="nav-External_finition-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Finition extérieur</h3>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6  tab-pane fade show active" id="nav-Isolation" role="tabpanel" aria-labelledby="nav-Isolation-tab">
+                        <div class="col-lg-6  tab-pane fade show active" id="nav-Isolation" role="tabpanel" aria-labelledby="nav-Isolation-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Type d'isolant</h3>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6  tab-pane fade show active" id="nav-Coverings" role="tabpanel" aria-labelledby="nav-Coverings-tab">
+                        <div class="col-lg-6  tab-pane fade show active" id="nav-Coverings" role="tabpanel" aria-labelledby="nav-Coverings-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Type de couverture</h3>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6  tab-pane fade show active" id="nav-WindowFrame" role="tabpanel" aria-labelledby="nav-WindowFrame-tab">
+                        <div class="col-lg-6  tab-pane fade show active" id="nav-WindowFrame" role="tabpanel" aria-labelledby="nav-WindowFrame-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left m-2">
                                     <h3>Huisserie</h3>
