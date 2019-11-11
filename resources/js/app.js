@@ -7,6 +7,8 @@ import DataTable from './components/layouts/DataTable.vue'
 
 window.Vue = require('vue');
 window.auth = auth;
+window.$ = require('jquery')
+
 Vue.use(VueNoty, {
     timeout: 3000,
     theme: "bootstrap-v4",
