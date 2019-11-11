@@ -15,6 +15,8 @@ class Component extends Model
         'component_type_id', 'name', 'description',
     ];
 
+    public $timestamps = false;
+
     public function componentType()
     {
         return $this->belongsTo('App\Models\ComponentType');

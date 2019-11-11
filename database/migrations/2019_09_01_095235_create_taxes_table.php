@@ -18,7 +18,7 @@ class CreateTaxesTable extends Migration
             $table->string('name', 64);
             $table->string('description', 64);
             $table->float('rate', 5, 2);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

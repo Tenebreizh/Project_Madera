@@ -25,7 +25,7 @@ class CreateSuppliersTable extends Migration
             $table->string('phone', 15);
             $table->string('fax', 15);
             $table->string('email');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

@@ -17,7 +17,7 @@ class CreateComponentTypesTable extends Migration
             $table->integer('id', true);
             $table->string('name', 64);
             $table->string('description', 64);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
