@@ -1,0 +1,126 @@
+<template>
+    <div class="row py-4">
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade show active" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
+                            <div class="row">
+                                <div class="col-lg-12 text-left mb-4">
+                                    <h2><center>Liste des devis</center></h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-left mb-4">
+                                    <router-link :to="{name:'quotation.create'}" class="btn btn-success">
+                                        <i class="fas fa-plus"></i>
+                                        Ajouter
+                                    </router-link>
+                                </div>
+                                <div class="col-lg-12">
+                                    <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddCustomerLabel"><center>Création d'un devis</center></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/action_page.php">
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Nom du projet" class="form-control" id="projectName" name="projectName">
+                                </div>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Référence de gamme" class="custom-select" id="RefGammeSelect" name="RefGamme">            
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Référence du projet" class="form-control" id="Refproject" name="Refproject">            
+                                </div>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Type de remplissage" class="custom-select" id="TypeOfFilling" name="TypeFilling">            
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Référence du client" class="form-control" id="refClient" name="refClient">
+                                </div>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Finitions extérieures et intérieures" class="custom-select" id="externalFinitions" name="externalFinitions">            
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col form-group">
+                                    <input type="text" placeholder="Date" class="form-control" id="date" name="date">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<script>
+import moment from "moment";
+
+export default {
+    data() {
+        return {
+            loadingData: false,
+            columnsCustomer: [
+                {name: "id", th: "N°"},
+                {name: "name", th: "Nom du projet"},
+                {name: "reference",  th: "Référence du projet"},
+                {name: "referenceClient",    th: "Référence du client"},
+                {name: "date",    th: "Date"},
+            ],
+            comments: [],
+            actions: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    alert("See: " + row.id);
+                }},
+                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
+                    alert("Edit :" + row.id);
+                }},
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    alert("Delete: " + row.id);
+                }},
+            ]
+        }
+    },
+
+    mounted() {
+        this.loadingData = true
+        axios.get("https://jsonplaceholder.typicode.com/comments")
+        .then(response => {
+            this.comments = response.data
+            this.loadingData = false
+        })
+    }
+}
+</script>
+
+<style>
+
+</style>
