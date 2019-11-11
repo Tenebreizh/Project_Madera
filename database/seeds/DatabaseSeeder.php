@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(StateSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(QuotationSeeder::class);
+        $this->call(ExternalFinitionSeeder::class);
+        $this->call(InsulatorSeeder::class);
+        $this->call(CoveringSeeder::class);
+        $this->call(WindowFrameSeeder::class);
     }
 }

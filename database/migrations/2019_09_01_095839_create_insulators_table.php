@@ -18,7 +18,7 @@ class CreateInsulatorsTable extends Migration
             $table->string('label', 64);
             $table->string('description', 64);
             $table->string('reference', 64);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

@@ -21,7 +21,7 @@ class CreateCustomModulesTable extends Migration
             $table->text('specification');
             $table->float('price', 6, 2);
             $table->float('commercial_marge', 5, 2);
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
         });

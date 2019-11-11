@@ -24,7 +24,7 @@ class CreateModulesTable extends Migration
             $table->time('labor_time');
             $table->float('price', 6, 2);
             $table->float('marge_enterprise', 5, 2);
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('range_id')->references('id')->on('ranges')->onDelete('cascade');
         });

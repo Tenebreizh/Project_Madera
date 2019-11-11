@@ -17,7 +17,7 @@ class CreateStatesTable extends Migration
             $table->integer('id', true);
             $table->string('label', 64);
             $table->string('description', 64)->nullable();
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
