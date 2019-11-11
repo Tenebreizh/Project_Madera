@@ -15,6 +15,8 @@ class City extends Model
         'country_id', 'zipcode', 'name',
     ];
 
+    public $timestamps = false;
+
     public function country()
     {
         return $this->belongsTo('App\Models\Country');
