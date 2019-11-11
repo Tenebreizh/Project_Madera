@@ -23,7 +23,7 @@ class CreateRangesTable extends Migration
             $table->string('description', 64);
             $table->string('reference', 64);
             $table->text('rule');
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('covering_id')->references('id')->on('coverings')->onDelete('set null');
             $table->foreign('insulator_id')->references('id')->on('insulators')->onDelete('set null');

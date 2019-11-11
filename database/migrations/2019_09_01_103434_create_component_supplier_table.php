@@ -17,7 +17,7 @@ class CreateComponentSupplierTable extends Migration
             $table->integer('id', true);
             $table->integer('component_id');
             $table->integer('supplier_id');
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('component_id')->references('id')->on('components')->onDelete('cascade');
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');

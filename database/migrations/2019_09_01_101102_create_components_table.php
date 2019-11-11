@@ -18,7 +18,7 @@ class CreateComponentsTable extends Migration
             $table->integer('component_type_id');
             $table->string('name', 64);
             $table->string('description', 64);
-            // $table->timestamps();
+            $table->timestamps();
             
             $table->foreign('component_type_id')->references('id')->on('component_types')->onDelete('cascade');
         });
