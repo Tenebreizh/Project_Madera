@@ -63,7 +63,9 @@
                                 </div>
                                 <div class="col form-group">
                                     <label for="city">Ville:</label>
-                                    <input type="text" class="form-control" id="city" name="city" v-model='client.city_id'>
+                                    <select class="form-control" v-model='client.city_id'>
+                                        <option v-for="(city,key) in cities" value="city.id" :key="key"></option>
+                                    </select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="country">Pays:</label>
@@ -105,6 +107,7 @@ export default {
                 {name: "lastname",  th: "Lastname"},
                 {name: "street",    th: "Street"},
             ],
+            cities:[],
             client:{
                 city_id:'',
                 firstname:'',
@@ -135,6 +138,14 @@ export default {
     },
 
     methods:{
+
+        getClients(){
+            axios.get("/api/cities")
+            .then(response => {
+                this.cities = response.data
+                this.loadingData = false
+            })
+        },
 
         getClients(){
             this.loadingData = true
