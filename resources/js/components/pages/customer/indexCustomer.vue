@@ -139,7 +139,7 @@ export default {
 
     methods:{
 
-        getClients(){
+        getcities(){
             axios.get("/api/cities")
             .then(response => {
                 this.cities = response.data
