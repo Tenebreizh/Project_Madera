@@ -33,7 +33,7 @@
                         <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left mb-4">
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#AddUser">
+                                    <button class="btn btn-success" @click="showModalUser()">
                                         <i class="fas fa-plus"></i>
                                         Ajouter
                                     </button>
@@ -53,7 +53,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddRoleLabel">Création d'un rôle</h5>
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'un rôle</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'un rôle</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -62,14 +63,14 @@
                         <form>
                             <div class="col form-group">
                                 <label for="name">Nom:</label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name" v-model="role.name">
                             </div>
                             <div class="col form-group">
                                 <label for="designation">Désignation:</label>
-                                <input type="text" class="form-control" id="designation" name="designation">
+                                <input type="text" class="form-control" id="designation" name="designation" v-model="role.description">
                             </div>
                             <div class="m-4">
-                                <a href="#" data-toggle="modal" data-target="#AddDroit" class="button"><i class="fa fa-plus"></i>Ajouter un droit</a>
+                                <a href="#" data-toggle="modal" data-target="#AddDroit" class="button"><i class="fa fa-plus"></i>Sélection d'un droit</a>
                             </div>
                             <div class="col-lg-12">
                                 <DataTable :data="users" :columns="droit"  :actions="actionsDroit" :index="false" :loading="loadingData"></DataTable>
@@ -77,7 +78,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createRole()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateRole()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -190,15 +192,23 @@ export default {
                 user_type_id:''
             },
             roles: [],
+            role:{
+                name:'',
+                deescription:''
+            },
             actionsRôles: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"role.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit = true;
+                    this.role = this.roles[index];
+                    $("#AddRole").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deleteRole(row.id)
+                    }
                 }},
             ],
             actions: [
@@ -248,6 +258,7 @@ export default {
             axios.put('/api/user/'+this.user.id,this.user)
             .then(response => {
                 $("#AddUser").modal("hide");
+                this.edit = false;
                 this.GetUsers()
             })
         },
@@ -266,6 +277,35 @@ export default {
                 this.roles = response.data
                 this.loadingData = false
             })
+        },
+
+        createRole(){
+            axios.post('/api/userType', this.role)
+            .then(response => {
+                this.roles.push(response.data)
+                $("#AddRole").modal("hide");
+            })
+        },
+
+        updateRole(){
+            axios.put('/api/userType/'+this.role.id,this.role)
+            .then(response => {
+                $("#AddRole").modal("hide");
+                this.edit = false;
+                this.GetRoles()
+            })
+        },
+
+        deleteRole(id){
+            axios.delete('/api/userType/'+id)
+            .then(response => {
+                this.GetRoles()
+            })
+        },
+
+        showModalUser(){
+            this.edit = false;
+            $("#AddUser").modal("show");
         }
 
     },
