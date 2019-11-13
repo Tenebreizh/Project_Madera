@@ -13,7 +13,6 @@ class Auth {
 
     logout() {
         window.localStorage.removeItem('token');
-        window.localStorage.removeItem('user');
         this.token = null;
     }
 
