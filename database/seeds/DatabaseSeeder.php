@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(InsulatorSeeder::class);
         $this->call(CoveringSeeder::class);
         $this->call(WindowFrameSeeder::class);
+        $this->call(RangeSeeder::class);
+        $this->call(ModuleSeeder::class);
+        $this->call(CustomModuleSeeder::class);
+        $this->call(QuotationLineSeeder::class);
+        $this->call(SupplierSeeder::class);
     }
 }

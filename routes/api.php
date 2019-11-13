@@ -272,3 +272,58 @@ Route::post('windowFrame', 'WindowFrameController@store');
 Route::get('windowFrame/{windowFrame}', 'WindowFrameController@show');
 Route::put('windowFrame/{windowFrame}', 'WindowFrameController@update');
 Route::delete('windowFrame/{windowFrame}', 'WindowFrameController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Range route
+|--------------------------------------------------------------------------
+*/
+Route::get('ranges', 'RangeController@index');
+Route::post('range', 'RangeController@store');
+Route::get('range/{range}', 'RangeController@show');
+Route::put('range/{range}', 'RangeController@update');
+Route::delete('range/{range}', 'RangeController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Module route
+|--------------------------------------------------------------------------
+*/
+Route::get('modules', 'ModuleController@index');
+Route::post('module', 'ModuleController@store');
+Route::get('module/{module}', 'ModuleController@show');
+Route::put('module/{module}', 'ModuleController@update');
+Route::delete('module/{module}', 'ModuleController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Custom module route
+|--------------------------------------------------------------------------
+*/
+Route::get('customModules', 'CustomModuleController@index');
+Route::post('customModule', 'CustomModuleController@store');
+Route::get('customModule/{customModule}', 'CustomModuleController@show');
+Route::put('customModule/{customModule}', 'CustomModuleController@update');
+Route::delete('customModule/{customModule}', 'CustomModuleController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Quotation line route
+|--------------------------------------------------------------------------
+*/
+Route::get('quotationLines', 'QuotationLineController@index');
+Route::post('quotationLine', 'QuotationLineController@store');
+Route::get('quotationLine/{quotationLine}', 'QuotationLineController@show');
+Route::put('quotationLine/{quotationLine}', 'QuotationLineController@update');
+Route::delete('quotationLine/{quotationLine}', 'QuotationLineController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Supplier route
+|--------------------------------------------------------------------------
+*/
+Route::get('suppliers', 'SupplierController@index');
+Route::post('supplier', 'SupplierController@store');
+Route::get('supplier/{supplier}', 'SupplierController@show');
+Route::put('supplier/{supplier}', 'SupplierController@update');
+Route::delete('supplier/{supplier}', 'SupplierController@destroy');
