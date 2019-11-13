@@ -527,7 +527,7 @@ export default {
         // Famille compossant
         getFamComps(){
             this.loadingData = true
-            axios.get("/api/ranges")
+            axios.get("/api/component_types")
             .then(response => {
                 this.famcomps = response.data
                 this.loadingData = false
@@ -535,15 +535,15 @@ export default {
         },
 
         createFamComp(){
-            axios.post('/api/range', this.famcomp)
+            axios.post('/api/component_type', this.famcomp)
             .then(response => {
-                this.ranges.push(response.data)
+                this.famcomps.push(response.data)
                 $("#AddUser").modal("hide");
             })
         },
 
         updateFamComp(){
-            axios.put('/api/range/'+this.range.id,this.range)
+            axios.put('/api/component_types/'+this.famcomp.id,this.famcomp)
             .then(response => {
                 $("#AddUser").modal("hide");
                 this.edit = false;
@@ -552,7 +552,7 @@ export default {
         },
 
         deleteFamComp(id){
-            axios.delete('/api/range/'+id)
+            axios.delete('/api/component_types/'+id)
             .then(response => {
                 this.GetUsers()
             })
@@ -562,32 +562,104 @@ export default {
         // Fournisseurs
         getFournisseurs(){
             this.loadingData = true
-            axios.get("/api/ranges")
+            axios.get("/api/suppliers")
             .then(response => {
                 this.fournisseurs = response.data
                 this.loadingData = false
             })
         },
 
+        createFournisseur(){
+            axios.post('/api/supplier', this.fournisseur)
+            .then(response => {
+                this.fournisseurs.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateFournisseur(){
+            axios.put('/api/supplier/'+this.fournisseur.id,this.fournisseur)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteFournisseur(id){
+            axios.delete('/api/supplier/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
         //Modules
         getModules(){
             this.loadingData = true
-            axios.get("/api/ranges")
+            axios.get("/api/modules")
             .then(response => {
                 this.modules = response.data
                 this.loadingData = false
             })
         },
 
+        createModule(){
+            axios.post('/api/module', this.module)
+            .then(response => {
+                this.modules.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateModule(){
+            axios.put('/api/module/'+this.module.id,this.module)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteModule(id){
+            axios.delete('/api/module/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
         //Article
         getAricles(){
             this.loadingData = true
-            axios.get("/api/ranges")
+            axios.get("/api/Aricles")
             .then(response => {
                 this.aricles = response.data
                 this.loadingData = false
             })
-        }
+        },
+
+        createAricle(){
+            axios.post('/api/Aricle', this.Aricle)
+            .then(response => {
+                this.aricles.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateAricle(){
+            axios.put('/api/Aricle/'+this.Aricle.id,this.Aricle)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteAricle(id){
+            axios.delete('/api/Aricle/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
     },
 
     mounted() {
