@@ -8,7 +8,7 @@
                         <div class="tab-pane fade show active" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left mb-4">
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#AddCustomer">
+                                    <button class="btn btn-success" @click="showModalCustomer()">
                                         <i class="fas fa-plus"></i>
                                         Ajouter
                                     </button>
@@ -139,7 +139,7 @@ export default {
 
     methods:{
 
-        getClients(){
+        getcities(){
             axios.get("/api/cities")
             .then(response => {
                 this.cities = response.data
@@ -177,6 +177,11 @@ export default {
             .then(response => {
                 this.getClients()
             })
+        },
+
+         showModalCustomer(){
+            this.edit = false;
+            $("#AddCustomer").modal("show");
         }
     },
 
