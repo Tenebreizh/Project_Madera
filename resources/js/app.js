@@ -28,6 +28,14 @@ axios.defaults.baseURL = process.env.MIX_APP_URL;
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+router.beforeEach((to, from, next) => {
+    if (!auth.check() && to.path !== '/login') {
+        next('/login')
+    }
+    else {
+        next()
+    }
+})
 const app = new Vue({
     router,
 }).$mount('#app')
