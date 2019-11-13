@@ -36,7 +36,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="gammes" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="ranges" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -403,7 +403,17 @@ export default {
                 {name: "description", th: "Description"},
                 {name: "suppliers", th: "Fournisseur"},
             ],
+
             comments: [],
+            ranges:[],
+            range:{
+
+            },
+            famcomps:[],
+            fournisseurs:[],
+            modules:[],
+            articles:[],
+
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
@@ -464,6 +474,83 @@ export default {
                     alert("Delete: " + row.id);
                 }},
             ]
+        }
+    },
+
+    mathods:{
+        // GAMMES
+        getGammes(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.ranges = response.data
+                this.loadingData = false
+            })
+        },
+
+        createGamme(){
+            axios.post('/api/range', this.range)
+            .then(response => {
+                this.ranges.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateGamme(){
+            axios.put('/api/range/'+this.range.id,this.range)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteGamme(id){
+            axios.delete('/api/range/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
+        // Famille compossant
+        getFamComps(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.famcomps = response.data
+                this.loadingData = false
+            })
+        },
+
+
+        // Fournisseurs
+        getFournisseurs(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.fournisseurs = response.data
+                this.loadingData = false
+            })
+        },
+
+        //Modules
+        getModules(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.modules = response.data
+                this.loadingData = false
+            })
+        },
+
+        //Article
+        getAricles(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.aricles = response.data
+                this.loadingData = false
+            })
         }
     },
 

@@ -179,7 +179,7 @@ export default {
             })
         },
 
-         showModalCustomer(){
+        showModalCustomer(){
             this.edit = false;
             $("#AddCustomer").modal("show");
         }
