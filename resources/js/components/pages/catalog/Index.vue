@@ -36,7 +36,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="ranges" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -403,7 +403,29 @@ export default {
                 {name: "description", th: "Description"},
                 {name: "suppliers", th: "Fournisseur"},
             ],
+
             comments: [],
+            ranges:[],
+            range:{
+
+            },
+            famcomps:[],
+            famcomp:{
+
+            },
+            fournisseurs:[],
+            fournisseur:{
+
+            },
+            modules:[],
+            module:{
+
+            },
+            articles:[],
+            article:{
+
+            },
+
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
@@ -465,6 +487,179 @@ export default {
                 }},
             ]
         }
+    },
+
+    mathods:{
+        // GAMMES
+        getGammes(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.ranges = response.data
+                this.loadingData = false
+            })
+        },
+
+        createGamme(){
+            axios.post('/api/range', this.range)
+            .then(response => {
+                this.ranges.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateGamme(){
+            axios.put('/api/range/'+this.range.id,this.range)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteGamme(id){
+            axios.delete('/api/range/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
+        // Famille compossant
+        getFamComps(){
+            this.loadingData = true
+            axios.get("/api/component_types")
+            .then(response => {
+                this.famcomps = response.data
+                this.loadingData = false
+            })
+        },
+
+        createFamComp(){
+            axios.post('/api/component_type', this.famcomp)
+            .then(response => {
+                this.famcomps.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateFamComp(){
+            axios.put('/api/component_types/'+this.famcomp.id,this.famcomp)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteFamComp(id){
+            axios.delete('/api/component_types/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
+
+        // Fournisseurs
+        getFournisseurs(){
+            this.loadingData = true
+            axios.get("/api/suppliers")
+            .then(response => {
+                this.fournisseurs = response.data
+                this.loadingData = false
+            })
+        },
+
+        createFournisseur(){
+            axios.post('/api/supplier', this.fournisseur)
+            .then(response => {
+                this.fournisseurs.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateFournisseur(){
+            axios.put('/api/supplier/'+this.fournisseur.id,this.fournisseur)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteFournisseur(id){
+            axios.delete('/api/supplier/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
+        //Modules
+        getModules(){
+            this.loadingData = true
+            axios.get("/api/modules")
+            .then(response => {
+                this.modules = response.data
+                this.loadingData = false
+            })
+        },
+
+        createModule(){
+            axios.post('/api/module', this.module)
+            .then(response => {
+                this.modules.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateModule(){
+            axios.put('/api/module/'+this.module.id,this.module)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteModule(id){
+            axios.delete('/api/module/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
+
+        //Article
+        getAricles(){
+            this.loadingData = true
+            axios.get("/api/Aricles")
+            .then(response => {
+                this.aricles = response.data
+                this.loadingData = false
+            })
+        },
+
+        createAricle(){
+            axios.post('/api/Aricle', this.Aricle)
+            .then(response => {
+                this.aricles.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateAricle(){
+            axios.put('/api/Aricle/'+this.Aricle.id,this.Aricle)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteAricle(id){
+            axios.delete('/api/Aricle/'+id)
+            .then(response => {
+                this.GetUsers()
+            })
+        },
     },
 
     mounted() {
