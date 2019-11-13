@@ -36,7 +36,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="gammes" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="ranges" :columns="columnsRange" :actions="actionsGamme" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="ranges" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="comments" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -410,9 +410,21 @@ export default {
 
             },
             famcomps:[],
+            famcomp:{
+
+            },
             fournisseurs:[],
+            fournisseur:{
+
+            },
             modules:[],
+            module:{
+
+            },
             articles:[],
+            article:{
+
+            },
 
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
@@ -519,6 +531,30 @@ export default {
             .then(response => {
                 this.famcomps = response.data
                 this.loadingData = false
+            })
+        },
+
+        createFamComp(){
+            axios.post('/api/range', this.famcomp)
+            .then(response => {
+                this.ranges.push(response.data)
+                $("#AddUser").modal("hide");
+            })
+        },
+
+        updateFamComp(){
+            axios.put('/api/range/'+this.range.id,this.range)
+            .then(response => {
+                $("#AddUser").modal("hide");
+                this.edit = false;
+                this.GetUsers()
+            })
+        },
+
+        deleteFamComp(id){
+            axios.delete('/api/range/'+id)
+            .then(response => {
+                this.GetUsers()
             })
         },
 
