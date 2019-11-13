@@ -13,16 +13,18 @@ class Auth {
 
     logout() {
         window.localStorage.removeItem('token');
+        window.localStorage.removeItem('user');
         this.token = null;
     }
 
     check() {
-        if (window.localStorage.token) {
+        if (window.localStorage.token && window.localStorage.token != "undefined") {
             this.login(window.localStorage.token);
             return true
         }
         else {
-            return !!this.token;
+            window.localStorage.removeItem('token');
+            return false
         }
     }
 }
