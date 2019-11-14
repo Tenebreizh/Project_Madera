@@ -11,16 +11,13 @@
                                 <div class="row mt-5">
                                     <div class="col form-group">
                                         <label for="name">Nom:</label>
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <input type="text" class="form-control" id="name" name="name" v-model="role.name">
                                     </div>
                                     <div class="col form-group">
                                         <label for="designation">Désignation:</label>
-                                        <input type="text" class="form-control" id="designation" name="designation">
+                                        <input type="text" class="form-control" id="designation" name="designation" v-model="role.description">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="droit"  :actions="actionsDroit" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                         <div class="col-sm-12 text-right">
@@ -44,6 +41,7 @@ export default {
                 {name: "reference", th: "Référence"},
                 {name: "desciption",  th: "Description"},
             ],
+            role:{},
             comments: [],
             actionsDroit: [
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
@@ -53,13 +51,19 @@ export default {
         }
     },
 
+    methods:{
+        getRole(){
+            let id = this.$route.params.id
+            axios.get("/api/userType/"+id)
+            .then(response => {
+                this.role = response.data
+                this.loadingData = false
+            })
+        }
+    },
+
     mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
+        this.getRole()
     }
 }
 </script>
