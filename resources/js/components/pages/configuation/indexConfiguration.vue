@@ -28,7 +28,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="external_finitions" :actions="actionsFinitions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="external_finitions" :columns="colexternal_finitions" :actions="actionsFinitions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="isolators" :actions="actionsIsolators" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="insulators" :columns="isolators" :actions="actionsIsolators" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="coverings" :actions="actionsCovering" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="coverings" :columns="colcoverings" :actions="actionsCovering" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="windows_frames" :actions="actionsFrames" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="windowFrames" :columns="windows_frames" :actions="actionsFrames" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddExternal_finitionLabel">Ajout d'une finition extérieur</h5>
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'une finition extérieur</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'une finition extérieur</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -93,16 +94,17 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference" name="reference" v-model="external_finition.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="external_finition.description"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createFinition()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateFinition()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -113,7 +115,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddIsolationLabel">Ajout d'un type d'isolant</h5>
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'un type d'isolant</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'un type d'isolant</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -122,16 +125,17 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference" name="reference" v-model="insulator.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="insulator.description"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createinsulator()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateinsulator()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -142,7 +146,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddCoveringsLabel">Ajout d'un type de couverture</h5>
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'un type de couverture</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'un type de couverture</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -151,16 +156,17 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference" name="reference" v-model="covering.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="covering.description"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createCovering()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateCovering()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -172,6 +178,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'une huisserie</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'une huisserie</h5>
                         <h5 class="modal-title" id="AddWindowFrameLabel">Ajout d'une huisserie</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -181,16 +189,17 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference" name="reference" v-model="windowFrame.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="windowFrame.description"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createwindowFrame()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updatewindowFrame()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -208,7 +217,8 @@ export default {
     data() {
         return {
             loadingData: false,
-            external_finitions: [
+            edit:false,
+            colexternal_finitions: [
                 {name: "reference",     th: "Référence"},
                 {name: "description",   th: "Description"},
             ],
@@ -216,7 +226,7 @@ export default {
                 {name: "reference",     th: "Référence"},
                 {name: "description",   th: "Description"},
             ],
-            coverings: [
+            colcoverings: [
                 {name: "reference",     th: "Référence"},
                 {name: "description",   th: "Description"},
             ],
@@ -225,15 +235,46 @@ export default {
                 {name: "description",   th: "Description"},
             ],
             comments: [],
+
+            external_finitions:[],
+            external_finition:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            insulators:[],
+            insulator:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            coverings:[],
+            covering:{
+                label:'',
+                description:'',
+                reference:''
+            },
+
+            windowFrames:[],
+            windowFrame:{
+                label:'',
+                description:'',
+                reference:''
+            },
+
             actionsFinitions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "ExternalFinition.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.external_finition = this.external_finitions[index];
+                    $("#AddExternal_finition").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deleteFinition(row.id)
+                    }
                 }},
             ],
 
@@ -242,10 +283,14 @@ export default {
                     this.$router.push({ name: "isolator.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.insulator = this.insulators[index];
+                    $("#AddIsolation").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deleteinsulator(row.id)
+                    }
                 }},
             ],
             actionsCovering: [
@@ -253,10 +298,14 @@ export default {
                     this.$router.push({ name: "covering.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.covering = this.coverings[index];
+                    $("#AddCoverings").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deleteCovering(row.id)
+                    }
                 }},
             ],
             actionsFrames: [
@@ -264,10 +313,14 @@ export default {
                     this.$router.push({ name: "WindowsFrame.show", params: {'id': row.id} })
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.windowFrame = this.windowFrames[index];
+                    $("#AddWindowFrame").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deletewindowFrame(row.id)
+                    }
                 }},
             ],
 
@@ -277,14 +330,162 @@ export default {
         }
     },
 
+    methods:{
+        // finition extérieur
+        getFinitions(){
+            this.loadingData = true
+            axios.get("/api/externalFinitions")
+            .then(response => {
+                this.external_finitions = response.data
+                this.loadingData = false
+            })
+        },
+
+        createFinition(){
+            this.external_finition.label =  this.external_finition.reference.toLowerCase()
+            axios.post('/api/externalFinition', this.external_finition)
+            .then(response => {
+                this.external_finitions.push(response.data)
+                $("#AddExternal_finition").modal("hide");
+            })
+        },
+
+        updateFinition(){
+            axios.put('/api/externalFinition/'+this.external_finition.id,this.external_finition)
+            .then(response => {
+                $("#AddExternal_finition").modal("hide");
+                this.edit = false;
+                this.getFinitions()
+            })
+        },
+
+        deleteFinition(id){
+            axios.delete('/api/externalFinition/'+id)
+            .then(response => {
+                this.getFinitions()
+            })
+        },
+
+
+        // type d'isolant
+        getinsulators(){
+            this.loadingData = true
+            axios.get("/api/insulators")
+            .then(response => {
+                this.insulators = response.data
+                this.loadingData = false
+            })
+        },
+
+        createinsulator(){
+            this.insulator.label =  this.insulator.reference.toLowerCase()
+            axios.post('/api/insulator', this.insulator)
+            .then(response => {
+                this.insulators.push(response.data)
+                $("#AddIsolation").modal("hide");
+            })
+        },
+
+        updateinsulator(){
+            axios.put('/api/insulator/'+this.insulator.id,this.insulator)
+            .then(response => {
+                $("#AddIsolation").modal("hide");
+                this.edit = false;
+                this.getinsulators()
+            })
+        },
+
+        deleteinsulator(id){
+            axios.delete('/api/insulator/'+id)
+            .then(response => {
+                this.getinsulators()
+            })
+        },
+
+        // Couverture
+        getCoverings(){
+            this.loadingData = true
+            axios.get("/api/coverings")
+            .then(response => {
+                this.coverings = response.data
+                this.loadingData = false
+            })
+        },
+
+        createCovering(){
+            this.covering.label =  this.covering.reference.toLowerCase()
+            axios.post('/api/covering', this.covering)
+            .then(response => {
+                this.coverings.push(response.data)
+                $("#AddCoverings").modal("hide");
+            })
+        },
+
+        updateCovering(){
+            axios.put('/api/covering/'+this.covering.id,this.covering)
+            .then(response => {
+                $("#AddCoverings").modal("hide");
+                this.edit = false;
+                this.getCoverings()
+            })
+        },
+
+        deleteCovering(id){
+            axios.delete('/api/covering/'+id)
+            .then(response => {
+                this.getCoverings()
+            })
+        },
+
+        // Huisserie
+        getwindowFrames(){
+            this.loadingData = true
+            axios.get("/api/windowFrames")
+            .then(response => {
+                this.windowFrames = response.data
+                this.loadingData = false
+            })
+        },
+
+        createwindowFrame(){
+            this.windowFrame.label =  this.windowFrame.reference.toLowerCase()
+            axios.post('/api/windowFrame', this.windowFrame)
+            .then(response => {
+                this.windowFrames.push(response.data)
+                $("#AddWindowFrame").modal("hide");
+            })
+        },
+
+        updatewindowFrame(){
+            axios.put('/api/windowFrame/'+this.windowFrame.id,this.windowFrame)
+            .then(response => {
+                $("#AddWindowFrame").modal("hide");
+                this.edit = false;
+                this.getwindowFrames()
+            })
+        },
+
+        deletewindowFrame(id){
+            axios.delete('/api/windowFrame/'+id)
+            .then(response => {
+                this.getwindowFrames()
+            })
+        },
+
+        //get all
+        getAllValue(){
+            this.getFinitions(),
+            this.getinsulators(),
+            this.getCoverings(),
+            this.getwindowFrames()
+        }
+
+    },
+
+
     mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
-    }
+        this.getAllValue()
+    },
 }
 </script>
 

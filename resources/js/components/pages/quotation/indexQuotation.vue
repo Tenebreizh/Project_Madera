@@ -27,56 +27,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="AddCustomerLabel"><center>Création d'un devis</center></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/action_page.php">
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Nom du projet" class="form-control" id="projectName" name="projectName">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Référence de gamme" class="custom-select" id="RefGammeSelect" name="RefGamme">            
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Référence du projet" class="form-control" id="Refproject" name="Refproject">            
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Type de remplissage" class="custom-select" id="TypeOfFilling" name="TypeFilling">            
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Référence du client" class="form-control" id="refClient" name="refClient">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Finitions extérieures et intérieures" class="custom-select" id="externalFinitions" name="externalFinitions">            
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Date" class="form-control" id="date" name="date">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </template>
@@ -90,10 +40,9 @@ export default {
             loadingData: false,
             columnsCustomer: [
                 {name: "id", th: "N°"},
-                {name: "name", th: "Nom du projet"},
-                {name: "reference",  th: "Référence du projet"},
-                {name: "referenceClient",    th: "Référence du client"},
-                {name: "date",    th: "Date"},
+                {name: "project_id", th: "Référence du projet"},
+                {name: "quotation_number", th: "Numéro du devis"},
+                {name: "active", th: "Etat"},
             ],
             comments: [],
             actions: [
