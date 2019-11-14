@@ -85,4 +85,17 @@ class ProjectController extends Controller
             "message" => "Project successfully deleted"
         ], 200);
     }
+
+    /**
+     * Get the project quotations specified resource from storage.
+     *
+     * @param  \App\Models\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function quotations(Project $project)
+    {
+        $quotations = $project->quotations;
+
+        return $quotations;
+    }
 }
