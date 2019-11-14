@@ -22,9 +22,10 @@ import FournisseurShow      from './components/pages/catalog/showSupplier.vue'
 import ModuleShow           from './components/pages/catalog/showModule.vue'
 import ConfigModule         from './components/pages/configuation/configModule.vue'
 import ConfigurationDetail  from './components/pages/configuation/detailConfiguration.vue'
-import Devis                from './components/pages/quotation/indexQuotation.vue'
+import Devislists           from './components/pages/quotation/indexQuotation.vue'
 import CreateDevis          from './components/pages/quotation/CreateQuotation.vue'
 import ArticleShow          from './components/pages/catalog/showArticle.vue'
+import Project              from './components/pages/project/indexProject.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -59,7 +60,7 @@ const routes = [
 
     { name: "configurationDetail", path: '/config/:id', component: ConfigurationDetail, props: true},
 
-    { name: "quotation", path: '/devis', component: Devis},
+    { name: "quotationlist", path: '/devis/:id', component: Devislists},
 
     { name: "quotation.create", path: '/devis/create', component: CreateDevis},
 
@@ -72,6 +73,8 @@ const routes = [
     { name: "WindowsFrame.show", path: '/WindowsFrame/:id', component: WindowsFrameShow},
 
     { name: "ExternalFinition.show", path: '/ExternalFinition/:id', component: ExternalFinitionShow},
+
+    { name: "project", path: '/Project', component: Project}
 ]
 
 export default new Router({
