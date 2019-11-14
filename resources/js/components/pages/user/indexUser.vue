@@ -69,12 +69,6 @@
                                 <label for="designation">Désignation:</label>
                                 <input type="text" class="form-control" id="designation" name="designation" v-model="role.description">
                             </div>
-                            <div class="m-4">
-                                <a href="#" data-toggle="modal" data-target="#AddDroit" class="button"><i class="fa fa-plus"></i>Sélection d'un droit</a>
-                            </div>
-                            <div class="col-lg-12">
-                                <DataTable :data="users" :columns="droit"  :actions="actionsDroit" :index="false" :loading="loadingData"></DataTable>
-                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -119,8 +113,8 @@
                                 </div>
                                 <div class="col-lg-6 form-group">
                                     <label for="roles">Rôles:</label>
-                                    <select name="roles" class="form-control"  v-model="user.user_type_id">
-                                        <!--<option v-for="(user_type,key) in roles" value="user_type.id" :key="key"></option>-->
+                                    <select name="role" class="form-control" v-model="user.user_type_id">
+                                        <option v-for="(role, key) in roles" :value="role.id" :key="key"> {{ role.name }} </option>
                                     </select>
                                 </div>
                             </div>
@@ -194,7 +188,7 @@ export default {
             roles: [],
             role:{
                 name:'',
-                deescription:''
+                description:''
             },
             actionsRôles: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {

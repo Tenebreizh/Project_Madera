@@ -44,14 +44,14 @@
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="firstname">Client:</label>
-                                    <select class="form-control" v-model='project.client_id'>
-                                        <!-- <option v-for="(city,key) in cities" value="city.id" :key="key"></option> -->
+                                    <select name="role" class="form-control" v-model="project.client_id">
+                                        <option v-for="(client, key) in clients" :value="client.id" :key="key"> {{ client.firstname + ' ' + client.lastname }} </option>
                                     </select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="lastname">Utilisateur:</label>
-                                    <select class="form-control" v-model='project.user_id'>
-                                        <!-- <option v-for="(city,key) in cities" value="city.id" :key="key"></option> -->
+                                    <select name="role" class="form-control" v-model="project.user_id">
+                                        <option v-for="(user, key) in users" :value="user.id" :key="key"> {{ user.firstname + ' ' + user.lastname }} </option>
                                     </select>
                                 </div>
                             </div>
@@ -113,6 +113,25 @@ export default {
                 description:'',
                 reference:'',
             },
+            clients:[],
+            client:{
+                city_id:'',
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                email:'',
+                phone:''
+            },
+            users: [],
+            user:{
+                email:'',
+                firstname:'',
+                lastname:'',
+                password:'',
+                user_type_id:''
+            },
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"quotationlist", params:{id:row.id}})
@@ -163,11 +182,30 @@ export default {
             .then(response => {
                 this.getProjects()
             })
+        },
+
+        getClients(){
+            this.loadingData = true
+            axios.get("/api/clients")
+            .then(response => {
+                this.clients = response.data
+                this.loadingData = false
+            })
+        },
+        GetUsers(){
+            this.loadingData = true
+            axios.get("/api/users")
+            .then(response => {
+                this.users = response.data
+                this.loadingData = false
+            })
         }
     },
 
     mounted() {
-        this.getProjects()
+        this.getProjects(),
+        this.getClients(),
+        this.GetUsers()
     }
 }
 </script>
