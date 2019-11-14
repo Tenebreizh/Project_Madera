@@ -50,7 +50,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsComponents" :actions="actionsFamComp" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="famcomps" :columns="columnsComponents" :actions="actionsFamComp" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="fournisseurs" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsModules" :actions="actionsModule" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="modules" :columns="columnsModules" :actions="actionsModule" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddGammeLabel">Ajout d'une gamme</h5>
+                        <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Création d'une gamme</h5>
+                        <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'une gamme</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -115,42 +116,49 @@
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="reference">Référence:</label>
-                                    <input type="text" class="form-control" id="reference" name="reference">
+                                    <input type="text" class="form-control" id="reference" name="reference" v-model="range.reference">
                                 </div>
                                 <div class="col form-group">
                                     <label for="description">Description:</label>
-                                    <textarea name="description" class="form-control" id="description"></textarea>
+                                    <textarea name="description" class="form-control" id="description" v-model="range.description"></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="external_finition">Finition extérieur:</label>
-                                    <select name="external_finition" class="form-control"></select>
+                                    <select name="external_finition" class="form-control" v-model="range.external_finition_id"></select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="isolation">Type d'isolation:</label>
-                                    <select name="isolation" class="form-control"></select>
+                                    <select name="isolation" class="form-control" v-model="range.insulator_id"></select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="covering">Type de couverture:</label>
-                                    <select name="covering" class="form-control"></select>
+                                    <select name="covering" class="form-control" v-model="range.covering_id"></select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="window_frame">Qualité huisserie:</label>
-                                    <select name="window_frame" class="form-control"></select>
+                                    <select name="window_frame" class="form-control" v-model="range.window_frame_id"></select>
                                 </div>
                             </div>
-                            <div class="col form-group">
-                                <label for="regle">Règle:</label>
-                                <input type="text" class="form-control" id="regle" name="regle">
+                            
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label for="regle">Règle:</label>
+                                    <input type="text" class="form-control" id="regle" name="regle" v-model="range.rule">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="label">Label:</label>
+                                    <input type="text" class="form-control" id="label" name="label" v-model="range.label">
+                                </div>
                             </div>
-
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createUser()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateUser()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -367,6 +375,7 @@ export default {
     data() {
         return {
             loadingData: false,
+            edit:false,
             columnsRange: [
                 {name: "reference",         th: "Référence"},
                 {name: "external_finition", th: "Finition extérieure"},
@@ -407,7 +416,14 @@ export default {
             comments: [],
             ranges:[],
             range:{
-
+                covering_id:'',
+                insulator_id:'',
+                external_finition_id:'',
+                window_frame_id:'',
+                label:'',
+                description:'',
+                reference:'',
+                rule:'',
             },
             famcomps:[],
             famcomp:{
@@ -489,7 +505,7 @@ export default {
         }
     },
 
-    mathods:{
+    methods:{
         // GAMMES
         getGammes(){
             this.loadingData = true
@@ -660,15 +676,18 @@ export default {
                 this.GetUsers()
             })
         },
+
+        GetAllValue(){
+            this.getGammes(),
+            this.getFamComps(),
+            this.getFournisseurs(),
+            this.getModules()
+        }
+
     },
 
     mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
+        this.GetAllValue()
     }
 }
 </script>
