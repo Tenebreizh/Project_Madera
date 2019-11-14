@@ -228,6 +228,7 @@ Route::post('project', 'ProjectController@store');
 Route::get('project/{project}', 'ProjectController@show');
 Route::put('project/{project}', 'ProjectController@update');
 Route::delete('project/{project}', 'ProjectController@destroy');
+Route::get('project/{project}/quotations', 'ProjectController@quotations');
 
 /*
 |--------------------------------------------------------------------------
