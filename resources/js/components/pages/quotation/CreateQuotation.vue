@@ -1,7 +1,7 @@
 <template>
     <div class="row py-4">
         <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-            <div class="card text-center">
+            <div class="card ">
                 <div class="card-body">
                     <div class="tab-content">
 
@@ -11,59 +11,66 @@
                                     <h2><center>Création d'un devis</center></h2>
                                 </div>
                             </div>
-     
                                 <div id="container-haut" class="card-body">
-                                     <div class="row">
-                                          <div class="col-lg-8 pt-2 pl-2">
-                                             <h3 class="text-center ml-5 mb-5 mr-5">Informations générales</h3>
-                                          </div>
-                                          <div class="col-lg-4 pt-2 pl-2">
-                                             <h3 class="text-center ml-5 mb-5 mr-5">Plan</h3>
-                                          </div>
-                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 pt-2 pl-2">
+                                            <h3 class="text-center">Informations générales</h3>
+                                                <div id="container-entete-left" class="">
+                                                <div class='row'>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Nom du projet:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Gamme:</label>
+                                                        <select name="role" class="form-control">
+                                                            <option v-for="(range, key) in ranges" :value="range.id" :key="key"> {{ range.reference }} </option>
+                                                        </select>             
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Référence du projet:</label>
+                                                        <input type="text" class="form-control">            
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Type d'isolation:</label>
+                                                        <select name="role" class="form-control">
+                                                            <option v-for="(insulator, key) in insulators" :value="insulator.id" :key="key"> {{ insulator.reference }} </option>
+                                                        </select>            
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Référence du client:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <label for="roles">Finitions extérieur:</label>
+                                                        <select name="role" class="form-control">
+                                                            <option v-for="(external_finition, key) in external_finitions" :value="external_finition.id" :key="key"> {{ external_finition.reference }} </option>
+                                                        </select>            
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class="col-6 form-group">
+                                                        <label for="roles">Date de création:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 pt-2 pl-2">
+                                            <h3 class="text-center">Plan</h3>
+                                            <div id="container-entete-right" class=" text-center"> 
+                                                <button class="btn btn-success" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div> 
-                                   <form>
-                                        <div id="container-entete-left" class="col-lg-8 pt-2 pl-2">
-                                             <div class='row'>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Nom du projet" class="form-control" v-model="infoGeneral.projectName">
-                                                  </div>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Référence de gamme" class="custom-select" v-model="infoGeneral.RefGamme">            
-                                                  </div>
-                                             </div>
-                                             <div class='row'>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Référence du projet" class="form-control" v-model="infoGeneral.Refproject">            
-                                                  </div>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Type de remplissage" class="custom-select" v-model="infoGeneral.TypeFilling">            
-                                                  </div>
-                                             </div>
-                                             <div class='row'>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Référence du client" class="form-control" v-model="infoGeneral.refClient">
-                                                  </div>
-                                                  <div class="col form-group">
-                                                       <input type="text" placeholder="Finitions extérieures et intérieures" class="custom-select" v-model="infoGeneral.externalFinitions">            
-                                                  </div>
-                                             </div>
-                                             <div class='row'>
-                                                  <div class="col-6 form-group">
-                                                       <input type="text" placeholder="Date" class="form-control" v-model="infoGeneral.date">
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div id="container-entete-right" class="col-lg-4 pt-2 pr-2"> 
-                                              <div class='row'>
-                                                       <button class="btn btn-success" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
-                                             </div>
-                                        </div>
-                                   </form>
+                                
 
-
-
-                                    <div class="modal fade" id="AddPlan" tabindex="-1" role="dialog" aria-labelledby="AddPlanLabel" aria-hidden="true">
+                                <div class="modal fade" id="AddPlan" tabindex="-1" role="dialog" aria-labelledby="AddPlanLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -88,51 +95,53 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            <div id="details" class="row border">
+                            <hr>
+                            <div id="details" class="row">
+                                
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
-                                     <div class="row">
+                                    <div class="row">
                                         <h3 class="col-lg-1 float-left">Détails</h3>
                                         <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddCustomer">Ajouter</button>
-                                     </div>
-                                     <br>        
+                                    </div>
+                                    <br>        
                                     <div class="col-lg-12">
                                         <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="footer" class="row border">
-                                <div id="footer-detail" class="col-lg-12 mt-2 ml-2">                                         
-                                     <h3>Pied</h3>         
+                            <div id="footer" class="row">
+                                <div id="footer-detail" class="col-lg-12 mt-2 ml-2">
+                                    <hr>                                     
+                                    <h3>Pied</h3>         
                                     <div class="col-lg-6 pull-left">
                                         <form>
-                                             <div class="form-group row">
+                                            <div class="form-group row">
                                                 <label for="montantHt" class="col-sm-2 col-form-label">Montant H.T.</label>
                                                 <div class="col-sm-10">
-                                                <input type="" class="form-control" id="inputMontantHT" placeholder="">
+                                                    <input type="" class="form-control" id="inputMontantHT" placeholder="">
                                                 </div>
                                             </div>
-                                             <div class="form-group row">
-                                                <label for="TVA" class="col-sm-2 col-form-label">T.V.A.</label>
-                                                <div class="col-sm-10">
-                                                <input type="" class="form-control" id="inputMontantHT" placeholder="">
+                                                <div class="form-group row">
+                                                    <label for="TVA" class="col-sm-2 col-form-label">T.V.A.</label>
+                                                        <div class="col-sm-10">
+                                                    <input type="" class="form-control" id="inputMontantHT" placeholder="">
                                                 </div>
                                             </div>
-                                             <div class="form-group row">
-                                                <label for="montantTtc" class="col-sm-2 col-form-label">Montant T.T.C.</label>
-                                                <div class="col-sm-10">
-                                                <input type="" class="form-control" id="inputMontantHT" placeholder="">
+                                                <div class="form-group row">
+                                                    <label for="montantTtc" class="col-sm-2 col-form-label">Montant T.T.C.</label>
+                                                        <div class="col-sm-10">
+                                                    <input type="" class="form-control" id="inputMontantHT" placeholder="">
                                                 </div>
-                                             </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
 
-                         <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" @click="save()">Valider</button>
-                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" @click="save()">Valider</button>
+                        </div>
 
                         </div>  
                     </div>
@@ -154,7 +163,7 @@
                         <form>
                             <div class='row'>
                                 <div class="col form-group">
-                                    <select v-model="selectedModuleName" class="custom-select">
+                                    <select class="custom-select">
                                         <!--<option selected disabled value="0">Nom</option>-->
                                         <!--<option :value="nameModule.id" v-for="nameModule in dataModules.names">
                                             {{nameModule.username}}
@@ -256,19 +265,6 @@ import moment from "moment";
 export default {
     data() {
         return {
-            selectedModuleName: 0,
-            infoGeneral: {
-                projectName: '',
-                refGamme: '',
-                refProjet: '',
-                type: '',
-                refClient: '',
-                externalFinitions: '',
-                date: ''
-            },
-            dataModules: {
-                names: []
-            },
             loadingData: false,
             columnsCustomer: [
                 {name: "id", th: "N°"},
@@ -278,6 +274,29 @@ export default {
                 {name: "date",    th: "Date"},
             ],
             comments: [],
+            external_finitions:[],
+            external_finition:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            insulators:[],
+            insulator:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            ranges:[],
+            range:{
+                covering_id:'',
+                insulator_id:'',
+                external_finition_id:'',
+                window_frame_id:'',
+                label:'',
+                description:'',
+                reference:'',
+                rule:'',
+            },
             actions: [
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
@@ -289,43 +308,39 @@ export default {
         }
     },
 
-    mounted() {
-        this.loadDataModules()
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
-    },
     methods: {
-        loadDataModules: async function() {
-            let response = await axios.get("https://jsonplaceholder.typicode.com/users")
-            this.dataModules.names = response.data
+        getinsulators(){
+            axios.get("/api/insulators")
+            .then(response => {
+                this.insulators = response.data
+            })
         },
-        save: function() {
-            console.log('Validation des data ex : ')
-            let flagValidation = true
-            if (!this.infoGeneral.projectName) {
-                console.log('erreur validation')
-                flagValidation = false
-            }
-            console.log('Save des data ex : ')
-            if (flagValidation) {
-                try {
-                    let response = axios.post("vers le back URL", { projectName: this.infoGeneral.projectName})
-                    if (response) {
-                        this.$router.push({name: 'quotation'})
-                    } else {
-                        console.log('la save a echoue cote serveur')
-                    }
-                } catch(err) {
-                        console.log('la req de save a echoue')
-                }
+        getFinitions(){
+            axios.get("/api/externalFinitions")
+            .then(response => {
+                this.external_finitions = response.data
+            })
+        },
+        getGammes(){
+            this.loadingData = true
+            axios.get("/api/ranges")
+            .then(response => {
+                this.ranges = response.data
+                this.loadingData = false
+            })
+        },
 
-            }
+
+        getAllValue(){
+            this.getinsulators(),
+            this.getFinitions(),
+            this.getGammes()
         }
-    }
+    },
+
+    mounted() {
+       this.getAllValue()
+    },
 }
 </script>
 
