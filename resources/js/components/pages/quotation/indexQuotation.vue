@@ -19,7 +19,7 @@
                                     </router-link>
                                 </div>
                                 <div class="col-lg-12">
-                                    <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="quotations" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -45,6 +45,7 @@ export default {
                 {name: "active", th: "Etat"},
             ],
             comments: [],
+            quotations:[],
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     alert("See: " + row.id);
@@ -59,13 +60,20 @@ export default {
         }
     },
 
-    mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
+    methods:{
+        getProjectQuotation(){
+            let id = this.$route.params.id
+            this.loadingData = true
+            axios.get('/api/project/'+ id +'/quotations')
+            .then(response => {
+            this.quotations = response.data
             this.loadingData = false
-        })
+            })
+        }
+    },
+
+    mounted() {
+        this.getProjectQuotation()
     }
 }
 </script>
