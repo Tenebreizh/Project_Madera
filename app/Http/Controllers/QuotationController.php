@@ -31,7 +31,7 @@ class QuotationController extends Controller
     {
         $quotation = Quotation::create([
             'project_id' => $request->project_id,
-            'quotation_number' => $request->quotation_number,
+            'quotation_number' => "",
             'active' => $request->active,
         ]);
 

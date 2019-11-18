@@ -36,7 +36,7 @@ class CustomModuleController extends Controller
             'commercial_marge' => $request->commercial_marge
         ]);
 
-        return $module;
+        return $customModule;
     }
 
     /**

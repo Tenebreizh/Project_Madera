@@ -13,10 +13,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 text-left mb-4">
-                                    <router-link :to="{name:'quotation.create'}" class="btn btn-success">
+                                    <button @click="createQuotation()" class="btn btn-success">Ajouter</button>
+                                    <!-- <router-link :to="{name:'quotation.create'}" class="btn btn-success">
                                         <i class="fas fa-plus"></i>
                                         Ajouter
-                                    </router-link>
+                                    </router-link> -->
                                 </div>
                                 <div class="col-lg-12">
                                     <DataTable :data="quotations" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
@@ -46,15 +47,21 @@ export default {
             ],
             comments: [],
             quotations:[],
+            quotation:{
+                project_id:'',
+                active:'',
+            },
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
-                    alert("See: " + row.id);
+                    this.$router.push({name:"quotation.create", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le client ?")){
+                        this.deleteQuotation(row.id)
+                    }
                 }},
             ]
         }
@@ -66,8 +73,23 @@ export default {
             this.loadingData = true
             axios.get('/api/project/'+ id +'/quotations')
             .then(response => {
-            this.quotations = response.data
-            this.loadingData = false
+                this.quotations = response.data
+                this.loadingData = false
+                
+            })
+        },
+        createQuotation(){
+            this.quotation.project_id = this.$route.params.id
+            this.quotation.active = "0"
+            axios.post('/api/quotation', this.quotation)
+            .then(response => {
+                this.quotations.push(response.data)
+            })
+        },
+        deleteQuotation(id){
+            axios.delete('/api/quotation/'+id)
+            .then(response => {
+                this.getProjectQuotation()
             })
         }
     },

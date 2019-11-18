@@ -19,7 +19,7 @@
                                                 <div class='row'>
                                                     <div class="col form-group">
                                                         <label for="roles">Nom du projet:</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" class="form-control" disabled="disabled" v-model="project.name">
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Gamme:</label>
@@ -31,7 +31,7 @@
                                                 <div class='row'>
                                                     <div class="col form-group">
                                                         <label for="roles">Référence du projet:</label>
-                                                        <input type="text" class="form-control">            
+                                                        <input type="text" class="form-control" disabled="disabled" v-model="project.reference">            
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Type d'isolation:</label>
@@ -43,7 +43,7 @@
                                                 <div class='row'>
                                                     <div class="col form-group">
                                                         <label for="roles">Référence du client:</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" class="form-control" disabled="disabled" v-model="client.firstname">
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Finitions extérieur:</label>
@@ -55,7 +55,7 @@
                                                 <div class='row'>
                                                     <div class="col-6 form-group">
                                                         <label for="roles">Date de création:</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" disabled="disabled" class="form-control" v-model="quotation.created_at">
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,30 +70,7 @@
                                 </div> 
                                 
 
-                                <div class="modal fade" id="AddPlan" tabindex="-1" role="dialog" aria-labelledby="AddPlanLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <p>Plan du Bureau d'études</p>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        <div class='row'>
-                                                            <div class="col form-group">
-                                                                <input type="text" placeholder="Fichier" class="form-control" id="fileName" name="fileName">
-                                                            </div>
-                                                            <div class="col form-group">
-                                                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">            
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary">Envoyer</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                
                                 </div>
                             <hr>
                             <div id="details" class="row">
@@ -101,7 +78,7 @@
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
                                     <div class="row">
                                         <h3 class="col-lg-1 float-left">Détails</h3>
-                                        <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddCustomer">Ajouter</button>
+                                        <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
                                     </div>
                                     <br>        
                                     <div class="col-lg-12">
@@ -149,113 +126,109 @@
             </div>
         
 
-        <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" id="AddCustomer" tabindex="-1" role="dialog" aria-labelledby="AddCustomerLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="AddCustomerLabel"><center>Choix des modules</center></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <select class="custom-select">
-                                        <!--<option selected disabled value="0">Nom</option>-->
-                                        <!--<option :value="nameModule.id" v-for="nameModule in dataModules.names">
-                                            {{nameModule.username}}
-                                        </option>-->
-                                    </select>
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Prix" class="form-control">
-                                </div>
-                                <div class="col form-group">
-                                    <select class="custom-select">
-                                        <option selected disabled value="0">Taxe</option>
-                                    </select>
+    <!-- Modal ajout modules spé -->
+    <div class="modal fade bd-example-modal-lg" id="AddQuotationLine" tabindex="-1" role="dialog" aria-labelledby="AddQuotationLineLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddQuotationLineLabel"><center>Choix des modules</center></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class='row'>
+                            <div class="col form-group">
+                                <label for="roles">Module:</label>
+                                <select name="role" class="form-control" v-model="customModule.module_id" @change="initCustomModule()" >
+                                    <option v-for="(UnModule, key) in modules" :value="UnModule.id" :key="key"> {{ UnModule.name }} </option>
+                                </select>
+                            </div>
+                            <div class="col form-group">
+                                <label for="roles">Description:</label>
+                                <input type="text" class="form-control" disabled="disabled" v-model="customModule.description">
+                            </div>
+                            <div class="col form-group">
+                                <label for="roles">Référence:</label>
+                                <input type="text" class="form-control" disabled="disabled" v-model="customModule.label">
+                            </div>
+                            
+                        </div>
+                        <div class='row'>
+                            <div class="col form-group">
+                                <label for="roles">Taxe:</label>
+                                <select class="custom-select" v-model="quotationLine.taxe_id">
+                                    <option selected  value="0">TVA 20%</option>
+                                    <option value="1">TVA 10%</option>
+                                    <option value="2">TVA 0%</option>
+                                </select>
+                            </div>
+                            <div class="col form-group">
+                                <label for="roles">Prix:</label>
+                                <input type="text" class="form-control" v-model="customModule.price">
+                            </div>
+                            <div class="col form-group">
+                                <label for="roles">Quantité:</label>
+                                <input type="number" class="form-control" v-model="quotationLine.quantity">
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col form-group">
+                                <div class="form-group">
+                                    <label for="lenghtSection" class="form-label ">Longueur de la section</label>
+                                    <input type="number" id="lenghtSection" class="form-control">
                                 </div>
                             </div>
-                            <div class='row'>
-                                    <div class="col form-group">
-                                    <input type="text" placeholder="Description" class="form-control">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" placeholder="Quantité" class="form-control">
-                                </div>
-                                <div class="col form-group">
-                                    <select class="custom-select">
-                                        <option selected disabled value="0">Module</option>
-                                    </select>
+                            <div class="col form-group">
+                                <div class="form-group">
+                                    <label for="angle" class="form-label ">Angle</label>
+                                    <input type="number" id="angle" class="form-control">
                                 </div>
                             </div>
-
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Référence</th>
-                                    <th>Coupe de principe</th>
-                                    <th>Coupe CCTP</th>
-                                </tr>
-                                </thead>
-                            </table>
-
-                            <div class='row'>
-                                <div class="col-4 form-group">
-                                    <input type="text" placeholder="Ref" class="form-control">
-                                </div>
-                                <div class="col-7 offset-1">
-                                <div class="row form-group">
-                                    <label for="lenghtSection" class="col col-form-label ">Longueur de la section</label>
-                                    <div class="col">
-                                        <input type="text" placeholder="Longueur de la section" id="lenghtSection" class="form-control">
-                                    </div>
-                                </div>
-                                </div>
-
+                        </div>
+                        <div class='row'>
+                            <div class="col form-group">
+                                <label for="Specification">Spécifications</label>
+                                <textarea class="form-control" id="Specification" v-model="customModule.specification" rows="3"></textarea>
                             </div>
-
-                            <div class='row'>
-                                <div class="col-4 form-group">
-                                    <input type="text" placeholder="Description du module" class="form-control">
-                                </div>
-                                <div class="col-7 offset-1">
-                                <div class="row form-group">
-                                    <label for="angle" class="col col-form-label ">Angle</label>
-                                    <div class="col">
-                                        <input type="text" placeholder="Angle" id="angle" class="form-control">
-                                    </div>
-                                </div>
-                                </div>
-
-                            </div>
-
-                            <div class='row'>
-                                <div class="col-4 form-group">
-                                    <input type="text" placeholder="Marge commercial" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class='row'>
-                                <div class="col form-group">
-                                    <label for="Specification">Spécifications</label>
-                                    <textarea class="form-control" id="Specification" rows="3"></textarea>
-                                </div>
-                            </div>
-
-
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button v-if="!edit" type="button" class="btn btn-primary" @click="createModuleCustom()">Valider</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Modal add plan -->
+    <div class="modal fade" id="AddPlan" tabindex="-1" role="dialog" aria-labelledby="AddPlanLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Plan du Bureau d'études</p>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class='row'>
+                            <div class="col form-group">
+                                <input type="text" placeholder="Fichier" class="form-control" id="fileName" name="fileName">
+                            </div>
+                            <div class="col form-group">
+                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">            
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     </div>
 </template>
 
@@ -266,6 +239,7 @@ export default {
     data() {
         return {
             loadingData: false,
+            edit:false,
             columnsCustomer: [
                 {name: "id", th: "N°"},
                 {name: "name", th: "Nom du projet"},
@@ -297,6 +271,63 @@ export default {
                 reference:'',
                 rule:'',
             },
+            // Devis
+            quotation:{
+                project_id:'',
+                active:'',
+            },
+            project:{
+                client_id:'',
+                user_id:'',
+                state_id:'',
+                name:'',
+                description:'',
+                reference:'',
+            },
+            // Partie ligne de devis -----------------------
+            quotationLines:[],
+            quotationLine:{
+                custom_module_id:'',
+                quotation_id:'',
+                taxe_id:'',
+                name:'',
+                description:'',
+                price:'',
+                quantity:'',
+                created_at:'',
+            },
+            customModules:[],
+            customModule:{
+                module_id:'',
+                label:'',
+                description:'',
+                specification:'',
+                price:'',
+                commercial_marge:''
+            },
+            modules:[],
+            UnModule:{
+                range_id:'',
+                name:'',
+                description:'',
+                principal_cut:'',
+                cctp:'',
+                marge:'',
+                labor_timev:'',
+                price:'',
+                marge_enterprise:''
+            },
+            client:{
+                city_id:'',
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                email:'',
+                phone:''
+            },
+            // ---------------------------------------------
             actions: [
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     alert("Edit :" + row.id);
@@ -309,6 +340,33 @@ export default {
     },
 
     methods: {
+        //----- Récupération du devis ----------------
+        getClient(id){
+            axios.get('/api/client/'+id)
+            .then(response =>{
+                this.client = response.data
+            })
+        },
+
+        getProject(id){
+            axios.get("/api/project/"+id)
+            .then(response => {
+                this.project = response.data
+                this.getClient(this.project.client_id)
+            })
+        },
+
+        getQuotation(){
+            let id = this.$route.params.id
+            axios.get('api/quotation/'+id)
+            .then(response => {
+                this.quotation = response.data
+                this.getProject(this.quotation.project_id)
+            })
+        },
+        //-------------------------------------------- 
+
+        // Select ------------------------------------
         getinsulators(){
             axios.get("/api/insulators")
             .then(response => {
@@ -329,17 +387,71 @@ export default {
                 this.loadingData = false
             })
         },
+        getModules(){
+            axios.get("/api/modules")
+            .then(response => {
+                this.modules = response.data
+            })
+        },
 
+        // --------------------------------------------
+        // ------ Lignes devis ------------------------
+        getQuotationLines(){
+            this.loadingData = true
+            axios.get("/api/quotationLines/")
+            .then(response => {
+                this.quotationLines = response.data
+                this.loadingData = false
+            })
+        },
 
+        createQuotationLine(){
+            axios.post('/api/quotationLine', this.quotationLine)
+            .then(response => {
+                this.quotationLines.push(response.data)
+                $("#AddQuotationLine").modal("hide");
+            })
+        },
+
+        createModuleCustom(){
+            this.customModule.commercial_marge = this.UnModule.marge_enterprise
+            axios.post('/api/customModule', this.customModule)
+            .then(response => {
+                this.customModules.push(response.data)
+                
+                this.quotationLine.module_id = response.module_id
+                this.quotationLine.quotation_id = this.quotation.id
+                this.quotationLine.name = response.name
+                this.quotationLine.description = response.description
+                this.quotationLine.price = response.price
+                this.createQuotationLine()
+            })
+        },
+
+        initCustomModule(){ 
+            axios.get("/api/module/"+this.customModule.module_id)
+            .then(response => {
+                this.UnModule = response.data
+                this.customModule.price = this.UnModule.price
+                this.customModule.description = this.UnModule.description
+                this.customModule.label = this.UnModule.name
+            })
+            
+        },
+
+        // --------------------------------------------
+        // Fonction principal -------------------------
         getAllValue(){
             this.getinsulators(),
             this.getFinitions(),
-            this.getGammes()
+            this.getGammes(),
+            this.getModules()
         }
     },
 
     mounted() {
-       this.getAllValue()
+        this.getQuotation(),
+        this.getAllValue()
     },
 }
 </script>
