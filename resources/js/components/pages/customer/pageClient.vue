@@ -15,11 +15,11 @@
                                 <div class="row mt-5">
                                     <div class="col-sm-4 form-group">
                                         <label for="firstname">Nom:</label>
-                                        <input type="text" class="form-control" id="firstname" name="firstname">
+                                        <input type="text" class="form-control" id="firstname" name="firstname" v-model="client.firstname">
                                     </div>
                                     <div class="col-sm-4 form-group">
                                         <label for="lastname">Prénom:</label>
-                                        <input type="text" class="form-control" id="lastname" name="lastname">
+                                        <input type="text" class="form-control" id="lastname" name="lastname" v-model="client.lastname">
                                     </div>
                                 </div>
                             </div>
@@ -27,11 +27,11 @@
                                 <div class="row">
                                     <div class="col-sm-2 form-group">
                                         <label for="numero">N°:</label>
-                                        <input type="text" class="form-control" id="numero" name="numero">
+                                        <input type="text" class="form-control" id="numero" name="numero" v-model="client.street_number">
                                     </div>
                                     <div class="col-sm-8 form-group">
                                         <label for="street">Adresse:</label>
-                                        <input type="text" class="form-control" id="street" name="street">
+                                        <input type="text" class="form-control" id="street" name="street" v-model="client.street">
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-sm-1 form-group">
                                         <label for="cp">CP:</label>
-                                        <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000">
+                                        <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000" v-model="client.zipcode">
                                     </div>
                                     <div class="col-sm-3 form-group">
                                         <label for="city">Ville:</label>
@@ -55,11 +55,11 @@
                                 <div class="row">
                                     <div class="col-sm-2 form-group">
                                         <label for="phone">Téléphone:</label>
-                                        <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00">
+                                        <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00" v-model="client.phone">
                                     </div>
                                     <div class="col-sm-3 form-group">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr">
+                                        <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr" v-model="client.email">
                                     </div> 
                                 </div>             
                             </div>
@@ -77,7 +77,35 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            client:{
+                city_id:'',
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                email:'',
+                phone:''
+            },
+        }
+    },
+    methods:{
+        getClient(){
+            let id = this.$route.params.id
+            this.loadingData = true
+            axios.get("/api/client/"+id)
+            .then(response => {
+                this.client = response.data
+                this.loadingData = false
+            })
+        },
+    },
+    
+    mounted() {
+        this.getClient()
+    }
 }
 </script>
 

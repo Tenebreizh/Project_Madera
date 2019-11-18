@@ -7,11 +7,11 @@
                     <div class="card-body">
                         <div class="col form-group">
                             <label for="reference">Référence:</label>
-                            <input type="text" class="form-control" id="reference" name="reference">
+                            <input type="text" class="form-control" id="reference" name="reference" v-model="insulator.reference">
                         </div>
                         <div class="col form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
+                            <textarea name="description" class="form-control" id="description" v-model="insulator.description"></textarea>
                         </div>
                         <div class="col-sm-12 text-right">
                             <button type="button" class="btn btn-primary btn-lg">Valider</button>
@@ -25,7 +25,32 @@
 
 <script>
 export default {
+    data(){
+        return{
+            insulator:{
+                label:'',
+                description:'',
+                reference:''
+            },
+        }
+    },
 
+    methods:{
+        
+        getinsulator(){
+            let id = this.$route.params.id
+            this.loadingData = true
+            axios.get("/api/insulator/"+id)
+            .then(response => {
+                this.insulator = response.data
+                this.loadingData = false
+            })
+        },
+    },
+
+    mounted() {
+        this.getinsulator()
+    },
 }
 </script>
 

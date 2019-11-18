@@ -7,11 +7,11 @@
                     <div class="card-body">
                         <div class="col form-group">
                             <label for="reference">Référence:</label>
-                            <input type="text" class="form-control" id="reference" name="reference">
+                            <input type="text" class="form-control" id="reference" name="reference" v-model="external_finition.reference">
                         </div>
                         <div class="col form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" class="form-control" id="description"></textarea>
+                            <textarea name="description" class="form-control" id="description" v-model="external_finition.description"></textarea>
                         </div>
                         <div class="col-sm-12 text-right">
                             <button type="button" class="btn btn-primary btn-lg">Valider</button>
@@ -25,6 +25,31 @@
 
 <script>
 export default {
+    data(){
+        return{
+            external_finition:{
+                label:'',
+                description:'',
+                reference:''
+            },
+        }
+    },
+
+    methods:{
+        getFinition(){
+            let id = this.$route.params.id
+            this.loadingData = true
+            axios.get("/api/externalFinition/"+id)
+            .then(response => {
+                this.external_finition = response.data
+                this.loadingData = false
+            })
+        },
+    },
+
+    mounted() {
+        this.getFinition()
+    },
 
 }
 </script>
