@@ -150,6 +150,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('quotation/{quotation}', 'QuotationController@show');
     Route::put('quotation/{quotation}', 'QuotationController@update');
     Route::delete('quotation/{quotation}', 'QuotationController@destroy');
+    Route::get('quotation/{quotation}/quotationLines', 'QuotationController@quotationLines');
 });
 
 /*

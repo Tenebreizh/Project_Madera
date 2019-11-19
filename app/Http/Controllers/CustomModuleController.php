@@ -59,12 +59,11 @@ class CustomModuleController extends Controller
      */
     public function update(Request $request, CustomModule $customModule)
     {
-        $customModule->range_id = $request->module_id;
-        $customModule->name = $request->label;
+        $customModule->label = $request->label;
         $customModule->description = $request->description;
-        $customModule->principal_cut = $request->specification;
-        $customModule->cctp = $request->price;
-        $customModule->marge = $request->commercial_marge;
+        $customModule->specification = $request->specification;
+        $customModule->price = $request->price;
+        $customModule->commercial_marge = $request->commercial_marge;
 
         $customModule->save();
 

@@ -23,7 +23,7 @@
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Gamme:</label>
-                                                        <select name="role" class="form-control">
+                                                        <select name="role" disabled="disabled" class="form-control">
                                                             <option v-for="(range, key) in ranges" :value="range.id" :key="key"> {{ range.reference }} </option>
                                                         </select>             
                                                     </div>
@@ -35,7 +35,7 @@
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Type d'isolation:</label>
-                                                        <select name="role" class="form-control">
+                                                        <select name="role" disabled="disabled" class="form-control">
                                                             <option v-for="(insulator, key) in insulators" :value="insulator.id" :key="key"> {{ insulator.reference }} </option>
                                                         </select>            
                                                     </div>
@@ -47,7 +47,7 @@
                                                     </div>
                                                     <div class="col form-group">
                                                         <label for="roles">Finitions extérieur:</label>
-                                                        <select name="role" class="form-control">
+                                                        <select name="role" disabled="disabled" class="form-control">
                                                             <option v-for="(external_finition, key) in external_finitions" :value="external_finition.id" :key="key"> {{ external_finition.reference }} </option>
                                                         </select>            
                                                     </div>
@@ -63,7 +63,7 @@
                                         <div class="col-lg-6 pt-2 pl-2">
                                             <h3 class="text-center">Plan</h3>
                                             <div id="container-entete-right" class=" text-center"> 
-                                                <button class="btn btn-success" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
+                                                <button class="btn btn-success" disabled="disabled" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
                                     <div class="row">
                                         <h3 class="col-lg-1 float-left">Détails</h3>
-                                        <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
+                                        <button class="offset-10 btn btn-primary" disabled="disabled" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
                                     </div>
                                     <br>        
                                     <div class="col-lg-12">
@@ -117,7 +117,7 @@
                             </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Valider</button>
+                            <button type="button" disabled="disabled" class="btn btn-primary">Valider</button>
                         </div>
 
                         </div>  
@@ -132,7 +132,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 v-if="!edit" class="modal-title" id="AddCustomerLabel">Crétion d'une ligne détail</h5>
-                    <h5 v-else class="modal-title" id="AddCustomerLabel">Modification d'une ligne détail</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -142,7 +141,7 @@
                         <div class='row'>
                             <div class="col form-group">
                                 <label for="roles">Module:</label>
-                                <select name="role" class="form-control" v-model="customModule.module_id" @change="initCustomModule()" >
+                                <select name="role" class="form-control" disabled="disabled" v-model="customModule.module_id" @change="initCustomModule()" >
                                     <option v-for="(UnModule, key) in modules" :value="UnModule.id" :key="key"> {{ UnModule.name }} </option>
                                 </select>
                             </div>
@@ -159,44 +158,43 @@
                         <div class='row'>
                             <div class="col form-group">
                                 <label for="roles">Taxe:</label>
-                                <select name="role" class="form-control" v-model="quotationLine.taxe_id">
+                                <select name="role" class="form-control" disabled="disabled" v-model="quotationLine.taxe_id">
                                     <option v-for="(taxe, key) in taxes" :value="taxe.id" :key="key"> {{ taxe.name }} </option>
                                 </select>
                             </div>
                             <div class="col form-group">
                                 <label for="roles">Prix:</label>
-                                <input type="text" class="form-control" v-model="customModule.price">
+                                <input type="text" class="form-control" disabled="disabled" v-model="customModule.price">
                             </div>
                             <div class="col form-group">
                                 <label for="roles">Quantité:</label>
-                                <input type="number" class="form-control" v-model="quotationLine.quantity">
+                                <input type="number" class="form-control" disabled="disabled" v-model="quotationLine.quantity">
                             </div>
                         </div>
                         <div class='row'>
                             <div class="col form-group">
                                 <div class="form-group">
                                     <label for="lenghtSection" class="form-label ">Longueur de la section</label>
-                                    <input type="number" id="lenghtSection" class="form-control">
+                                    <input type="number" id="lenghtSection" disabled="disabled" class="form-control">
                                 </div>
                             </div>
                             <div class="col form-group">
                                 <div class="form-group">
                                     <label for="angle" class="form-label ">Angle</label>
-                                    <input type="number" id="angle" class="form-control">
+                                    <input type="number" id="angle" disabled="disabled" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class='row'>
                             <div class="col form-group">
                                 <label for="Specification">Spécifications</label>
-                                <textarea class="form-control" id="Specification" v-model="customModule.specification" rows="3"></textarea>
+                                <textarea class="form-control" id="Specification" disabled="disabled" v-model="customModule.specification" rows="3"></textarea>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button v-if="!edit" type="button" class="btn btn-primary" @click="createModuleCustom()">Valider</button>
-                    <button v-else type="button" class="btn btn-success" @click="updateDetailLine()">Modifier</button>
+                    <button v-if="!edit" type="button" disabled="disabled" class="btn btn-primary" @click="createModuleCustom()">Valider</button>
                 </div>
             </div>
         </div>
@@ -345,17 +343,6 @@ export default {
                     this.quotationLine = this.quotationLines[index];
                     this.getCustomModule(this.quotationLine.custom_module_id)
                     $("#AddQuotationLine").modal("show");
-                }},
-                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    this.edit = true;
-                    this.quotationLine = this.quotationLines[index];
-                    this.getCustomModule(this.quotationLine.custom_module_id)
-                    $("#AddQuotationLine").modal("show");
-                }},
-                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le ligne détail ?")){
-                        this.deleteDetailLine(row.id)
-                    }
                 }},
             ]
         }

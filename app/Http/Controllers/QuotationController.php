@@ -106,4 +106,18 @@ class QuotationController extends Controller
 
         return $quotations;
     }
+
+    /**
+     * Get the project quotations specified resource from storage.
+     *
+     * @param  \App\Models\Quotation  $quotation
+     * @return \Illuminate\Http\Response
+     */
+    public function quotationLines(Quotation $quotation)
+    {
+        $quotationLines = $quotation->quotationLines;
+
+        return $quotationLines;
+    }
+
 }

@@ -53,10 +53,10 @@ export default {
             },
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
-                    this.$router.push({name:"quotation.create", params:{id:row.id}})
+                    this.$router.push({name:"quotation.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.$router.push({name:"quotation.edit", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     if(confirm("Voulez vous suprimer le client ?")){

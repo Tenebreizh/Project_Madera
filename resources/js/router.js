@@ -24,6 +24,7 @@ import ConfigModule         from './components/pages/configuation/configModule.v
 import ConfigurationDetail  from './components/pages/configuation/detailConfiguration.vue'
 import Devislists           from './components/pages/quotation/indexQuotation.vue'
 import CreateDevis          from './components/pages/quotation/CreateQuotation.vue'
+import ShowDevis            from './components/pages/quotation/showQuotation.vue'
 import ArticleShow          from './components/pages/catalog/showArticle.vue'
 import Project              from './components/pages/project/indexProject.vue'
 
@@ -62,7 +63,9 @@ const routes = [
 
     { name: "quotationlist", path: '/devis/:id', component: Devislists},
 
-    { name: "quotation.create", path: '/devis/create', component: CreateDevis},
+    { name: "quotation.edit", path: '/devis/:id', component: CreateDevis},
+
+    { name: "quotation.show", path: '/devis/:id', component: ShowDevis},
 
     { name: "article.show", path: '/article/:id', component: ArticleShow},
 
