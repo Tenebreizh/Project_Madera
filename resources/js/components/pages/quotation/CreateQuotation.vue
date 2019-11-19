@@ -82,7 +82,7 @@
                                     </div>
                                     <br>        
                                     <div class="col-lg-12">
-                                        <DataTable :data="comments" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                        <DataTable :data="quotationLines" :columns="columnsCustomer" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                     </div>
                                 </div>
                             </div>
@@ -401,12 +401,12 @@ export default {
             axios.get("/api/quotationLines/")
             .then(response => {
                 this.quotationLines = response.data
-                this.loadingData = false
+                this.loadingData    = false
             })
         },
 
-        createQuotationLine(){
-            axios.post('/api/quotationLine', this.quotationLine)
+        createQuotationLine(quotationLine){
+            axios.post('/api/quotationLine', quotationLine)
             .then(response => {
                 this.quotationLines.push(response.data)
                 $("#AddQuotationLine").modal("hide");
@@ -414,17 +414,16 @@ export default {
         },
 
         createModuleCustom(){
+            let that = this
             this.customModule.commercial_marge = this.UnModule.marge_enterprise
             axios.post('/api/customModule', this.customModule)
-            .then(response => {
-                this.customModules.push(response.data)
-                
-                this.quotationLine.module_id = response.module_id
-                this.quotationLine.quotation_id = this.quotation.id
-                this.quotationLine.name = response.name
-                this.quotationLine.description = response.description
-                this.quotationLine.price = response.price
-                this.createQuotationLine()
+            .then(function(response) {
+                that.quotationLine.custom_module_id = response.data.id
+                that.quotationLine.quotation_id     = that.quotation.id
+                that.quotationLine.name             = response.data.label
+                that.quotationLine.description      = response.data.description
+                that.quotationLine.price            = response.data.price
+                that.createQuotationLine(that.quotationLine)
             })
         },
 
