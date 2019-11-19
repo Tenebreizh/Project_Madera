@@ -31,7 +31,7 @@ class QuotationController extends Controller
     {
         $quotation = Quotation::create([
             'project_id' => $request->project_id,
-            'quotation_number' => $request->quotation_number,
+            'quotation_number' => "",
             'active' => $request->active,
         ]);
 
@@ -106,4 +106,18 @@ class QuotationController extends Controller
 
         return $quotations;
     }
+
+    /**
+     * Get the project quotations specified resource from storage.
+     *
+     * @param  \App\Models\Quotation  $quotation
+     * @return \Illuminate\Http\Response
+     */
+    public function quotationLines(Quotation $quotation)
+    {
+        $quotationLines = $quotation->quotationLines;
+
+        return $quotationLines;
+    }
+
 }
