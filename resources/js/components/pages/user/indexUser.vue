@@ -200,7 +200,7 @@ export default {
                     $("#AddRole").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer le role ?")){
                         this.deleteRole(row.id)
                     }
                 }},
@@ -215,7 +215,7 @@ export default {
                     $("#AddUser").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
                         this.deleteUser(row.id)
                     }
                 }},

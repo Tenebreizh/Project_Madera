@@ -79,12 +79,14 @@ export default {
             })
         },
         createQuotation(){
-            this.quotation.project_id = this.$route.params.id
-            this.quotation.active = "0"
-            axios.post('/api/quotation', this.quotation)
-            .then(response => {
-                this.quotations.push(response.data)
-            })
+            if(confirm("Voulez vous creé un nouveau devis ?")){
+                this.quotation.project_id = this.$route.params.id
+                this.quotation.active = "0"
+                axios.post('/api/quotation', this.quotation)
+                .then(response => {
+                    this.quotations.push(response.data)
+                })
+            }
         },
         deleteQuotation(id){
             axios.delete('/api/quotation/'+id)

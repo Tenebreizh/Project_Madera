@@ -362,6 +362,8 @@ export default {
     },
 
     methods: {
+        
+
         //----- Récupération du devis ----------------
         getClient(id){
             axios.get('/api/client/'+id)

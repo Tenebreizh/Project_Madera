@@ -717,7 +717,7 @@ export default {
 			tr
 				&.clickable
 					cursor: pointer
-			td
+			
 				
 
 		&-filters

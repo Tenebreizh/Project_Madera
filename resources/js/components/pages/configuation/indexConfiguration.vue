@@ -272,7 +272,7 @@ export default {
                     $("#AddExternal_finition").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer la finition extérieur?")){
                         this.deleteFinition(row.id)
                     }
                 }},
@@ -288,7 +288,7 @@ export default {
                     $("#AddIsolation").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer le type d'isolant ?")){
                         this.deleteinsulator(row.id)
                     }
                 }},
@@ -303,7 +303,7 @@ export default {
                     $("#AddCoverings").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer le type de couverture ?")){
                         this.deleteCovering(row.id)
                     }
                 }},
@@ -318,7 +318,7 @@ export default {
                     $("#AddWindowFrame").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer l'huisserie ?")){
                         this.deletewindowFrame(row.id)
                     }
                 }},
