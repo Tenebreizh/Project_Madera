@@ -8,7 +8,7 @@
                         <div class="tab-pane fade show active" id="nav-customer" role="tabpanel" aria-labelledby="nav-customer-tab">
                             <div class="row">
                                 <div class="col-lg-12 text-left mb-4">
-                                    <h2><center>Création d'un devis</center></h2>
+                                    <h2><center>Visualisation d'un devis</center></h2>
                                 </div>
                             </div>
                                 <div id="container-haut" class="card-body">
