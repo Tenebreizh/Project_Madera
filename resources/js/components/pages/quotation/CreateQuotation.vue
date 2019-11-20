@@ -121,7 +121,7 @@
                             </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Valider</button>
+                            <button type="button" class="btn btn-primary" @click="goBack()">Valider</button>
                         </div>
 
                         </div>  
@@ -366,7 +366,9 @@ export default {
     },
 
     methods: {
-        
+        goBack() {
+            this.$router.back()
+        },
 
         //----- Récupération du devis ----------------
         getClient(id){
