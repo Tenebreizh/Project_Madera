@@ -63,7 +63,7 @@
                                         <div class="col-lg-6 pt-2 pl-2">
                                             <h3 class="text-center">Plan</h3>
                                             <div id="container-entete-right" class=" text-center"> 
-                                                <button class="btn btn-success" disabled="disabled" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button>
+                                                <!-- <button class="btn btn-success" disabled="disabled" data-toggle="modal" data-target="#AddPlan">Ajouter un plan</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -77,8 +77,9 @@
                                 
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
                                     <div class="row">
-                                        <h3 class="col-lg-1 float-left">Détails</h3>
-                                        <button class="offset-10 btn btn-primary" disabled="disabled" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
+                                        <div class="col-lg-12">
+                                            <h3>Détails</h3>
+                                        </div>
                                     </div>
                                     <br>        
                                     <div class="col-lg-12">
