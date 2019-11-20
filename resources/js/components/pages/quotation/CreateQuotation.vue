@@ -77,8 +77,12 @@
                                 
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
                                     <div class="row">
-                                        <h3 class="col-lg-1 float-left">Détails</h3>
-                                        <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
+                                        <div class="col-lg-10">
+                                            <h3>Détails</h3>
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button class="offset-10 btn btn-primary" data-toggle="modal" data-target="#AddQuotationLine">Ajouter</button>
+                                        </div>
                                     </div>
                                     <br>        
                                     <div class="col-lg-12">
