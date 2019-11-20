@@ -5,12 +5,12 @@
                 <form>
                     <h2 class="m-2 text-center">Utilisateur</h2>
                     <div class="row card-body">
-                        <div class="col-sm-2 mt-5">
+                        <div class="col-sm-3 mt-5">
                             <div class="col">        
-                                <img src="./../../../../../public/images/avatar/Capture.png" class="rounded-circle border" alt="Cinque Terre" width="" height="230"> 
+                                <img src="./../../../../../public/images/avatar/1.jpg" class="rounded-circle border" alt="Cinque Terre" width="" height="230"> 
                             </div>
                         </div>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <div class="col-sm-12">
                                 <div class="row mt-5">
                                     <div class="col-sm-4 form-group">
