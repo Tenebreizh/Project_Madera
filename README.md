@@ -45,7 +45,8 @@ DB_USERNAME=root
 ```
 
 ```console
-$ php artisan migrate:fresh
+$ php artisan migrate:fresh --seed
+$ php artisan passport:install --force
 ```
 
 ### Installation Vue.js
@@ -57,9 +58,7 @@ $ npm run dev
 
 ### Lancement du serveur
 
-```console
-$ php artisan serve --host=localhost --port=8000
-```
+Lancer WampServer
 
 ---
 
@@ -76,7 +75,8 @@ L'ajout d'un virutal host sur Wamp va permettre de raccourcir l'URL saisie dans 
 1. Choisir un nom pour le virtual host avec un "." dedans (exemple : madera.test).
 1. Saisir le chemin complet jusqu'à votre application (la récupérer depuis un explorateur).
 1. Générer le virtual host.
-1. Modifier la ligne suivante
+1. Clic droit sur WampServer (Barre de notifications)
+1. Clic sur "Rafraîchir"
 
 ### Extensions visual studio code
 
