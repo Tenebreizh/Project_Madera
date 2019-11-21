@@ -79,7 +79,7 @@ export default {
             })
         },
         createQuotation(){
-            if(confirm("Voulez-vous créez un nouveau devis ?")){
+            if(confirm("Voulez-vous créer un nouveau devis ?")){
                 this.quotation.project_id = this.$route.params.id
                 this.quotation.active = "0"
                 axios.post('/api/quotation', this.quotation)
