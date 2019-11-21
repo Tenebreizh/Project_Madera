@@ -59,7 +59,7 @@ export default {
                     this.$router.push({name:"quotation.edit", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer le client ?")){
+                    if(confirm("Voulez vous suprimer le devis ?")){
                         this.deleteQuotation(row.id)
                     }
                 }},
@@ -79,7 +79,7 @@ export default {
             })
         },
         createQuotation(){
-            if(confirm("Voulez vous creé un nouveau devis ?")){
+            if(confirm("Voulez-vous créez un nouveau devis ?")){
                 this.quotation.project_id = this.$route.params.id
                 this.quotation.active = "0"
                 axios.post('/api/quotation', this.quotation)
