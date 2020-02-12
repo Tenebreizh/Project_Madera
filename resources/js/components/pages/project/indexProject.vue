@@ -58,11 +58,11 @@
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="numero">Etat:</label>
-                                    <input type="text" class="form-control" id="numero" name="numero" v-model='project.state_id'>
+                                    <input type="text" class="form-control" id="numero1" name="numero" v-model='project.state_id'>
                                 </div>
                                 <div class="col form-group">
                                     <label for="street">Nom du projet:</label>
-                                    <input type="text" class="form-control" id="street" name="street" v-model='project.name'>
+                                    <input type="text" class="form-control" id="street1" name="street" v-model='project.name'>
                                 </div>
                             </div>
                             <div class='row'>

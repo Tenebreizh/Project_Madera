@@ -2,6 +2,7 @@ require('./bootstrap');
 // require("bootstrap-vue-datatable");
 import router from './router.js';
 import VueNoty from 'vuejs-noty'
+import 'vuejs-noty/dist/vuejs-noty.css'
 import auth from './auth/auth.js';
 import DataTable from './components/layouts/DataTable.vue'
 
@@ -15,6 +16,7 @@ Vue.use(VueNoty, {
     progressBar: true,
     layout: 'topRight'
 })
+
 Vue.use(DataTable);
 axios.defaults.baseURL = process.env.MIX_APP_URL;
 

@@ -94,11 +94,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference" v-model="external_finition.reference">
+                                <input type="text" class="form-control" id="reference1" name="reference" v-model="external_finition.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description" v-model="external_finition.description"></textarea>
+                                <textarea name="description" class="form-control" id="description1" v-model="external_finition.description"></textarea>
                             </div>
                         </form>
                     </div>
@@ -125,11 +125,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference" v-model="insulator.reference">
+                                <input type="text" class="form-control" id="reference2" name="reference" v-model="insulator.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description" v-model="insulator.description"></textarea>
+                                <textarea name="description" class="form-control" id="description2" v-model="insulator.description"></textarea>
                             </div>
                         </form>
                     </div>
@@ -156,11 +156,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference" v-model="covering.reference">
+                                <input type="text" class="form-control" id="reference3" name="reference" v-model="covering.reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description" v-model="covering.description"></textarea>
+                                <textarea name="description" class="form-control" id="description3" v-model="covering.description"></textarea>
                             </div>
                         </form>
                     </div>

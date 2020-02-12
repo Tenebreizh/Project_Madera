@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 text-center">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Bienvenue sur l'intranet Madera</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        Bonne journée.
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            // console.log('Component mounted.')
         }
     }
 </script>
