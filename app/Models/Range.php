@@ -12,7 +12,7 @@ class Range extends Model
      * @var array
      */
     protected $fillable = [
-        'covering_id', 'insulator_id', 'external_finition_id', 'window_frame_id', 'label', 'description',' reference', 'rule',
+        'covering_id', 'insulator_id', 'external_finition_id', 'window_frame_id', 'label', 'description','reference', 'rule',
     ];
 
     public function covering()

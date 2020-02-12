@@ -116,31 +116,39 @@
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="reference">Référence:</label>
-                                    <input type="text" class="form-control" id="reference" name="reference" v-model="range.reference">
+                                    <input type="text" class="form-control" id="reference1" name="reference" v-model="range.reference">
                                 </div>
                                 <div class="col form-group">
                                     <label for="description">Description:</label>
-                                    <textarea name="description" class="form-control" id="description" v-model="range.description"></textarea>
+                                    <textarea name="description" class="form-control" id="description1" v-model="range.description"></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="external_finition">Finition extérieur:</label>
-                                    <select name="external_finition" class="form-control" v-model="range.external_finition_id"></select>
+                                    <select name="external_finition" class="form-control" v-model="range.external_finition_id">
+                                        <option v-for="(external_finition, key) in external_finitions" :value="external_finition.id" :key="key"> {{ external_finition.reference }} </option>
+                                    </select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="isolation">Type d'isolation:</label>
-                                    <select name="isolation" class="form-control" v-model="range.insulator_id"></select>
+                                    <select name="isolation" class="form-control" v-model="range.insulator_id">
+                                        <option v-for="(insulator, key) in insulators" :value="insulator.id" :key="key"> {{ insulator.reference }} </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="covering">Type de couverture:</label>
-                                    <select name="covering" class="form-control" v-model="range.covering_id"></select>
+                                    <select name="covering" class="form-control" v-model="range.covering_id">
+                                        <option v-for="(covering, key) in coverings" :value="covering.id" :key="key"> {{ covering.reference }} </option>
+                                    </select>
                                 </div>
                                 <div class="col form-group">
                                     <label for="window_frame">Qualité huisserie:</label>
-                                    <select name="window_frame" class="form-control" v-model="range.window_frame_id"></select>
+                                    <select name="window_frame" class="form-control" v-model="range.window_frame_id">
+                                        <option v-for="(windowFrame, key) in windowFrames" :value="windowFrame.id" :key="key"> {{ windowFrame.reference }} </option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -157,8 +165,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createUser()">Valider</button>
-                        <button v-else type="button" class="btn btn-success" @click="updateUser()">Modifier</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createGamme()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateGamme()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -178,16 +186,17 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference2" name="reference" v-model="famcomp.name">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description2" v-model="famcomp.description"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createFamComp()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateFamComp()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -208,56 +217,57 @@
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="firstname">Nom:</label>
-                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                    <input type="text" class="form-control" id="firstname" name="firstname" v-model="fournisseur.firstname">
                                 </div>
                                 <div class="col form-group">
                                     <label for="lastname">Prénom:</label>
-                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                    <input type="text" class="form-control" id="lastname" name="lastname"v-model="fournisseur.lastname">
                                 </div>
                             </div>
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="numero">N°:</label>
-                                    <input type="text" class="form-control" id="numero" name="numero">
+                                    <input type="text" class="form-control" id="numero" name="numero"v-model="fournisseur.street_number">
                                 </div>
                                 <div class="col form-group">
                                     <label for="street">Adresse:</label>
-                                    <input type="text" class="form-control" id="street" name="street">
+                                    <input type="text" class="form-control" id="street" name="street"v-model="fournisseur.street">
                                 </div>
                             </div>
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="cp">CP:</label>
-                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000">
+                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000"v-model="fournisseur.zipcode">
                                 </div>
                                 <div class="col form-group">
                                     <label for="city">Ville:</label>
-                                    <input type="text" class="form-control" id="city" name="city">
+                                    <input type="text" class="form-control" id="city" name="city"v-model="fournisseur.city">
                                 </div>
                                 <div class="col form-group">
                                     <label for="country">Pays:</label>
-                                    <input type="text" class="form-control" id="country" name="country">
+                                    <input type="text" class="form-control" id="country" name="country"v-model="fournisseur.country">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="phone">Téléphone:</label>
-                                    <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00">
+                                    <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00"v-model="fournisseur.phone">
                                 </div>
                                 <div class="col form-group">
                                     <label for="fax">Fax:</label>
-                                    <input type="number" class="form-control" id="fax" name="fax"  placeholder="00 00 00 00 00">
+                                    <input type="number" class="form-control" id="fax" name="fax"  placeholder="00 00 00 00 00"v-model="fournisseur.fax">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr">
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr"v-model="fournisseur.email">
                             </div>
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button v-if="!edit" type="button" class="btn btn-primary" @click="createFournisseur()">Valider</button>
+                        <button v-else type="button" class="btn btn-success" @click="updateFournisseur()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -277,11 +287,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference3" name="reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description3"></textarea>
                             </div>
                             <div class="col form-group">
                                 <label for="tva">TVA:</label>
@@ -319,11 +329,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference4" name="reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description4"></textarea>
                             </div>
                             <div class="m-4">
                                 <a href="#" data-toggle="modal" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
@@ -425,13 +435,24 @@ export default {
                 reference:'',
                 rule:'',
             },
+
             famcomps:[],
             famcomp:{
-
+                name:'',
+                description:'',
             },
             fournisseurs:[],
             fournisseur:{
-
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                city:'',
+                country:'',
+                phone:'',
+                fax:'',
+                email:'',
             },
             modules:[],
             module:{
@@ -441,16 +462,45 @@ export default {
             article:{
 
             },
+            external_finitions:[],
+            external_finition:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            insulators:[],
+            insulator:{
+                label:'',
+                description:'',
+                reference:''
+            },
+            coverings:[],
+            covering:{
+                label:'',
+                description:'',
+                reference:''
+            },
+
+            windowFrames:[],
+            windowFrame:{
+                label:'',
+                description:'',
+                reference:''
+            },
 
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.range = this.ranges[index];
+                    $("#AddGamme").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        this.deleteGamme(row.id)
+                    }
                 }},
             ],
             actionsFamComp: [
@@ -458,10 +508,14 @@ export default {
                     this.$router.push({name:"famcomp.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.famcomp = this.famcomps[index];
+                    $("#AddFamComp").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        this.deleteFamComp(row.id)
+                    }
                 }},
             ],
             actionsFournisseur: [
@@ -469,10 +523,14 @@ export default {
                     this.$router.push({name:"fournisseur.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.fournisseur = this.fournisseurs[index];
+                    $("#AddSupplier").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        this.deleteFournisseur(row.id)
+                    }
                 }},
             ],
             actionsModule: [
@@ -483,7 +541,9 @@ export default {
                     alert("Edit :" + row.id);
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        this.deleteModule(row.id)
+                    }
                 }},
             ],
             actionsArticle: [
@@ -494,18 +554,60 @@ export default {
                     alert("Edit :" + row.id);
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        this.deleteAricle(row.id)
+                    }
                 }},
             ],
             actionsSuppliers: [
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                        // this.dele(row.id)
+                    }
                 }},
             ]
         }
     },
 
     methods:{
+
+        //Tools
+        getFinitions(){
+            this.loadingData = true
+            axios.get("/api/externalFinitions")
+            .then(response => {
+                this.external_finitions = response.data
+                this.loadingData = false
+            })
+        },
+
+        getinsulators(){
+            this.loadingData = true
+            axios.get("/api/insulators")
+            .then(response => {
+                this.insulators = response.data
+                this.loadingData = false
+            })
+        },
+
+        getCoverings(){
+            this.loadingData = true
+            axios.get("/api/coverings")
+            .then(response => {
+                this.coverings = response.data
+                this.loadingData = false
+            })
+        },
+
+        getwindowFrames(){
+            this.loadingData = true
+            axios.get("/api/windowFrames")
+            .then(response => {
+                this.windowFrames = response.data
+                this.loadingData = false
+            })
+        },
+
         // GAMMES
         getGammes(){
             this.loadingData = true
@@ -520,23 +622,23 @@ export default {
             axios.post('/api/range', this.range)
             .then(response => {
                 this.ranges.push(response.data)
-                $("#AddUser").modal("hide");
+                $("#AddGamme").modal("hide");
             })
         },
 
         updateGamme(){
             axios.put('/api/range/'+this.range.id,this.range)
             .then(response => {
-                $("#AddUser").modal("hide");
+                $("#AddGamme").modal("hide");
                 this.edit = false;
-                this.GetUsers()
+                this.getGammes()
             })
         },
 
         deleteGamme(id){
             axios.delete('/api/range/'+id)
             .then(response => {
-                this.GetUsers()
+                this.getGammes()
             })
         },
 
@@ -554,23 +656,23 @@ export default {
             axios.post('/api/component_type', this.famcomp)
             .then(response => {
                 this.famcomps.push(response.data)
-                $("#AddUser").modal("hide");
+                $("#AddFamComp").modal("hide");
             })
         },
 
         updateFamComp(){
-            axios.put('/api/component_types/'+this.famcomp.id,this.famcomp)
+            axios.put('/api/component_type/'+this.famcomp.id,this.famcomp)
             .then(response => {
-                $("#AddUser").modal("hide");
+                $("#AddFamComp").modal("hide");
                 this.edit = false;
-                this.GetUsers()
+                this.getFamComps()
             })
         },
 
         deleteFamComp(id){
-            axios.delete('/api/component_types/'+id)
+            axios.delete('/api/component_type/'+id)
             .then(response => {
-                this.GetUsers()
+                this.getFamComps()
             })
         },
 
@@ -589,23 +691,23 @@ export default {
             axios.post('/api/supplier', this.fournisseur)
             .then(response => {
                 this.fournisseurs.push(response.data)
-                $("#AddUser").modal("hide");
+                $("#AddSupplier").modal("hide");
             })
         },
 
         updateFournisseur(){
             axios.put('/api/supplier/'+this.fournisseur.id,this.fournisseur)
             .then(response => {
-                $("#AddUser").modal("hide");
+                $("#AddSupplier").modal("hide");
                 this.edit = false;
-                this.GetUsers()
+                this.getFournisseurs()
             })
         },
 
         deleteFournisseur(id){
             axios.delete('/api/supplier/'+id)
             .then(response => {
-                this.GetUsers()
+                this.getFournisseurs()
             })
         },
 
@@ -632,14 +734,14 @@ export default {
             .then(response => {
                 $("#AddUser").modal("hide");
                 this.edit = false;
-                this.GetUsers()
+                this.getModules()
             })
         },
 
         deleteModule(id){
             axios.delete('/api/module/'+id)
             .then(response => {
-                this.GetUsers()
+                this.getModules()
             })
         },
 
@@ -666,18 +768,22 @@ export default {
             .then(response => {
                 $("#AddUser").modal("hide");
                 this.edit = false;
-                this.GetUsers()
+                this.getAricles()
             })
         },
 
         deleteAricle(id){
             axios.delete('/api/Aricle/'+id)
             .then(response => {
-                this.GetUsers()
+                this.getAricles()
             })
         },
 
         GetAllValue(){
+            this.getFinitions(),
+            this.getinsulators(),
+            this.getCoverings(),
+            this.getwindowFrames(),
             this.getGammes(),
             this.getFamComps(),
             this.getFournisseurs(),

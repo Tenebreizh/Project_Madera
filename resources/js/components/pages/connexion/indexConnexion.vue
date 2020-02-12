@@ -14,7 +14,10 @@
                                     <input type="password" id="password" class="form-control" name="password" placeholder="Password" v-model="user.password" required>
                                 </div>
                             </div>
-                            <input type="submit" class="form-control mt-3 btn-success" value="Log In">
+                            <button type="submit" class="form-control mt-3 btn-success" :disabled="loading">
+                                <i class="fas fa-sync fa-spin" v-if="loading"></i>
+                                Log In
+                            </button>
                         </div>
                     </form>
                     <div id="formFooter">
@@ -56,9 +59,11 @@ export default {
             .catch(response => {
                 this.loading = false
                 this.error = true
+                this.$noty.error("Email or password incorrect !")
             });
         }
-    }
+    },
+
 }
 </script>
 
