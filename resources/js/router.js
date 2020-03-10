@@ -28,6 +28,7 @@ import CreateDevis          from './components/pages/quotation/CreateQuotation.v
 import ShowDevis            from './components/pages/quotation/showQuotation.vue'
 import ArticleShow          from './components/pages/catalog/showArticle.vue'
 import Project              from './components/pages/project/indexProject.vue'
+import Log                  from './components/pages/parametre/pageLogs.vue'
 
 const routes = [
     { name: "home", path: '/', component: ExampleComponent },
@@ -80,7 +81,9 @@ const routes = [
 
     { name: "ExternalFinition.show", path: '/ExternalFinition/:id', component: ExternalFinitionShow},
 
-    { name: "project", path: '/Project', component: Project}
+    { name: "project", path: '/Project', component: Project},
+
+    { name: "Log.show", path: '/Log/:id', component: Log}
 ]
 
 export default new Router({
