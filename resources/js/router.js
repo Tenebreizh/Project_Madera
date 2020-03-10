@@ -15,6 +15,7 @@ import Parametre            from './components/pages/parametre/indexParametre.vu
 import Connexion            from './components/pages/connexion/indexConnexion.vue'
 import CustomerShow         from './components/pages/customer/pageClient.vue'
 import UserShow             from './components/pages/user/showUser.vue'
+import UserConnectedShow    from './components/pages/user/showUserConnected.vue'
 import RoleShow             from './components/pages/user/showRole.vue'
 import GammeShow            from './components/pages/catalog/showGamme.vue'
 import FamilleCompShow      from './components/pages/catalog/showFamComp.vue'
@@ -45,7 +46,9 @@ const routes = [
 
     { name: "customer.show", path: '/customer/:id', component: CustomerShow},
 
-    { name: "user.show", path: '/user/:id', component: UserShow},   
+    { name: "user.show", path: '/user/:id', component: UserShow}, 
+
+    { name: "userConnected.show", path: '/userConnected/:id', component: UserConnectedShow},    
     
     { name: "role.show", path: '/role/:id', component: RoleShow},
 

@@ -221,46 +221,46 @@
                                 </div>
                                 <div class="col form-group">
                                     <label for="lastname">Prénom:</label>
-                                    <input type="text" class="form-control" id="lastname" name="lastname"v-model="fournisseur.lastname">
+                                    <input type="text" class="form-control" id="lastname" name="lastname" v-model="fournisseur.lastname">
                                 </div>
                             </div>
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="numero">N°:</label>
-                                    <input type="text" class="form-control" id="numero" name="numero"v-model="fournisseur.street_number">
+                                    <input type="text" class="form-control" id="numero" name="numero" v-model="fournisseur.street_number">
                                 </div>
                                 <div class="col form-group">
                                     <label for="street">Adresse:</label>
-                                    <input type="text" class="form-control" id="street" name="street"v-model="fournisseur.street">
+                                    <input type="text" class="form-control" id="street" name="street" v-model="fournisseur.street">
                                 </div>
                             </div>
                             <div class='row'>
                                 <div class="col form-group">
                                     <label for="cp">CP:</label>
-                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000"v-model="fournisseur.zipcode">
+                                    <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000" v-model="fournisseur.zipcode">
                                 </div>
                                 <div class="col form-group">
                                     <label for="city">Ville:</label>
-                                    <input type="text" class="form-control" id="city" name="city"v-model="fournisseur.city">
+                                    <input type="text" class="form-control" id="city" name="city" v-model="fournisseur.city">
                                 </div>
                                 <div class="col form-group">
                                     <label for="country">Pays:</label>
-                                    <input type="text" class="form-control" id="country" name="country"v-model="fournisseur.country">
+                                    <input type="text" class="form-control" id="country" name="country" v-model="fournisseur.country">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
                                     <label for="phone">Téléphone:</label>
-                                    <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00"v-model="fournisseur.phone">
+                                    <input type="number" class="form-control" id="phone" name="phone"  placeholder="00 00 00 00 00" v-model="fournisseur.phone">
                                 </div>
                                 <div class="col form-group">
                                     <label for="fax">Fax:</label>
-                                    <input type="number" class="form-control" id="fax" name="fax"  placeholder="00 00 00 00 00"v-model="fournisseur.fax">
+                                    <input type="number" class="form-control" id="fax" name="fax"  placeholder="00 00 00 00 00" v-model="fournisseur.fax">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr"v-model="fournisseur.email">
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="exemple@email.fr" v-model="fournisseur.email">
                             </div>
 
                         </form>
@@ -498,7 +498,7 @@ export default {
                     $("#AddGamme").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous supprimer ce gamme ?")){
                         this.deleteGamme(row.id)
                     }
                 }},
@@ -513,7 +513,7 @@ export default {
                     $("#AddFamComp").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous supprimer cette famille de composant ?")){
                         this.deleteFamComp(row.id)
                     }
                 }},
@@ -528,7 +528,7 @@ export default {
                     $("#AddSupplier").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous supprimer ce fournisseur ?")){
                         this.deleteFournisseur(row.id)
                     }
                 }},
@@ -538,10 +538,12 @@ export default {
                     this.$router.push({name:"module.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.module = this.modules[index];
+                    $("#AddModule").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous supprimer ce module ?")){
                         this.deleteModule(row.id)
                     }
                 }},
@@ -554,14 +556,14 @@ export default {
                     alert("Edit :" + row.id);
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous supprimer ce article ?")){
                         this.deleteAricle(row.id)
                     }
                 }},
             ],
             actionsSuppliers: [
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
+                    if(confirm("Voulez vous suprimer ce fourisseur de cette article ?")){
                         // this.dele(row.id)
                     }
                 }},
@@ -623,6 +625,7 @@ export default {
             .then(response => {
                 this.ranges.push(response.data)
                 $("#AddGamme").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -632,6 +635,7 @@ export default {
                 $("#AddGamme").modal("hide");
                 this.edit = false;
                 this.getGammes()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -639,6 +643,7 @@ export default {
             axios.delete('/api/range/'+id)
             .then(response => {
                 this.getGammes()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -657,6 +662,7 @@ export default {
             .then(response => {
                 this.famcomps.push(response.data)
                 $("#AddFamComp").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -664,8 +670,9 @@ export default {
             axios.put('/api/component_type/'+this.famcomp.id,this.famcomp)
             .then(response => {
                 $("#AddFamComp").modal("hide");
-                this.edit = false;
+                this.edit = false
                 this.getFamComps()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -673,6 +680,7 @@ export default {
             axios.delete('/api/component_type/'+id)
             .then(response => {
                 this.getFamComps()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -692,6 +700,7 @@ export default {
             .then(response => {
                 this.fournisseurs.push(response.data)
                 $("#AddSupplier").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -701,6 +710,7 @@ export default {
                 $("#AddSupplier").modal("hide");
                 this.edit = false;
                 this.getFournisseurs()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -708,6 +718,7 @@ export default {
             axios.delete('/api/supplier/'+id)
             .then(response => {
                 this.getFournisseurs()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -725,16 +736,18 @@ export default {
             axios.post('/api/module', this.module)
             .then(response => {
                 this.modules.push(response.data)
-                $("#AddUser").modal("hide");
+                $("#AddModule").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
         updateModule(){
             axios.put('/api/module/'+this.module.id,this.module)
             .then(response => {
-                $("#AddUser").modal("hide");
+                $("#AddModule").modal("hide");
                 this.edit = false;
                 this.getModules()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -742,6 +755,7 @@ export default {
             axios.delete('/api/module/'+id)
             .then(response => {
                 this.getModules()
+                this.$noty.success("Suppression réusite")
             })
         },
 

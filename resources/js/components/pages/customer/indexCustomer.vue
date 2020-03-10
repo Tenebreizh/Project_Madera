@@ -161,6 +161,7 @@ export default {
             .then(response => {
                 this.clients.push(response.data)
                 $("#AddCustomer").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -169,6 +170,7 @@ export default {
             .then(response => {
                 $("#AddCustomer").modal("hide");
                 this.getClients()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -176,6 +178,7 @@ export default {
             axios.delete('/api/client/'+id)
             .then(response => {
                 this.getClients()
+                this.$noty.success("Suppression réusite")
             })
         },
 

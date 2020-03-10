@@ -28,7 +28,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="modules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="modules" :columns="Cmodules" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -57,12 +57,12 @@
                                         <input type="text" class="form-control" id="reference" name="reference">
                                     </div>
                                     <div class="col form-group">
-                                        <label for="reference">Coupe de principe</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="CP">Coupe de principe</label>
+                                        <input type="text" class="form-control" id="CP" name="CP">
                                     </div>
                                     <div class="col form-group">
-                                        <label for="reference">Coupe CCTP</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="CCTP">Coupe CCTP</label>
+                                        <input type="text" class="form-control" id="CCTP" name="CCTP">
                                     </div>
                                 </div>
                             </div>
@@ -70,39 +70,39 @@
                                 <div class="col card m-2">
                                     <h4>Détail des sections</h4>
                                     <div class=" form-group">
-                                        <label for="reference">Nombre de lisses</label>
-                                        <input type="number" class="form-control" id="reference" name="reference">
+                                        <label for="lisses">Nombre de lisses</label>
+                                        <input type="number" class="form-control" id="lisses" name="lisses">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Nombre de contreforts</label>
-                                        <input type="number" class="form-control" id="reference" name="reference">
+                                        <label for="contreforts">Nombre de contreforts</label>
+                                        <input type="number" class="form-control" id="contreforts" name="contreforts">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Sabots d'assemblage</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="assemblage">Sabots d'assemblage</label>
+                                        <input type="text" class="form-control" id="assemblage" name="assemblage">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Goujons de fixation</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="fixation">Goujons de fixation</label>
+                                        <input type="text" class="form-control" id="fixation" name="fixation">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Support de sol</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Support">Support de sol</label>
+                                        <input type="text" class="form-control" id="Support" name="Support">
                                     </div>
                                 </div>
                                 <div class="col card m-2">
                                     <h4>Détail des montants</h4>
                                     <div class=" form-group">
-                                        <label for="reference">Départ</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Départ">Départ</label>
+                                        <input type="text" class="form-control" id="Départ" name="Départ">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Arrivée</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Arrivée">Arrivée</label>
+                                        <input type="text" class="form-control" id="Arrivée" name="Arrivée">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Intermédiaire</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Intermédiaire">Intermédiaire</label>
+                                        <input type="text" class="form-control" id="Intermédiaire" name="Intermédiaire">
                                     </div>
                                 </div>
                             </div>
@@ -110,31 +110,31 @@
                                 <div class="col card m-2">
                                     <h4>Remplisage par unité entre deux montant</h4>
                                     <div class="form-group">
-                                        <label for="reference">Remplissage</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Remplissage">Remplissage</label>
+                                        <input type="text" class="form-control" id="Remplissage" name="Remplissage">
                                     </div>
                                     <div class="form-group">
-                                        <label for="reference">Visserie</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Visserie">Visserie</label>
+                                        <input type="text" class="form-control" id="Visserie" name="Visserie">
                                     </div>
                                     <div class="form-group">
-                                        <label for="reference">Panneaux</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label for="Panneaux">Panneaux</label>
+                                        <input type="text" class="form-control" id="Panneaux" name="Panneaux">
                                     </div>
                                 </div>
                                 <div class="col card m-2">
                                     <div class=" form-group">
-                                        <label class="mt-4" for="reference">Pourcentage de marge sur le prix de base</label>
-                                        <input type="text" class="form-control" id="reference" name="reference">
+                                        <label class="mt-4" for="Pourcentage">Pourcentage de marge sur le prix de base</label>
+                                        <input type="text" class="form-control" id="Pourcentage" name="Pourcentage">
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Temps de main d'oeuvre atelier</label>
+                                        <label for="tempsMOA">Temps de main d'oeuvre atelier</label>
                                         <div class="input-group">
                                             <input type="time" class="form-control">
                                         </div>
                                     </div>
                                     <div class=" form-group">
-                                        <label for="reference">Temps de main d'oeuvre pose</label>
+                                        <label for="tempsMOP">Temps de main d'oeuvre pose</label>
                                         <input type="time" class="form-control">
                                     </div>
                                 </div>
@@ -159,8 +159,9 @@ export default {
     data() {
         return {
             loadingData: false,
-            modules: [
-                {name: "reference",     th: "Référence"},
+            edit:false,
+            Cmodules: [
+                {name: "name",     th: "Référence"},
                 {name: "coupPrincipe",  th: "Coupe de pricipe"},
                 {name: "cctp",   th: "Coupe CCTP"},
             ],
@@ -170,27 +171,60 @@ export default {
                     this.$router.push({name:"configurationDetail", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-1", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.edit=true;
+                    this.module = this.modules[index];
+                    $("#addModule").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-1", action: (row, index) => {
-                    alert("Delete: " + row.id);
+                    if(confirm("Voulez vous suprimer le module ?")){
+                        this.deleteModule(row.id)
+                    }
                 }},
             ],
             navs: [
                 { name: 'configuration', path: '/config'},
 
                 { name: 'configModule', path: '/configModule'},
-            ]
+            ],
+
+            modules:[],
+            module:{
+                range_id:'',
+                name:'',
+                description:'',
+                principal_cut:'',
+                cctp:'',
+                marge:'',
+                labor_time:'',
+                price:'',
+                marge_enterprise:'',
+            },
         }
     },
 
+
+    methods:{
+
+        getModules(){
+            this.loadingData = true
+            axios.get("/api/modules")
+            .then(response => {
+                this.modules = response.data
+                this.loadingData = false
+            })
+        },
+
+        deleteModule(id){
+            axios.delete('/api/module/'+id)
+            .then(response => {
+                this.getModules()
+            })
+        },
+
+    },
+
     mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
+        this.getModules()
     }
 }
 </script>

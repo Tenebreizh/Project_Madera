@@ -85,6 +85,7 @@ export default {
                 axios.post('/api/quotation', this.quotation)
                 .then(response => {
                     this.quotations.push(response.data)
+                    this.$noty.success("Création réusite")
                 })
             }
         },
@@ -92,6 +93,7 @@ export default {
             axios.delete('/api/quotation/'+id)
             .then(response => {
                 this.getProjectQuotation()
+                this.$noty.success("Suppression réusite")
             })
         }
     },
