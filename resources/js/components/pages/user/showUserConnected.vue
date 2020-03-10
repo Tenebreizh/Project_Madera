@@ -3,7 +3,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
             <div class="card">
                 <form>
-                    <h2 class="m-2 text-center">Utilisateur</h2>
+                    <h2 class="m-2 text-center">Votre profil</h2>
                     <div class="row card-body">
                         <div class="col-sm-3 mt-5">
                             <div class="col">        

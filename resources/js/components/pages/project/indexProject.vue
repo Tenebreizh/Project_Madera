@@ -165,6 +165,7 @@ export default {
             .then(response => {
                 this.projects.push(response.data)
                 $("#AddProject").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -174,6 +175,7 @@ export default {
                 $("#AddProject").modal("hide");
                 this.edit = false;
                 this.getProjects()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -181,6 +183,7 @@ export default {
             axios.delete('/api/project/'+id)
             .then(response => {
                 this.getProjects()
+                this.$noty.success("Suppression réusite")
             })
         },
 

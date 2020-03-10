@@ -347,6 +347,7 @@ export default {
             .then(response => {
                 this.external_finitions.push(response.data)
                 $("#AddExternal_finition").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -356,6 +357,7 @@ export default {
                 $("#AddExternal_finition").modal("hide");
                 this.edit = false;
                 this.getFinitions()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -363,6 +365,7 @@ export default {
             axios.delete('/api/externalFinition/'+id)
             .then(response => {
                 this.getFinitions()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -383,6 +386,7 @@ export default {
             .then(response => {
                 this.insulators.push(response.data)
                 $("#AddIsolation").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -392,6 +396,7 @@ export default {
                 $("#AddIsolation").modal("hide");
                 this.edit = false;
                 this.getinsulators()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -399,6 +404,7 @@ export default {
             axios.delete('/api/insulator/'+id)
             .then(response => {
                 this.getinsulators()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -418,6 +424,7 @@ export default {
             .then(response => {
                 this.coverings.push(response.data)
                 $("#AddCoverings").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -427,6 +434,7 @@ export default {
                 $("#AddCoverings").modal("hide");
                 this.edit = false;
                 this.getCoverings()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -434,6 +442,7 @@ export default {
             axios.delete('/api/covering/'+id)
             .then(response => {
                 this.getCoverings()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -453,6 +462,7 @@ export default {
             .then(response => {
                 this.windowFrames.push(response.data)
                 $("#AddWindowFrame").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -462,6 +472,7 @@ export default {
                 $("#AddWindowFrame").modal("hide");
                 this.edit = false;
                 this.getwindowFrames()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -469,6 +480,7 @@ export default {
             axios.delete('/api/windowFrame/'+id)
             .then(response => {
                 this.getwindowFrames()
+                this.$noty.success("Suppression réusite")
             })
         },
 

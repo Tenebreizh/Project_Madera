@@ -245,6 +245,7 @@ export default {
             .then(response => {
                 this.users.push(response.data)
                 $("#AddUser").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -254,6 +255,7 @@ export default {
                 $("#AddUser").modal("hide");
                 this.edit = false;
                 this.GetUsers()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -261,6 +263,7 @@ export default {
             axios.delete('/api/user/'+id)
             .then(response => {
                 this.GetUsers()
+                this.$noty.success("Suppression réusite")
             })
         },
 
@@ -278,6 +281,7 @@ export default {
             .then(response => {
                 this.roles.push(response.data)
                 $("#AddRole").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
@@ -287,6 +291,7 @@ export default {
                 $("#AddRole").modal("hide");
                 this.edit = false;
                 this.GetRoles()
+                this.$noty.success("Mise à jour réusite")
             })
         },
 
@@ -294,6 +299,7 @@ export default {
             axios.delete('/api/userType/'+id)
             .then(response => {
                 this.GetRoles()
+                this.$noty.success("Suppression réusite")
             })
         },
 
