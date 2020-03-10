@@ -19,6 +19,9 @@
                         <li class="nav-item">
                             <a class="nav-item nav-link " id="nav-droit-tab" data-toggle="tab" href="#nav-droit" role="tab" aria-controls="nav-droit" aria-selected="false">Droit</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link " id="nav-logs-tab" data-toggle="tab" href="#nav-logs" role="tab" aria-controls="nav-logs" aria-selected="false">Logs</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -85,6 +88,15 @@
                             </div>
                         </div>
 
+                        <!-- Tableau Logs -->
+                        <div class="col-sm-12 tab-pane" id="nav-logs" role="tabpanel" aria-labelledby="nav-logs-tab">
+                            <div class="row">
+                                <div class="col">
+                                    <DataTable :data="logs" :columns="Logs" :actions="actions_Logs" :index="false" :loading="loadingData"></DataTable>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -133,11 +145,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference_tva" name="reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description_tva"></textarea>
                             </div>
                         </form>
                     </div>
@@ -162,11 +174,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference_etat" name="reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description_etat"></textarea>
                             </div>
                         </form>
                     </div>
@@ -191,11 +203,11 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference_module" name="reference">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description_module"></textarea>
                             </div>
                         </form>
                     </div>
@@ -232,7 +244,21 @@ export default {
                 {name: "name", th: "Name"},
                 {name: "description", th: "Description"},
             ],
+            Logs: [
+                {name: "name", th: "Name"},
+                {name: "description", th: "Description"},
+                {name: "table", th: "Table"}
+            ],
             comments: [],
+            logs:[],
+            log:{
+                user_id:'',
+                description:'',
+                action_id:'',
+                name:'',
+                table:''
+            },
+
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     alert("See: " + row.id);
@@ -244,10 +270,27 @@ export default {
                     alert("Delete: " + row.id);
                 }},
             ],
+            actions_Logs: [
+                {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
+                    this.$router.push({name:"Log.show", params:{id:row.id}})
+                }},
+            ],
         }
     },
 
+    methods:{
+        getLogs(){
+            this.loadingData = true
+            axios.get("/api/logs")
+            .then(response => {
+                this.logs = response.data
+                this.loadingData = false
+            })
+        },
+    },
+    
     mounted() {
+        this.getLogs()
         this.loadingData = true
         axios.get("https://jsonplaceholder.typicode.com/comments")
         .then(response => {
