@@ -53,7 +53,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="TVA" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="Taxes" :columns="TVA" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -155,9 +155,14 @@
                                 <input type="text" class="form-control" id="reference_tva" name="reference">
                             </div>
                             <div class="col form-group">
+                                <label for="Taux">Taux:</label>
+                                <input name="Number" class="form-control" id="Taux_tva">
+                            </div>
+                            <div class="col form-group">
                                 <label for="description">Description:</label>
                                 <textarea name="description" class="form-control" id="description_tva"></textarea>
                             </div>
+                            
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -242,6 +247,7 @@ export default {
             TVA: [
                 {name: "name", th: "Name"},
                 {name: "description", th: "Description"},
+                {name: "rate", th: "Taux"},
             ],
             Etat: [
                 {name: "name", th: "Name"},
@@ -268,7 +274,12 @@ export default {
                 name:'',
                 table:''
             },
-
+            Taxes:[],
+            Taxe:{
+                name:'',
+                description:'',
+                rate:'',
+            },
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     alert("See: " + row.id);
@@ -297,6 +308,15 @@ export default {
                 this.loadingData = false
             })
         },
+
+        GetTaxes(){
+            this.loadingData = true 
+            axios.get("/api/taxes")
+            .then(response => {
+                this.Taxes =  response.data
+                this.loadingData = false
+            })
+        }
 
         getComponentTypes(){
             this.loadingData = true
@@ -332,6 +352,8 @@ export default {
     
     mounted() {
         this.getLogs()
+        this.GetTaxes()
+
         this.getComponents()
         this.getComponentTypes()
 

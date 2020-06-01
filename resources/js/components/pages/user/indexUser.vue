@@ -153,6 +153,28 @@
             </div>
         </div>
 
+        <!-- Modal logs Delete -->
+        <div class="modal fade bd-example-modal-lg" id="Addlog" tabindex="-1" role="dialog" aria-labelledby="AddlogLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddlogLabel">Supprimer les logs de l'utilisateur ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">  
+                        <form>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" @click="DeleteUserLog()">OUI</button>
+                                <button type="button" class="btn btn-danger btn-lg btn-block" @click="NoDeleteUserLog()">NON</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -164,6 +186,7 @@ export default {
         return {
             loadingData: false,
             edit: false,
+            dellog:'',
             columnsRole: [
                 {name: "name", th: "Name"},
                 {name: "description", th: "Description"},
@@ -215,9 +238,8 @@ export default {
                     $("#AddUser").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
-                    if(confirm("Voulez vous suprimer l'utilisateur ?")){
-                        this.deleteUser(row.id)
-                    }
+                    this.dellog = row.id
+                    $("#Addlog").modal("show");
                 }},
             ],
             actionsDroit: [
@@ -306,6 +328,15 @@ export default {
         showModalUser(){
             this.edit = false;
             $("#AddUser").modal("show");
+        },
+
+        DeleteUserLog(){
+            $("#Addlog").modal("hide");
+            this.deleteUser(this.dellog)
+        },
+
+        NoDeleteUserLog(){
+            $("#Addlog").modal("hide");
         }
 
     },
