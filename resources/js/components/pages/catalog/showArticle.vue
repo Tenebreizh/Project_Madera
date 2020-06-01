@@ -103,9 +103,6 @@ export default {
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"fournisseur.show", params:{id:row.id}})
                 }},
-                {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
-                }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     alert("Delete: " + row.id);
                 }},
