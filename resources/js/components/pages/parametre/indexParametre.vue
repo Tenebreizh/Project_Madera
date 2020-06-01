@@ -38,7 +38,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <DataTable :data="comments" :columns="Composant" :actions="actions" :index="false" :loading="loadingData"></DataTable>
+                                    <DataTable :data="components" :columns="Composant" :actions="actions" :index="false" :loading="loadingData"></DataTable>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddComposantLabel">Ajout d'une gamme</h5>
+                        <h5 class="modal-title" id="AddComposantLabel">Ajout d'un composant</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -116,16 +116,23 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference" name="reference">
+                                <input type="text" class="form-control" id="reference" name="reference" v-model="new_component.name">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="new_component.description"></textarea>
+                            </div>
+
+                            <div class="col form-group">
+                                <label for="city">Type:</label>
+                                <select class="form-control" v-model='new_component.component_type_id'>
+                                    <option v-for="(type,key) in component_types" :value="type.id" :key="key"> {{ type.name }} </option>
+                                </select>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-primary" @click="createComponent()">Valider</button>
                     </div>
                 </div>
             </div>
@@ -251,6 +258,9 @@ export default {
             ],
             comments: [],
             logs:[],
+            components: [],
+            component_types: [],
+            new_component: {},
             log:{
                 user_id:'',
                 description:'',
@@ -287,10 +297,44 @@ export default {
                 this.loadingData = false
             })
         },
+
+        getComponentTypes(){
+            this.loadingData = true
+            axios.get("/api/component_types")
+            .then(response => {
+                this.component_types = response.data
+                this.loadingData = false
+            })
+        },
+
+        getComponents() {
+            this.loadingData = true
+            axios.get("/api/components")
+            .then(response => {
+                this.components = response.data
+                this.loadingData = false
+            })
+        },
+
+        createComponent() {
+            this.loadingData = true
+
+            axios.post("/api/component", this.new_component)
+            .then(response => {
+                this.components.push(response.data)
+                $("#AddComposant").modal("hide");
+                this.$noty.success("Création réussite")
+                this.new_component = {}
+                this.loadingData = false
+            })
+        }
     },
     
     mounted() {
         this.getLogs()
+        this.getComponents()
+        this.getComponentTypes()
+
         this.loadingData = true
         axios.get("https://jsonplaceholder.typicode.com/comments")
         .then(response => {
