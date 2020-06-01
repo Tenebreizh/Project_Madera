@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
+use App\Models\Component;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
@@ -14,7 +15,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::all();
+        $modules = Module::with('components')->get();
 
         return $modules;
     }
@@ -89,5 +90,23 @@ class ModuleController extends Controller
             "message" => "Module successfully deleted"
         ], 
         200);
+    }
+
+    public function addComponent(Request $request, Module $module)
+    {
+        $component = Component::find($request->component_id);
+
+        $module->components()->attach($component);
+
+        return $module->components;
+    }
+
+    public function deleteComponent(Request $request, Module $module)
+    {
+        // $component = Component::find($request->component_id);
+
+        // $module->components()->detach($request->component_id);
+
+        return $module->components;
     }
 }

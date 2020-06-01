@@ -50,7 +50,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="famcomps" :columns="columnsComponents" :actions="actionsFamComp" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="famcomps" :columns="columnsFamComponents" :actions="actionsFamComp" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddFamCompLabel">Ajout d'une famille de composant</h5>
+                        <h5 class="modal-title" id="AddFamCompLabel">Famille de composant</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -278,7 +278,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="AddModuleLabel">Ajout d'une huisserie</h5>
+                        <h5 class="modal-title" id="AddModuleLabel">Module</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -287,26 +287,41 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference3" name="reference">
+                                <input type="text" class="form-control" id="reference3" name="reference" v-model="modulee.name">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description3"></textarea>
-                            </div>
-                            <div class="col form-group">
-                                <label for="tva">TVA:</label>
-                                <input type="text" class="form-control" id="tva" name="tva">
+                                <textarea name="description" class="form-control" id="description" v-model="modulee.description"></textarea>
                             </div>
                             <div class="col form-group">
                                 <label for="price">Prix:</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="price">
+                                    <input type="number" class="form-control" id="price" v-model="modulee.price">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="price">€</span>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
+                        <hr>
+
+                        <form>
+                            <div class="col form-group">
+                                <label for="city">Composants:</label>
+                                <select class="form-control" v-model='add_component'>
+                                    <option v-for="(component,key) in components" :value="component" :key="key"> {{ component.name }} </option>
+                                </select>
+                                <br>
+                                <button type="button" class="btn btn-success" @click="addComponentToModule()"> Ajouter composant </button>
+                            </div>
+                        </form>
+
+                        <hr>
+
+                        <h5 class="modal-title" id="AddModuleLabel">Composants</h5>
+                        <br>
+                        <DataTable :data="modulee.components" :columns="columnsComponents" :actions="actionsComponent" :index="false" :loading="loadingData"></DataTable>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Valider</button>
@@ -394,9 +409,13 @@ export default {
                 {name: "window_frame",      th: "Qualité huisserie"},
                 {name: "rule",              th: "Règles"},
             ],
-            columnsComponents: [
+            columnsFamComponents: [
                 {name: "name",              th: "Nom de la famille"},
                 {name: "description",       th: "Description"},
+            ],
+            columnsComponents: [
+                {name: "name", th: "Name"},
+                {name: "description", th: "Description"},
             ],
             columnSuppliers: [
                 {name: "firstname", th: "Nom"},
@@ -422,7 +441,6 @@ export default {
                 {name: "description", th: "Description"},
                 {name: "suppliers", th: "Fournisseur"},
             ],
-
             comments: [],
             ranges:[],
             range:{
@@ -435,7 +453,6 @@ export default {
                 reference:'',
                 rule:'',
             },
-
             famcomps:[],
             famcomp:{
                 name:'',
@@ -455,12 +472,10 @@ export default {
                 email:'',
             },
             modules:[],
-            module:{
-
+            modulee:{
             },
             articles:[],
             article:{
-
             },
             external_finitions:[],
             external_finition:{
@@ -480,14 +495,12 @@ export default {
                 description:'',
                 reference:''
             },
-
             windowFrames:[],
             windowFrame:{
                 label:'',
                 description:'',
                 reference:''
             },
-
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
@@ -539,7 +552,7 @@ export default {
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     this.edit=true;
-                    this.module = this.modules[index];
+                    this.modulee = this.modules[index];
                     $("#AddModule").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
@@ -567,11 +580,51 @@ export default {
                         // this.dele(row.id)
                     }
                 }},
-            ]
+            ],
+            actionsComponent: [
+                {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
+                    if(confirm("Voulez vous supprimer ce module ?")){
+                        this.deleteComponentToModule(row.id)
+                    }
+                }},
+            ],
+            components: [],
+            add_component: null,
         }
     },
 
     methods:{
+        // Data
+        getComponents() {
+            this.loadingData = true
+            axios.get("/api/components")
+            .then(response => {
+                this.components = response.data
+                this.loadingData = false
+            })
+        },
+
+        addComponentToModule() {
+            this.loadingData = true
+            axios.post("/api/module/" + this.modulee.id + "/component", {component_id: this.add_component.id})
+            .then(response => {
+                this.modulee.components = response.data 
+                this.loadingData = false
+            })
+        },
+
+        deleteComponentToModule(id) {
+            // console.log(id)
+            this.loadingData = true
+            axios.delete("/api/module/" + this.modulee.id + "/component", {component_id: id})
+            .then(response => {
+                this.modulee.components = response.data 
+                this.loadingData = false
+            })
+        },
+
+
+
 
         //Tools
         getFinitions(){
@@ -662,7 +715,7 @@ export default {
             .then(response => {
                 this.famcomps.push(response.data)
                 $("#AddFamComp").modal("hide");
-                this.$noty.success("Création réusite")
+                this.$noty.success("Création réussite")
             })
         },
 
@@ -672,7 +725,7 @@ export default {
                 $("#AddFamComp").modal("hide");
                 this.edit = false
                 this.getFamComps()
-                this.$noty.success("Mise à jour réusite")
+                this.$noty.success("Mise à jour réussite")
             })
         },
 
@@ -680,10 +733,9 @@ export default {
             axios.delete('/api/component_type/'+id)
             .then(response => {
                 this.getFamComps()
-                this.$noty.success("Suppression réusite")
+                this.$noty.success("Suppression réussite")
             })
         },
-
 
         // Fournisseurs
         getFournisseurs(){
@@ -700,7 +752,7 @@ export default {
             .then(response => {
                 this.fournisseurs.push(response.data)
                 $("#AddSupplier").modal("hide");
-                this.$noty.success("Création réusite")
+                this.$noty.success("Création réussite")
             })
         },
 
@@ -710,7 +762,7 @@ export default {
                 $("#AddSupplier").modal("hide");
                 this.edit = false;
                 this.getFournisseurs()
-                this.$noty.success("Mise à jour réusite")
+                this.$noty.success("Mise à jour réussite")
             })
         },
 
@@ -718,7 +770,7 @@ export default {
             axios.delete('/api/supplier/'+id)
             .then(response => {
                 this.getFournisseurs()
-                this.$noty.success("Suppression réusite")
+                this.$noty.success("Suppression réussite")
             })
         },
 
@@ -733,21 +785,21 @@ export default {
         },
 
         createModule(){
-            axios.post('/api/module', this.module)
+            axios.post('/api/module', this.modulee)
             .then(response => {
                 this.modules.push(response.data)
                 $("#AddModule").modal("hide");
-                this.$noty.success("Création réusite")
+                this.$noty.success("Création réussite")
             })
         },
 
         updateModule(){
-            axios.put('/api/module/'+this.module.id,this.module)
+            axios.put('/api/module/'+this.modulee.id,this.modulee)
             .then(response => {
                 $("#AddModule").modal("hide");
                 this.edit = false;
                 this.getModules()
-                this.$noty.success("Mise à jour réusite")
+                this.$noty.success("Mise à jour réussite")
             })
         },
 
@@ -793,21 +845,18 @@ export default {
             })
         },
 
-        GetAllValue(){
-            this.getFinitions(),
-            this.getinsulators(),
-            this.getCoverings(),
-            this.getwindowFrames(),
-            this.getGammes(),
-            this.getFamComps(),
-            this.getFournisseurs(),
-            this.getModules()
-        }
-
     },
 
     mounted() {
-        this.GetAllValue()
+        this.getFinitions(),
+        this.getinsulators(),
+        this.getCoverings(),
+        this.getwindowFrames(),
+        this.getGammes(),
+        this.getFamComps(),
+        this.getFournisseurs(),
+        this.getModules()
+        this.getComponents()
     }
 }
 </script>
