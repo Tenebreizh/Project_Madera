@@ -96,7 +96,9 @@ class ClientController extends Controller
         $quotations = [];
 
         foreach ($projects as $project) {
-            $quotations[$project->name] = $project->quotations;
+            if (count($project->quotations)) {
+                $quotations[] = $project->quotations[0];
+            }
         }
 
         return $quotations;
