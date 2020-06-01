@@ -316,7 +316,7 @@ export default {
                 this.Taxes =  response.data
                 this.loadingData = false
             })
-        }
+        },
 
         getComponentTypes(){
             this.loadingData = true
