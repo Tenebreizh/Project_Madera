@@ -45,7 +45,7 @@ class ComponentController extends Controller
      */
     public function show(Component $component)
     {
-        return $component->with('suppliers')->get();
+        return $component->with('suppliers')->first();
     }
 
     /**
