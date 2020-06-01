@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Supplier;
 use App\Models\Component;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::all();
+        $components = Component::with('suppliers')->get();
 
         return $components;
     }
@@ -84,5 +85,14 @@ class ComponentController extends Controller
         $componentType = $component->componentType;
 
         return $componentType;
+    }
+
+    public function addSupplier(Request $request, Component $component)
+    {
+        $supplier = Supplier::find($request->supplier_id);
+
+        $component->suppliers()->attach($supplier);
+
+        return $component->suppliers;
     }
 }

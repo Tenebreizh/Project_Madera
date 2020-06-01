@@ -176,6 +176,7 @@ Route::get('/component/{component}', 'ComponentController@show');
 Route::put('/component/{component}', 'ComponentController@update');
 Route::get('/component/{component}/componentType', 'ComponentController@componentType');
 Route::delete('/component/{component}', 'ComponentController@destroy');
+Route::post('/component/{component}/supplier', 'ComponentController@addSupplier');
 
 /*
 |--------------------------------------------------------------------------
