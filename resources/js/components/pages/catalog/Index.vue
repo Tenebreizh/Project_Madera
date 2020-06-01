@@ -92,7 +92,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
+                                <DataTable :data="articles" :columns="columnsArticles" :actions="actionsArticle" :index="false" :loading="loadingData"></DataTable>
                             </div>
                         </div>
                     </div>
@@ -439,7 +439,6 @@ export default {
             columnsArticles: [
                 {name: "name", th: "Référence"},
                 {name: "description", th: "Description"},
-                {name: "suppliers", th: "Fournisseur"},
             ],
             comments: [],
             ranges:[],
@@ -566,11 +565,12 @@ export default {
                     this.$router.push({name:"article.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    alert("Edit :" + row.id);
+                    this.$router.push({name:"article.show", params:{id:row.id}})
+
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     if(confirm("Voulez vous supprimer ce article ?")){
-                        this.deleteAricle(row.id)
+                        this.deleteArticle(row.id)
                     }
                 }},
             ],
@@ -812,16 +812,16 @@ export default {
         },
 
         //Article
-        getAricles(){
+        getArticles(){
             this.loadingData = true
-            axios.get("/api/Aricles")
+            axios.get("/api/components")
             .then(response => {
-                this.aricles = response.data
+                this.articles = response.data
                 this.loadingData = false
             })
         },
 
-        createAricle(){
+        createArticle(){
             axios.post('/api/Aricle', this.Aricle)
             .then(response => {
                 this.aricles.push(response.data)
@@ -829,7 +829,7 @@ export default {
             })
         },
 
-        updateAricle(){
+        updateArticle(){
             axios.put('/api/Aricle/'+this.Aricle.id,this.Aricle)
             .then(response => {
                 $("#AddUser").modal("hide");
@@ -838,7 +838,7 @@ export default {
             })
         },
 
-        deleteAricle(id){
+        deleteArticle(id){
             axios.delete('/api/Aricle/'+id)
             .then(response => {
                 this.getAricles()
@@ -856,7 +856,7 @@ export default {
         this.getFamComps(),
         this.getFournisseurs(),
         this.getModules()
-        this.getComponents()
+        this.getArticles()
     }
 }
 </script>

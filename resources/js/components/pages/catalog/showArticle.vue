@@ -6,17 +6,17 @@
                     <h2 class="m-2 text-center">Article</h2>
                     <div class="col form-group">
                         <label for="reference">Référence:</label>
-                        <input type="text" class="form-control" id="reference" name="reference">
+                        <input type="text" class="form-control" id="reference" name="reference" v-model="article.name">
                     </div>
                     <div class="col form-group">
                         <label for="description">Description:</label>
-                        <textarea name="description" class="form-control" id="description"></textarea>
+                        <textarea name="description" class="form-control" id="description" v-model="article.description"></textarea>
                     </div>
                     <div class="m-4">
                         <a href="#" data-toggle="modal" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
                     </div>
                     <div class="col-lg-12">
-                        <DataTable :data="comments" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
+                        <DataTable :data="fournisseurs" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
                     </div>
                 </form>
             </div>
@@ -35,13 +35,15 @@
                     <div class="modal-body">  
                         <form>
                             <div class="form-group">
-                                <label for="roles">Fournisseurs:</label>
-                                <select name="roles" class="form-control"></select>
+                                <label for="suppliers">Fournisseurs:</label>
+                                <select name="suppliers" class="form-control" v-model="Add_Supplier_Id">
+                                    <option v-for="(supplier, key) in suppliers" :value="supplier.id" :key="key"> {{ supplier.firstname }} </option>
+                                </select> 
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-primary" @click="addSuppliersArticle()">Valider</button>
                     </div>
                 </div>
             </div>
@@ -55,7 +57,39 @@ export default {
     data() {
         return {
             loadingData: false,
-            comments: [],
+            
+            article:{
+                name:'',
+                description:'',
+            },
+            fournisseurs:[],
+            fournisseur:{
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                city:'',
+                country:'',
+                phone:'',
+                fax:'',
+                email:'',
+            },
+
+            suppliers:[],
+            supplier:{
+                firstname:'',
+                lastname:'',
+                street:'',
+                street_number:'',
+                zipcode:'',
+                city:'',
+                country:'',
+                phone:'',
+                fax:'',
+                email:'',
+            },
+            Add_Supplier_Id:null,
 
             columnSuppliers: [
                 {name: "firstname", th: "Nom"},
@@ -79,13 +113,40 @@ export default {
         }
     },
 
+    methods:{
+        
+        getSuppliers(){
+            axios.get("/api/suppliers")
+            .then(response => {
+                this.suppliers = response.data
+            })
+        },
+
+        getArticle(){
+            let id = this.$route.params.id
+            this.loadingData = true
+            axios.get("/api/component/"+id)
+            .then(response => {
+                this.article = response.data
+                this.fournisseurs = response.data.suppliers
+                this.loadingData = false
+            })
+        },
+
+        addSuppliersArticle() {
+            this.loadingData = true
+            axios.post("/api/component/" + this.article.id + "/supplier", {supplier_id: this.Add_Supplier_Id})
+            .then(response => {
+                this.fournisseurs = response.data 
+                this.loadingData = false
+            })
+        },
+
+    },
+
     mounted() {
-        this.loadingData = true
-        axios.get("https://jsonplaceholder.typicode.com/comments")
-        .then(response => {
-            this.comments = response.data
-            this.loadingData = false
-        })
+        this.getArticle()
+        this.getSuppliers()
     }
 
 }
