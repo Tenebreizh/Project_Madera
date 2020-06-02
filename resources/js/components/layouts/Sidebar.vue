@@ -27,7 +27,7 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
                 <li class="nav-item" v-for="(nav, key) in navs" :key="key" :class="{ 'active' : nav.name.includes($route.name.split('.')[0]) }">
-                    <router-link :to="{name: nav.name}" class="nav-link">
+                    <router-link :to="{name: nav.name}" class="nav-link" v-if="user.user_type_id && isAuthorizedNav(rights, user.user_type_id, nav.name)">
                         <i :class="nav.icon"></i>
                         <b>{{ nav.title }}</b>
                     </router-link>
@@ -48,9 +48,44 @@ export default {
                 {name: 'project', title: 'Projet', icon: 'fas fa-receipt'},
                 {name: 'customer', title: 'Clients', icon: 'fas fa-user-tag'},
                 {name: 'user', title: 'Utilisateurs', icon: 'fas fa-users'},
-            ]
+            ],
+            user: {},
+            rights: {
+              16: ['home', 'project', 'catalog', 'customer'], // Commercial
+              18: ['home', 'project', 'catalog', 'configuration'], // Bureau d'étude
+              20: ['home'], // Client
+              22: ['home', 'project', 'client'], // Comptabilité
+              24: ['home', 'catalog', 'configuration', 'project', 'customer', 'user'], // Admin
+              0: ['home', 'catalog', 'configuration', 'project', 'customer', 'user'] // Generic
+            },
         }
     },
+
+    methods: {
+      getUser() {
+        axios.get('/api/user')
+        .then(response => {
+          this.user = response.data
+        })
+      },
+
+      isAuthorizedNav(rights, type, item) {
+        if (type < 16 || type > 24) {
+          return true
+        }
+        else if (rights[type].includes(item)) {
+          return true
+        }
+        else {
+          return false
+        }
+
+      }
+    },
+
+    mounted() {
+      this.getUser()
+    }
 }
 </script>
 
