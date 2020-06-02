@@ -71,7 +71,7 @@ const routes = [
 
     { name: "quotation.show", path: '/devis/:id', component: ShowDevis},
 
-    { name: "article.show", path: '/article/:id', component: ArticleShow},
+    { name: "article.show", path: '/article/:id/:edit', component: ArticleShow},
 
     { name: "isolator.show", path: '/isolator/:id', component: IsolatorShow},
 

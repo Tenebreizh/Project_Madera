@@ -344,51 +344,27 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference4" name="reference">
+                                <input type="text" class="form-control" id="reference4" name="reference" v-model="article.name">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description4"></textarea>
+                                <textarea name="description" class="form-control" id="description4" v-model="article.description"></textarea>
                             </div>
-                            <div class="m-4">
-                                <a href="#" data-toggle="modal" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
-                            </div>
-                            <div class="col-lg-12">
-                                <DataTable :data="comments" :columns="ModalAddSuppliers"  :actions="actionsSuppliers" :index="false" :loading="loadingData"></DataTable>
+                            <div class="col form-group">
+                                <label for="roles">Type d'article:</label>
+                                <select name="suppliers" class="form-control" v-model="article.component_type_id">
+                                    <option v-for="(componentType, key) in componentTypes" :value="componentType.id" :key="key"> {{ componentType.name }} </option>
+                                </select>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-primary" @click="createArticle()">Valider</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal fournisseurs -->
-        <div class="modal fade bd-example-modal-lg" id="AddSuppliers" tabindex="-1" role="dialog" aria-labelledby="AddSuppliersLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="AddSuppliersLabel">Ajout d'un fournisseur</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">  
-                        <form>
-                            <div class="form-group">
-                                <label for="roles">Fournisseurs:</label>
-                                <select name="roles" class="form-control"></select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </template>
@@ -475,6 +451,9 @@ export default {
             },
             articles:[],
             article:{
+                name:'',
+                description:'',
+                component_type_id:''
             },
             external_finitions:[],
             external_finition:{
@@ -500,12 +479,18 @@ export default {
                 description:'',
                 reference:''
             },
+
+            componentTypes:[],
+            componentType:{
+                name:'',
+                description:''
+            },
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    this.edit=true;
+                    this.edit=true; 
                     this.range = this.ranges[index];
                     $("#AddGamme").modal("show");
                 }},
@@ -562,11 +547,10 @@ export default {
             ],
             actionsArticle: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
-                    this.$router.push({name:"article.show", params:{id:row.id}})
+                    this.$router.push({name:"article.show", params:{id:row.id, edit:false}})
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
-                    this.$router.push({name:"article.show", params:{id:row.id}})
-
+                    this.$router.push({name:"article.show", params:{id:row.id, edit:true}})
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
                     if(confirm("Voulez vous supprimer ce article ?")){
@@ -622,9 +606,6 @@ export default {
                 this.loadingData = false
             })
         },
-
-
-
 
         //Tools
         getFinitions(){
@@ -822,28 +803,36 @@ export default {
         },
 
         createArticle(){
-            axios.post('/api/Aricle', this.Aricle)
+            axios.post('/api/component', this.article)
             .then(response => {
-                this.aricles.push(response.data)
-                $("#AddUser").modal("hide");
+                this.articles.push(response.data)
+                $("#AddArticle").modal("hide");
+                this.$noty.success("Création réusite")
             })
         },
 
         updateArticle(){
-            axios.put('/api/Aricle/'+this.Aricle.id,this.Aricle)
+            axios.put('/api/component/'+this.Aricle.id,this.Aricle)
             .then(response => {
-                $("#AddUser").modal("hide");
+                $("#AddArticle").modal("hide");
                 this.edit = false;
-                this.getAricles()
+                this.getarticles()
             })
         },
 
         deleteArticle(id){
-            axios.delete('/api/Aricle/'+id)
+            axios.delete('/api/component/'+id)
             .then(response => {
-                this.getAricles()
+                this.getarticles()
             })
         },
+
+        getComponentType(){
+            axios.get('/api/component_types')
+            .then(response => {
+                this.componentTypes = response.data
+            })
+        }
 
     },
 
@@ -855,8 +844,9 @@ export default {
         this.getGammes(),
         this.getFamComps(),
         this.getFournisseurs(),
-        this.getModules()
-        this.getArticles()
+        this.getModules(),
+        this.getArticles(),
+        this.getComponentType()
     }
 }
 </script>
