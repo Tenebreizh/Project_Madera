@@ -13,10 +13,13 @@
                         <textarea name="description" class="form-control" id="description" v-model="article.description"></textarea>
                     </div>
                     <div class="m-4">
-                        <a href="#" data-toggle="modal" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
+                        <a href="#" data-toggle="modal" v-if="this.edit" data-target="#AddSuppliers" class="button"><i class="fa fa-plus"></i>Ajouter un fournisseur</a>
                     </div>
                     <div class="col-lg-12">
                         <DataTable :data="fournisseurs" :columns="columnSuppliers" :actions="actionsFournisseur" :index="false" :loading="loadingData"></DataTable>
+                    </div>
+                    <div class="col-12 text-right">
+                        <button type="button" class="btn btn-primary btn-lg">Valider</button>
                     </div>
                 </form>
             </div>
@@ -90,7 +93,7 @@ export default {
                 email:'',
             },
             Add_Supplier_Id:null,
-
+            edit:false,
             columnSuppliers: [
                 {name: "firstname", th: "Nom"},
                 {name: "lastname", th: "Prénom"},
@@ -139,9 +142,18 @@ export default {
             })
         },
 
+        isEdit(){
+            if (this.$route.params.edit == true ){
+                this.edit = true
+            }else{
+                this.edit = false
+            }
+        }
+
     },
 
     mounted() {
+        this.isEdit()
         this.getArticle()
         this.getSuppliers()
     }
