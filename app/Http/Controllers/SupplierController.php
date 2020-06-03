@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class SupplierController extends Controller
 {
+    private $table = "suppliers";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +48,14 @@ class SupplierController extends Controller
             'phone' => $request->phone,
             'fax' => $request->fax,
             'email' => $request->email
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un fournisseur",
+            "table" => $this->table,
         ]);
 
         return $supplier;
@@ -73,8 +91,15 @@ class SupplierController extends Controller
         $supplier->phone = $request->phone;
         $supplier->fax = $request->fax;
         $supplier->email = $request->email;
-
         $supplier->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un fournisseur",
+            "table" => $this->table,
+        ]);
 
         return $supplier;
     }
@@ -85,9 +110,17 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Request $request, Supplier $supplier)
     {
         $supplier->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un fournisseur",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Supplier successfully deleted"
