@@ -54,7 +54,8 @@ export default {
         return {
             user: {},
             roles: [],
-            edit:false
+            edit:false,
+            connect_user:{}
         }
     },
 
@@ -81,7 +82,7 @@ export default {
 
         updateUser() {
             let id = this.$route.params.id
-
+            Object.assign(this.user, {'user_id': this.connect_user.id})
             axios.put('/api/user/' + id, this.user)
             .then(response => {
                 this.$noty.success("User updated !")
@@ -93,13 +94,21 @@ export default {
             .then(response => {
                 this.roles = response.data
             })
-        }
+        },
+
+        getUserConnect() {
+            axios.get('/api/user')
+            .then(response => {
+                this.connect_user = response.data
+            })
+        },
     },
 
     mounted() {
         this.getUser()
         this.getRoles()
         this.getUserConnected()
+        this.getUserConnect()
     }
 }
 </script>

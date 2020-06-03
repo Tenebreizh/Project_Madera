@@ -464,7 +464,7 @@ export default {
         },
 
         createQuotationLine(quotationLine){
-            this.quotationLines.push({'user_id': this.connect_user.id})
+            Object.assign(this.quotationLine, {'user_id': this.connect_user.id})
             axios.post('/api/quotationLine', quotationLine)
             .then(response => {
                 this.quotationLines.push(response.data)
@@ -476,7 +476,7 @@ export default {
         createModuleCustom(){
             let that = this
             this.customModule.commercial_marge = this.UnModule.marge_enterprise
-            this.customModule.push({'user_id': this.connect_user.id})
+            Object.assign(this.customModule, {'user_id': this.connect_user.id})
             axios.post('/api/customModule', this.customModule)
             .then(function(response) {
                 that.quotationLine.custom_module_id = response.data.id
@@ -501,7 +501,7 @@ export default {
 
         UpdateQuotationLine(){
             this.quotationLine.price = this.customModule.price
-            this.quotationLine.push({'user_id': this.connect_user.id})
+            Object.assign(this.quotationLine, {'user_id': this.connect_user.id})
             axios.put('/api/quotationLine/'+this.quotationLine.id,this.quotationLine)
             .then(response => {
                 $("#AddQuotationLine").modal("hide")
@@ -511,7 +511,7 @@ export default {
         },
 
         updateCustomModule(){
-            this.customModule.push({'user_id': this.connect_user.id})
+            Object.assign(this.customModule, {'user_id': this.connect_user.id})
             axios.put('/api/customModule/'+this.customModule.id,this.customModule)
             .then(response => {
                 this.getCustomModule(response.data.id)
@@ -525,7 +525,7 @@ export default {
         },
 
         deleteQuotationLine(id){
-            axios.delete('/api/quotationLine/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/quotationLine/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getQuotationLines()
                 
@@ -533,7 +533,7 @@ export default {
         },
 
         deleteCustomModule(id){
-            axios.delete('/api/customModule/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/customModule/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
             })
         },

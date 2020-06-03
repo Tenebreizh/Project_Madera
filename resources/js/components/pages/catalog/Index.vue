@@ -657,7 +657,7 @@ export default {
         },
 
         createGamme(){
-            this.range.push({'user_id': this.connect_user.id})
+            Object.assign(this.range, {'user_id': this.connect_user.id})
             axios.post('/api/range', this.range)
             .then(response => {
                 this.ranges.push(response.data)
@@ -667,7 +667,7 @@ export default {
         },
 
         updateGamme(){
-            this.range.push({'user_id': this.connect_user.id})
+            Object.assign(this.range, {'user_id': this.connect_user.id})
             axios.put('/api/range/'+this.range.id,this.range)
             .then(response => {
                 $("#AddGamme").modal("hide");
@@ -678,7 +678,7 @@ export default {
         },
 
         deleteGamme(id){
-            axios.delete('/api/range/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/range/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getGammes()
                 this.$noty.success("Suppression réusite")
@@ -696,7 +696,7 @@ export default {
         },
 
         createFamComp(){
-            this.famcomp.push({'user_id': this.connect_user.id})
+            Object.assign(this.famcomp, {'user_id': this.connect_user.id})
             axios.post('/api/component_type', this.famcomp)
             .then(response => {
                 this.famcomps.push(response.data)
@@ -706,7 +706,7 @@ export default {
         },
 
         updateFamComp(){
-            this.famcomp.push({'user_id': this.connect_user.id})
+            Object.assign(this.famcomp, {'user_id': this.connect_user.id})
             axios.put('/api/component_type/'+this.famcomp.id,this.famcomp)
             .then(response => {
                 $("#AddFamComp").modal("hide");
@@ -717,7 +717,7 @@ export default {
         },
 
         deleteFamComp(id){
-            axios.delete('/api/component_type/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/component_type/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getFamComps()
                 this.$noty.success("Suppression réussite")
@@ -735,7 +735,7 @@ export default {
         },
 
         createFournisseur(){
-            this.fournisseur.push({'user_id': this.connect_user.id})
+            Object.assign(this.fournisseur, {'user_id': this.connect_user.id})
             axios.post('/api/supplier', this.fournisseur)
             .then(response => {
                 this.fournisseurs.push(response.data)
@@ -745,7 +745,7 @@ export default {
         },
 
         updateFournisseur(){
-            this.fournisseur.push({'user_id': this.connect_user.id})
+            Object.assign(this.fournisseur, {'user_id': this.connect_user.id})
             axios.put('/api/supplier/'+this.fournisseur.id,this.fournisseur)
             .then(response => {
                 $("#AddSupplier").modal("hide");
@@ -774,7 +774,7 @@ export default {
         },
 
         createModule(){
-            this.module.push({'user_id': this.connect_user.id})
+            Object.assign(this.module, {'user_id': this.connect_user.id})
             axios.post('/api/module', this.module)
             .then(response => {
                 this.modules.push(response.data)
@@ -784,7 +784,7 @@ export default {
         },
 
         updateModule(){
-            this.module.push({'user_id': this.connect_user.id})
+            Object.assign(this.module, {'user_id': this.connect_user.id})
             axios.put('/api/module/'+this.module.id,this.module)
             .then(response => {
                 $("#AddModule").modal("hide");
@@ -813,7 +813,7 @@ export default {
         },
 
         createArticle(){
-            this.article.push({'user_id': this.connect_user.id})
+            Object.assign(this.article, {'user_id': this.connect_user.id})
             axios.post('/api/component', this.article)
             .then(response => {
                 this.articles.push(response.data)
@@ -823,8 +823,8 @@ export default {
         },
 
         updateArticle(){
-            this.article.push({'user_id': this.connect_user.id})
-            axios.put('/api/component/'+this.Aricle.id,this.Aricle)
+            Object.assign(this.article, {'user_id': this.connect_user.id})
+            axios.put('/api/component/'+this.article.id,this.article)
             .then(response => {
                 $("#AddArticle").modal("hide");
                 this.edit = false;
@@ -847,13 +847,10 @@ export default {
         },
 
         getUser() {
-            if (window.localStorage.token) {
-                this.isUser = true
-                axios.get('/api/user')
-                .then(response => {
-                    this.connect_user = response.data
-                })
-            }
+            axios.get('/api/user')
+            .then(response => {
+                this.connect_user = response.data
+            })
         },
 
     },

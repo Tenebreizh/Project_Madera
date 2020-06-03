@@ -49,13 +49,7 @@
 export default {
     data() {
         return {
-            log:{
-                user_id:'',
-                description:'',
-                action_id:'',
-                name:'',
-                table:''
-            },
+            log:{},
         }
     },
 
@@ -72,7 +66,7 @@ export default {
     },
 
     mounted(){
-        // this.getLog()
+        this.getLog()
     }
 }
 </script>

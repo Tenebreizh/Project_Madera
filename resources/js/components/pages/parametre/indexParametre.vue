@@ -339,7 +339,7 @@ export default {
 
         createComponent() {
             this.loadingData = true
-            this.components.push({'user_id': this.connect_user.id})
+            Object.assign(this.new_component, {'user_id': this.connect_user.id})
             axios.post("/api/component", this.new_component)
             .then(response => {
                 this.components.push(response.data)
@@ -351,13 +351,10 @@ export default {
         },
 
         getUser() {
-            if (window.localStorage.token) {
-                this.isUser = true
-                axios.get('/api/user')
-                .then(response => {
-                    this.connect_user = response.data
-                })
-            }
+            axios.get('/api/user')
+            .then(response => {
+                this.connect_user = response.data
+            })
         },
     },
     

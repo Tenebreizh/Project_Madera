@@ -83,7 +83,7 @@ export default {
             if(confirm("Voulez-vous créer un nouveau devis ?")){
                 this.quotation.project_id = this.$route.params.id
                 this.quotation.active = "0"
-                this.quotations.push({'user_id': this.connect_user.id})
+                Object.assign(this.quotation, {'user_id': this.connect_user.id})
                 axios.post('/api/quotation', this.quotation)
                 .then(response => {
                     this.quotations.push(response.data)
@@ -92,7 +92,7 @@ export default {
             }
         },
         deleteQuotation(id){
-            axios.delete('/api/quotation/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/quotation/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getProjectQuotation()
                 this.$noty.success("Suppression réusite")
@@ -100,13 +100,10 @@ export default {
         },
 
         getUser() {
-            if (window.localStorage.token) {
-                this.isUser = true
-                axios.get('/api/user')
-                .then(response => {
-                    this.connect_user = response.data
-                })
-            }
+            axios.get('/api/user')
+            .then(response => {
+                this.connect_user = response.data
+            })
         },
     },
 

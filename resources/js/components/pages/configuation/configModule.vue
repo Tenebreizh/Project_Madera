@@ -215,7 +215,7 @@ export default {
         },
 
         deleteModule(id){
-            axios.delete('/api/module/'+id, {'user_id': this.connect_user.id})
+            axios.delete('/api/module/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getModules()
             })
