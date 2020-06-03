@@ -324,7 +324,8 @@
                         <DataTable :data="module.components" :columns="columnsComponents" :actions="actionsComponent" :index="false" :loading="loadingData"></DataTable>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" @click="createModule()">Valider</button>
+                        <button type="button" v-if="!edit" class="btn btn-primary" @click="createModule()">Valider</button>
+                        <button type="button" v-else class="btn btn-primary" @click="updateModule()">Modifier</button>
                     </div>
                 </div>
             </div>
@@ -485,6 +486,7 @@ export default {
                 name:'',
                 description:''
             },
+            connect_user:{},
             actionsGamme: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"gamme.show", params:{id:row.id}})
@@ -655,6 +657,7 @@ export default {
         },
 
         createGamme(){
+            this.range.push({'user_id': this.connect_user.id})
             axios.post('/api/range', this.range)
             .then(response => {
                 this.ranges.push(response.data)
@@ -664,6 +667,7 @@ export default {
         },
 
         updateGamme(){
+            this.range.push({'user_id': this.connect_user.id})
             axios.put('/api/range/'+this.range.id,this.range)
             .then(response => {
                 $("#AddGamme").modal("hide");
@@ -674,7 +678,7 @@ export default {
         },
 
         deleteGamme(id){
-            axios.delete('/api/range/'+id)
+            axios.delete('/api/range/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getGammes()
                 this.$noty.success("Suppression réusite")
@@ -692,6 +696,7 @@ export default {
         },
 
         createFamComp(){
+            this.famcomp.push({'user_id': this.connect_user.id})
             axios.post('/api/component_type', this.famcomp)
             .then(response => {
                 this.famcomps.push(response.data)
@@ -701,6 +706,7 @@ export default {
         },
 
         updateFamComp(){
+            this.famcomp.push({'user_id': this.connect_user.id})
             axios.put('/api/component_type/'+this.famcomp.id,this.famcomp)
             .then(response => {
                 $("#AddFamComp").modal("hide");
@@ -711,7 +717,7 @@ export default {
         },
 
         deleteFamComp(id){
-            axios.delete('/api/component_type/'+id)
+            axios.delete('/api/component_type/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getFamComps()
                 this.$noty.success("Suppression réussite")
@@ -729,6 +735,7 @@ export default {
         },
 
         createFournisseur(){
+            this.fournisseur.push({'user_id': this.connect_user.id})
             axios.post('/api/supplier', this.fournisseur)
             .then(response => {
                 this.fournisseurs.push(response.data)
@@ -738,6 +745,7 @@ export default {
         },
 
         updateFournisseur(){
+            this.fournisseur.push({'user_id': this.connect_user.id})
             axios.put('/api/supplier/'+this.fournisseur.id,this.fournisseur)
             .then(response => {
                 $("#AddSupplier").modal("hide");
@@ -748,7 +756,7 @@ export default {
         },
 
         deleteFournisseur(id){
-            axios.delete('/api/supplier/'+id)
+            axios.delete('/api/supplier/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getFournisseurs()
                 this.$noty.success("Suppression réussite")
@@ -766,6 +774,7 @@ export default {
         },
 
         createModule(){
+            this.module.push({'user_id': this.connect_user.id})
             axios.post('/api/module', this.module)
             .then(response => {
                 this.modules.push(response.data)
@@ -775,6 +784,7 @@ export default {
         },
 
         updateModule(){
+            this.module.push({'user_id': this.connect_user.id})
             axios.put('/api/module/'+this.module.id,this.module)
             .then(response => {
                 $("#AddModule").modal("hide");
@@ -785,7 +795,7 @@ export default {
         },
 
         deleteModule(id){
-            axios.delete('/api/module/'+id)
+            axios.delete('/api/module/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getModules()
                 this.$noty.success("Suppression réusite")
@@ -803,6 +813,7 @@ export default {
         },
 
         createArticle(){
+            this.article.push({'user_id': this.connect_user.id})
             axios.post('/api/component', this.article)
             .then(response => {
                 this.articles.push(response.data)
@@ -812,6 +823,7 @@ export default {
         },
 
         updateArticle(){
+            this.article.push({'user_id': this.connect_user.id})
             axios.put('/api/component/'+this.Aricle.id,this.Aricle)
             .then(response => {
                 $("#AddArticle").modal("hide");
@@ -821,7 +833,7 @@ export default {
         },
 
         deleteArticle(id){
-            axios.delete('/api/component/'+id)
+            axios.delete('/api/component/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getarticles()
             })
@@ -832,11 +844,22 @@ export default {
             .then(response => {
                 this.componentTypes = response.data
             })
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
 
     },
 
     mounted() {
+        this.getUser(),
         this.getFinitions(),
         this.getinsulators(),
         this.getCoverings(),

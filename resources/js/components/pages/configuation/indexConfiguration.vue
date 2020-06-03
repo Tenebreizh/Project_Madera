@@ -261,7 +261,7 @@ export default {
                 description:'',
                 reference:''
             },
-
+            connect_user:{},
             actionsFinitions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-1", action: (row, index) => {
                     this.$router.push({ name: "ExternalFinition.show", params: {'id': row.id} })
@@ -343,6 +343,7 @@ export default {
 
         createFinition(){
             this.external_finition.label =  this.external_finition.reference.toLowerCase()
+            this.external_finition.push({'user_id': this.connect_user.id})
             axios.post('/api/externalFinition', this.external_finition)
             .then(response => {
                 this.external_finitions.push(response.data)
@@ -352,6 +353,7 @@ export default {
         },
 
         updateFinition(){
+            this.external_finition.push({'user_id': this.connect_user.id})
             axios.put('/api/externalFinition/'+this.external_finition.id,this.external_finition)
             .then(response => {
                 $("#AddExternal_finition").modal("hide");
@@ -362,7 +364,7 @@ export default {
         },
 
         deleteFinition(id){
-            axios.delete('/api/externalFinition/'+id)
+            axios.delete('/api/externalFinition/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getFinitions()
                 this.$noty.success("Suppression réusite")
@@ -382,6 +384,7 @@ export default {
 
         createinsulator(){
             this.insulator.label =  this.insulator.reference.toLowerCase()
+            this.insulator.push({'user_id': this.connect_user.id})
             axios.post('/api/insulator', this.insulator)
             .then(response => {
                 this.insulators.push(response.data)
@@ -391,6 +394,7 @@ export default {
         },
 
         updateinsulator(){
+            this.insulator.push({'user_id': this.connect_user.id})
             axios.put('/api/insulator/'+this.insulator.id,this.insulator)
             .then(response => {
                 $("#AddIsolation").modal("hide");
@@ -401,7 +405,7 @@ export default {
         },
 
         deleteinsulator(id){
-            axios.delete('/api/insulator/'+id)
+            axios.delete('/api/insulator/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getinsulators()
                 this.$noty.success("Suppression réusite")
@@ -419,6 +423,7 @@ export default {
         },
 
         createCovering(){
+            this.covering.push({'user_id': this.connect_user.id})
             this.covering.label =  this.covering.reference.toLowerCase()
             axios.post('/api/covering', this.covering)
             .then(response => {
@@ -429,6 +434,7 @@ export default {
         },
 
         updateCovering(){
+            this.covering.push({'user_id': this.connect_user.id})
             axios.put('/api/covering/'+this.covering.id,this.covering)
             .then(response => {
                 $("#AddCoverings").modal("hide");
@@ -439,7 +445,7 @@ export default {
         },
 
         deleteCovering(id){
-            axios.delete('/api/covering/'+id)
+            axios.delete('/api/covering/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getCoverings()
                 this.$noty.success("Suppression réusite")
@@ -457,6 +463,7 @@ export default {
         },
 
         createwindowFrame(){
+            this.windowFrame.push({'user_id': this.connect_user.id})
             this.windowFrame.label =  this.windowFrame.reference.toLowerCase()
             axios.post('/api/windowFrame', this.windowFrame)
             .then(response => {
@@ -467,6 +474,7 @@ export default {
         },
 
         updatewindowFrame(){
+            this.windowFrame.push({'user_id': this.connect_user.id})
             axios.put('/api/windowFrame/'+this.windowFrame.id,this.windowFrame)
             .then(response => {
                 $("#AddWindowFrame").modal("hide");
@@ -477,7 +485,7 @@ export default {
         },
 
         deletewindowFrame(id){
-            axios.delete('/api/windowFrame/'+id)
+            axios.delete('/api/windowFrame/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getwindowFrames()
                 this.$noty.success("Suppression réusite")
@@ -490,12 +498,23 @@ export default {
             this.getinsulators(),
             this.getCoverings(),
             this.getwindowFrames()
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
 
     },
 
 
     mounted() {
+        this.getUser()
         this.getAllValue()
     },
 }

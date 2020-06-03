@@ -280,6 +280,7 @@ export default {
                 description:'',
                 rate:'',
             },
+            connect_user:{},
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     alert("See: " + row.id);
@@ -338,7 +339,7 @@ export default {
 
         createComponent() {
             this.loadingData = true
-
+            this.components.push({'user_id': this.connect_user.id})
             axios.post("/api/component", this.new_component)
             .then(response => {
                 this.components.push(response.data)
@@ -347,15 +348,26 @@ export default {
                 this.new_component = {}
                 this.loadingData = false
             })
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
     },
     
     mounted() {
-        this.getLogs()
-        this.GetTaxes()
+        this.getUser(),
+        this.getLogs(),
+        this.GetTaxes(),
 
-        this.getComponents()
-        this.getComponentTypes()
+        this.getComponents(),
+        this.getComponentTypes(),
 
         this.loadingData = true
         axios.get("https://jsonplaceholder.typicode.com/comments")

@@ -51,6 +51,7 @@ export default {
                 project_id:'',
                 active:'',
             },
+            connect_user:{},
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
                     this.$router.push({name:"quotation.show", params:{id:row.id}})
@@ -82,6 +83,7 @@ export default {
             if(confirm("Voulez-vous créer un nouveau devis ?")){
                 this.quotation.project_id = this.$route.params.id
                 this.quotation.active = "0"
+                this.quotations.push({'user_id': this.connect_user.id})
                 axios.post('/api/quotation', this.quotation)
                 .then(response => {
                     this.quotations.push(response.data)
@@ -90,15 +92,26 @@ export default {
             }
         },
         deleteQuotation(id){
-            axios.delete('/api/quotation/'+id)
+            axios.delete('/api/quotation/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getProjectQuotation()
                 this.$noty.success("Suppression réusite")
             })
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
     },
 
     mounted() {
+        this.getUser()
         this.getProjectQuotation()
     }
 }
