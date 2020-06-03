@@ -161,6 +161,7 @@ export default {
         },
 
         createProject(){
+            this.project.push({'user_id': this.connect_user.id})
             axios.post('/api/project', this.project)
             .then(response => {
                 this.projects.push(response.data)
@@ -170,6 +171,7 @@ export default {
         },
 
         updateProject(){
+            this.project.push({'user_id': this.connect_user.id})
             axios.put('/api/project/'+this.project.id,this.project)
             .then(response => {
                 $("#AddProject").modal("hide");
@@ -180,7 +182,7 @@ export default {
         },
 
         deleteProject(id){
-            axios.delete('/api/project/'+id)
+            axios.delete('/api/project/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getProjects()
                 this.$noty.success("Suppression réusite")
@@ -202,10 +204,21 @@ export default {
                 this.users = response.data
                 this.loadingData = false
             })
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
     },
 
     mounted() {
+        this.getUser(),
         this.getProjects(),
         this.getClients(),
         this.GetUsers()

@@ -208,6 +208,7 @@ export default {
                 password:'',
                 user_type_id:''
             },
+            connect_user:{},
             roles: [],
             role:{
                 name:'',
@@ -263,6 +264,7 @@ export default {
         },
 
         createUser(){
+            this.user.push({'user_id': this.connect_user.id})
             axios.post('/api/user', this.user)
             .then(response => {
                 this.users.push(response.data)
@@ -272,6 +274,7 @@ export default {
         },
 
         updateUser(){
+            this.user.push({'user_id': this.connect_user.id})
             axios.put('/api/user/'+this.user.id,this.user)
             .then(response => {
                 $("#AddUser").modal("hide");
@@ -282,7 +285,7 @@ export default {
         },
 
         deleteUser(id){
-            axios.delete('/api/user/'+id)
+            axios.delete('/api/user/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.GetUsers()
                 this.$noty.success("Suppression réusite")
@@ -299,6 +302,7 @@ export default {
         },
 
         createRole(){
+            this.role.push({'user_id': this.connect_user.id})
             axios.post('/api/userType', this.role)
             .then(response => {
                 this.roles.push(response.data)
@@ -308,6 +312,7 @@ export default {
         },
 
         updateRole(){
+            this.role.push({'user_id': this.connect_user.id})
             axios.put('/api/userType/'+this.role.id,this.role)
             .then(response => {
                 $("#AddRole").modal("hide");
@@ -318,7 +323,7 @@ export default {
         },
 
         deleteRole(id){
-            axios.delete('/api/userType/'+id)
+            axios.delete('/api/userType/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.GetRoles()
                 this.$noty.success("Suppression réusite")
@@ -337,11 +342,22 @@ export default {
 
         NoDeleteUserLog(){
             $("#Addlog").modal("hide");
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
 
     },
 
     mounted() {
+        this.getUser(),
         this.GetUsers(),
         this.GetRoles()
     }

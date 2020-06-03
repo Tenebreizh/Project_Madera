@@ -215,15 +215,26 @@ export default {
         },
 
         deleteModule(id){
-            axios.delete('/api/module/'+id)
+            axios.delete('/api/module/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getModules()
             })
         },
 
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
+
     },
 
     mounted() {
+        this.getUser()
         this.getModules()
     }
 }

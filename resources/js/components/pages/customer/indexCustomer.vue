@@ -157,6 +157,7 @@ export default {
         },
 
         createClient(){
+            this.client.push({'user_id': this.connect_user.id})
             axios.post('/api/client', this.client)
             .then(response => {
                 this.clients.push(response.data)
@@ -166,6 +167,7 @@ export default {
         },
 
         updateClient(){
+            this.client.push({'user_id': this.connect_user.id})
             axios.put('/api/client/'+this.client.id,this.client)
             .then(response => {
                 $("#AddCustomer").modal("hide");
@@ -175,7 +177,7 @@ export default {
         },
 
         deleteClient(id){
-            axios.delete('/api/client/'+id)
+            axios.delete('/api/client/'+id, {'user_id': this.connect_user.id})
             .then(response => {
                 this.getClients()
                 this.$noty.success("Suppression réusite")
@@ -185,7 +187,18 @@ export default {
         showModalCustomer(){
             this.edit = false;
             $("#AddCustomer").modal("show");
-        }
+        },
+
+        getUser() {
+            if (window.localStorage.token) {
+                this.isUser = true
+                axios.get('/api/user')
+                .then(response => {
+                    this.connect_user = response.data
+                })
+            }
+        },
+
     },
 
     mounted() {
