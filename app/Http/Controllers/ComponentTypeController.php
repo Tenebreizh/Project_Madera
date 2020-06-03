@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ComponentType;
+use App\Models\Action;
 use Illuminate\Http\Request;
+use App\Models\ComponentType;
+use App\Http\Controllers\LogController;
 
 class ComponentTypeController extends Controller
 {
+    private $table = "component_types";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +40,14 @@ class ComponentTypeController extends Controller
         $type = ComponentType::create([
             'name' => $request->name,
             'description' => $request->description,
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'une famille de composant",
+            "table" => $this->table,
         ]);
 
         return $type;
@@ -59,6 +77,14 @@ class ComponentTypeController extends Controller
         $componentType->description = $request->description;
         $componentType->save();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'une famille de composant",
+            "table" => $this->table,
+        ]);
+
         return $componentType;
     }
 
@@ -68,9 +94,17 @@ class ComponentTypeController extends Controller
      * @param  \App\Models\ComponentType  $componentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ComponentType $componentType)
+    public function destroy(Request $request, ComponentType $componentType)
     {
         $componentType->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'une famille de composant",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Component type successfully deleted"

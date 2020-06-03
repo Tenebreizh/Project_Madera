@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Action;
 use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\LogController;
 
 class UserController extends Controller
 {
+    private $table = "users";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +44,14 @@ class UserController extends Controller
             'lastname' => $request->lastname,
             'password' => Hash::make($request->password),
             'user_type_id' => $request->user_type_id
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un utilisateur",
+            "table" => $this->table,
         ]);
 
         return $user;
@@ -64,8 +82,15 @@ class UserController extends Controller
         $user->lastname = $request->lastname;
         $user->password = Hash::make($request->password);
         $user->user_type_id = $request->user_type_id;
-
         $user->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un utilisateur",
+            "table" => $this->table,
+        ]);
 
         return $user;
     }
@@ -76,14 +101,22 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
         $user->delete();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un utilisateur",
+            "table" => $this->table,
+        ]);
+
         return response()->json([
-                "message" => "User successfully deleted"
-            ], 
-            200);
+            "message" => "User successfully deleted"
+        ], 
+        200);
     }
 
     public function deleteLogs(User $user)

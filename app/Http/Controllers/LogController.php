@@ -25,14 +25,14 @@ class LogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($data)
     {
         $log = Log::create([
-            'user_id' => $request->user_id,
-            'action_id' => $request->action_id,
-            'name' => $request->name,
-            'description' => $request->description,
-            'table' => $request->table
+            'user_id' => $data['user_id'],
+            'action_id' => $data['action_id'],
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'table' => $data['table']
         ]);
 
         return $log;

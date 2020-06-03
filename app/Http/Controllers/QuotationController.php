@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quotation;
 use App\User;
 use App\Client;
+use App\Models\Action;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class QuotationController extends Controller
 {
+    private $table = "quotations";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,6 +43,14 @@ class QuotationController extends Controller
             'project_id' => $request->project_id,
             'quotation_number' => "",
             'active' => $request->active,
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un devis",
+            "table" => $this->table,
         ]);
 
         return $quotation;
@@ -63,6 +81,14 @@ class QuotationController extends Controller
         $quotation->active = $request->active;
         $quotation->save();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un devis",
+            "table" => $this->table,
+        ]);
+
         return $quotation;
     }
 
@@ -72,9 +98,17 @@ class QuotationController extends Controller
      * @param  \App\Models\Quotation  $quotation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quotation $quotation)
+    public function destroy(Request $request, Quotation $quotation)
     {
         $quotation->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un devis",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Quotation successfully deleted"

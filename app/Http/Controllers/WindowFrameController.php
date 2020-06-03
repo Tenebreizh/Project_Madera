@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\WindowFrame;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class WindowFrameController extends Controller
 {
+    private $table = "window_frames";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +41,14 @@ class WindowFrameController extends Controller
             'label' => $request->label,
             'description' => $request->description,
             'reference' => $request->reference
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'une qualité d'huisserie",
+            "table" => $this->table,
         ]);
             
         return $windowFrame;
@@ -59,8 +77,15 @@ class WindowFrameController extends Controller
         $windowFrame->label = $request->label;
         $windowFrame->description = $request->description;
         $windowFrame->reference = $request->reference;
-
         $windowFrame->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'une qualité d'huisserie",
+            "table" => $this->table,
+        ]);
 
         return $windowFrame;
     }
@@ -71,13 +96,21 @@ class WindowFrameController extends Controller
      * @param  \App\Models\WindowFrame  $windowFrame
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WindowFrame $windowFrame)
+    public function destroy(Request $request, WindowFrame $windowFrame)
     {
         $windowFrame->delete();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'une qualité d'huisserie",
+            "table" => $this->table,
+        ]);
+
         return response()->json([
-                "message" => "Window frame successfully deleted"
-            ], 
-            200);
+            "message" => "Window frame successfully deleted"
+        ], 
+        200);
     }
 }

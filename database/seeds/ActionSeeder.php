@@ -11,6 +11,24 @@ class ActionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Action::class, 10)->create();
+        factory(App\Models\Action::class)->create([
+            'label' => 'Create',
+            
+        ]);
+        
+        factory(App\Models\Action::class)->create([
+            'label' => 'Update',
+            
+        ]);
+
+        factory(App\Models\Action::class)->create([
+            'label' => 'Delete',
+            
+        ]);
+
+        factory(App\Models\Action::class)->create([
+            'label' => 'Connection',
+            
+        ]);
     }
 }

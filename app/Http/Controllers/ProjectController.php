@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class ProjectController extends Controller
 {
+    private $table = "projects";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +44,14 @@ class ProjectController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'reference' => $request->reference,
+        ]);
+        
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un projet",
+            "table" => $this->table,
         ]);
 
         return $project;
@@ -65,8 +83,15 @@ class ProjectController extends Controller
         $project->name = $request->name;
         $project->description = $request->description;
         $project->reference = $request->reference;
-
         $project->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un projet",
+            "table" => $this->table,
+        ]);
 
         return $project;
     }
@@ -77,9 +102,17 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Request $request, Project $project)
     {
         $project->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un projet",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Project successfully deleted"

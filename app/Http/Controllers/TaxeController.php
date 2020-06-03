@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Taxe;
+use App\Models\Action;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class TaxeController extends Controller
 {
+    private $table = "taxes";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +41,14 @@ class TaxeController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'rate' => $request->rate,
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'une taxe",
+            "table" => $this->table,
         ]);
         
         return $taxe;
@@ -61,6 +79,14 @@ class TaxeController extends Controller
         $taxe->rate = $request->rate;
         $taxe->save();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'une taxe",
+            "table" => $this->table,
+        ]);
+
         return $taxe;
     }
 
@@ -70,9 +96,17 @@ class TaxeController extends Controller
      * @param  \App\Models\Taxe  $taxe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Taxe $taxe)
+    public function destroy(Request $request, Taxe $taxe)
     {
         $taxe->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'une taxe",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Taxe successfully deleted"

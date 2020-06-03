@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Covering;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class CoveringController extends Controller
 {
+    private $table = "coverings";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +42,14 @@ class CoveringController extends Controller
             'label' => $request->label,
             'description' => $request->description,
             'reference' => $request->reference
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'une couverture",
+            "table" => $this->table,
         ]);
             
         return $covering;
@@ -59,8 +78,15 @@ class CoveringController extends Controller
         $covering->label = $request->label;
         $covering->description = $request->description;
         $covering->reference = $request->reference;
-
         $covering->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'une couverture",
+            "table" => $this->table,
+        ]);
 
         return $covering;
     }
@@ -71,9 +97,17 @@ class CoveringController extends Controller
      * @param  \App\Models\Covering  $covering
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Covering $covering)
+    public function destroy(request $request,   Covering $covering)
     {
         $covering->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'une couverture",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
                 "message" => "Covering successfully deleted"

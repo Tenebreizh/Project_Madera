@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Module;
 use App\Models\Component;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class ModuleController extends Controller
 {
+    private $table = "modules";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +48,14 @@ class ModuleController extends Controller
             'labor_time' => $request->labor_time,
             'price' => $request->price,
             'marge_enterprise' => $request->marge_enterprise
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un module",
+            "table" => $this->table,
         ]);
 
         return $module;
@@ -72,6 +90,15 @@ class ModuleController extends Controller
         $module->labor_time = $request->labor_time;
         $module->price = $request->price;
         $module->marge_enterprise = $request->marge_enterprise;
+        $module->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un module",
+            "table" => $this->table,
+        ]);
 
         return $module;
     }
@@ -82,9 +109,17 @@ class ModuleController extends Controller
      * @param  \App\Models\Module  $module
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Module $module)
+    public function destroy(Request $request, Module $module)
     {
         $module->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un module",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Module successfully deleted"

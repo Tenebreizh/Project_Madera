@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Range;
+use App\Models\Action;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class RangeController extends Controller
 {
+    private $table = "ranges";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +46,14 @@ class RangeController extends Controller
             'description' => $request->description,
             'reference' => $request->reference,
             'rule' => $request->rule
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'une gamme",
+            "table" => $this->table,
         ]);
 
         return $range;
@@ -69,8 +87,15 @@ class RangeController extends Controller
         $range->description = $request->description;
         $range->reference = $request->reference;
         $range->rule = $request->rule;
-
         $range->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'une gamme",
+            "table" => $this->table,
+        ]);
 
         return $range;
     }
@@ -81,9 +106,17 @@ class RangeController extends Controller
      * @param  \App\Models\Range  $range
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Range $range)
+    public function destroy(Request $request, Range $range)
     {
         $range->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un composant",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Range successfully deleted"

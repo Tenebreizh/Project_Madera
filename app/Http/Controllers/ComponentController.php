@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Supplier;
 use App\Models\Component;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class ComponentController extends Controller
 {
+    private $table = "components";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,11 +37,19 @@ class ComponentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $component = Component::create([
             'name' => $request->name,
             'description' => $request->description,
             'component_type_id' => $request->component_type_id,
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un composant",
+            "table" => $this->table,
         ]);
 
         return $component;
@@ -62,6 +80,14 @@ class ComponentController extends Controller
         $component->component_type_id = $request->component_type_id;
         $component->save();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un composant",
+            "table" => $this->table,
+        ]);
+
         return $component;
     }
 
@@ -71,9 +97,17 @@ class ComponentController extends Controller
      * @param  \App\Models\Component  $component
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Component $component)
+    public function destroy(Request $request, Component $component)
     {
         $component->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un composant",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Component successfully deleted"
