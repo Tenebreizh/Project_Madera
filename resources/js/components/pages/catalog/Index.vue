@@ -287,16 +287,16 @@
                         <form>
                             <div class="col form-group">
                                 <label for="reference">Référence:</label>
-                                <input type="text" class="form-control" id="reference3" name="reference" v-model="modulee.name">
+                                <input type="text" class="form-control" id="reference3" name="reference" v-model="module.name">
                             </div>
                             <div class="col form-group">
                                 <label for="description">Description:</label>
-                                <textarea name="description" class="form-control" id="description" v-model="modulee.description"></textarea>
+                                <textarea name="description" class="form-control" id="description" v-model="module.description"></textarea>
                             </div>
                             <div class="col form-group">
                                 <label for="price">Prix:</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="price" v-model="modulee.price">
+                                    <input type="number" class="form-control" id="price" v-model="module.price">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="price">€</span>
                                     </div>
@@ -321,10 +321,10 @@
 
                         <h5 class="modal-title" id="AddModuleLabel">Composants</h5>
                         <br>
-                        <DataTable :data="modulee.components" :columns="columnsComponents" :actions="actionsComponent" :index="false" :loading="loadingData"></DataTable>
+                        <DataTable :data="module.components" :columns="columnsComponents" :actions="actionsComponent" :index="false" :loading="loadingData"></DataTable>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Valider</button>
+                        <button type="button" class="btn btn-primary" @click="createModule()">Valider</button>
                     </div>
                 </div>
             </div>
@@ -447,7 +447,7 @@ export default {
                 email:'',
             },
             modules:[],
-            modulee:{
+            module:{
             },
             articles:[],
             article:{
@@ -536,7 +536,7 @@ export default {
                 }},
                 {text: "", icon: "fas fa-edit", color: "success btn-pill mr-2", action: (row, index) => {
                     this.edit=true;
-                    this.modulee = this.modules[index];
+                    this.module = this.modules[index];
                     $("#AddModule").modal("show");
                 }},
                 {text: "", icon: "fas fa-trash-alt", color: "danger btn-pill mr-2", action: (row, index) => {
@@ -590,9 +590,9 @@ export default {
 
         addComponentToModule() {
             this.loadingData = true
-            axios.post("/api/module/" + this.modulee.id + "/component", {component_id: this.add_component.id})
+            axios.post("/api/module/" + this.module.id + "/component", {component_id: this.add_component.id})
             .then(response => {
-                this.modulee.components = response.data 
+                this.module.components = response.data 
                 this.loadingData = false
             })
         },
@@ -600,9 +600,9 @@ export default {
         deleteComponentToModule(id) {
             // console.log(id)
             this.loadingData = true
-            axios.delete("/api/module/" + this.modulee.id + "/component", {component_id: id})
+            axios.delete("/api/module/" + this.module.id + "/component", {component_id: id})
             .then(response => {
-                this.modulee.components = response.data 
+                this.module.components = response.data 
                 this.loadingData = false
             })
         },
@@ -766,7 +766,7 @@ export default {
         },
 
         createModule(){
-            axios.post('/api/module', this.modulee)
+            axios.post('/api/module', this.module)
             .then(response => {
                 this.modules.push(response.data)
                 $("#AddModule").modal("hide");
@@ -775,7 +775,7 @@ export default {
         },
 
         updateModule(){
-            axios.put('/api/module/'+this.modulee.id,this.modulee)
+            axios.put('/api/module/'+this.module.id,this.module)
             .then(response => {
                 $("#AddModule").modal("hide");
                 this.edit = false;
@@ -846,7 +846,8 @@ export default {
         this.getFournisseurs(),
         this.getModules(),
         this.getArticles(),
-        this.getComponentType()
+        this.getComponentType(),
+        this.getComponents()
     }
 }
 </script>
