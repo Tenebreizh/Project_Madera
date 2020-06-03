@@ -9,7 +9,7 @@ use App\Http\Controllers\LogController;
 
 class RangeController extends Controller
 {
-    private $table = "components";
+    private $table = "ranges";
     private $log;
 
     public function __construct(LogController $log)
