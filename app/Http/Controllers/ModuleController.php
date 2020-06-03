@@ -92,6 +92,11 @@ class ModuleController extends Controller
         200);
     }
 
+    public function getComponents(Module $module)
+    {
+        return $module->components;
+    }
+
     public function addComponent(Request $request, Module $module)
     {
         $component = Component::find($request->component_id);

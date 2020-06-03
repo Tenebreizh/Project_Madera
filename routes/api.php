@@ -287,6 +287,7 @@ Route::post('module', 'ModuleController@store');
 Route::get('module/{module}', 'ModuleController@show');
 Route::put('module/{module}', 'ModuleController@update');
 Route::delete('module/{module}', 'ModuleController@destroy');
+Route::get('module/{module}/components', 'ModuleController@getComponents');
 Route::post('module/{module}/component', 'ModuleController@addComponent');
 Route::delete('module/{module}/component', 'ModuleController@deleteComponent');
 
