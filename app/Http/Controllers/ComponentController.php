@@ -37,9 +37,7 @@ class ComponentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        return $request->user_id;
-        
+    {        
         $component = Component::create([
             'name' => $request->name,
             'description' => $request->description,
