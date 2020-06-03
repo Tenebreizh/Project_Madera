@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\CustomModule;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class CustomModuleController extends Controller
 {
+    private $table = "custom_modules";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +44,14 @@ class CustomModuleController extends Controller
             'specification' => $request->specification,
             'price' => $request->price,
             'commercial_marge' => $request->commercial_marge
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un module customisé",
+            "table" => $this->table,
         ]);
 
         return $customModule;
@@ -64,8 +82,15 @@ class CustomModuleController extends Controller
         $customModule->specification = $request->specification;
         $customModule->price = $request->price;
         $customModule->commercial_marge = $request->commercial_marge;
-
         $customModule->save();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un module customisé",
+            "table" => $this->table,
+        ]);
 
         return $customModule;
     }
@@ -76,9 +101,17 @@ class CustomModuleController extends Controller
      * @param  \App\Models\CustomModule  $customModule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CustomModule $customModule)
+    public function destroy(Request $request, CustomModule $customModule)
     {
         $customModule->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un module customisé",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Custom module successfully deleted"
