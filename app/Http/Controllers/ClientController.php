@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Controllers\LogController;
 
 class ClientController extends Controller
 {
+    private $table = "clients";
+    private $log;
+
+    public function __construct(LogController $log)
+    {
+        $this->log = $log;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +46,14 @@ class ClientController extends Controller
             'zipcode' => $request->zipcode,
             'email' => $request->email,
             'phone' => $request->phone
+        ]);
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Create'])->first()->id,
+            "name" => "Creation",
+            "description" => "Creation d'un client",
+            "table" => $this->table,
         ]);
 
         return $client;
@@ -71,6 +89,14 @@ class ClientController extends Controller
         $client->phone = $request->phone;
         $client->save();
 
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Update'])->first()->id,
+            "name" => "Mise à jour",
+            "description" => "Mise à jour d'un client",
+            "table" => $this->table,
+        ]);
+
         return $client;
     }
 
@@ -80,9 +106,17 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
         $client->delete();
+
+        $this->log->store([
+            "user_id" => $request->user_id,
+            "action_id" => Action::where(['label' => 'Delete'])->first()->id,
+            "name" => "Suppression",
+            "description" => "Suppression d'un client",
+            "table" => $this->table,
+        ]);
 
         return response()->json([
             "message" => "Client successfully deleted"
