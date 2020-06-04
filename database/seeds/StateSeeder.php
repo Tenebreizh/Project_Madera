@@ -11,6 +11,16 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Models\State', 10)->create();
+        factory('App\Models\State')->create([
+            'label' => 'Open'
+        ]);
+
+        factory('App\Models\State')->create([
+            'label' => 'Waiting'
+        ]);
+
+        factory('App\Models\State')->create([
+            'label' => 'Close'
+        ]);
     }
 }

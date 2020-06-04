@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientSeeder::class);
         $this->call(ActionSeeder::class);
         $this->call(LogSeeder::class);
-        // $this->call(StateSeeder::class);
+        $this->call(StateSeeder::class);
         $this->call(ProjectSeeder::class);
         $this->call(QuotationSeeder::class);
         $this->call(ExternalFinitionSeeder::class);
