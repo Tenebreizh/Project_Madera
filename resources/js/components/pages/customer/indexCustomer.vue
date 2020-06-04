@@ -108,7 +108,8 @@ export default {
             cities:[],
             city:{},
             client:{
-                city_id:2,
+                city:'',
+                country:'',
                 firstname:'',
                 lastname:'',
                 street:'',

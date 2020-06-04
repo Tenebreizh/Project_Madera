@@ -78,7 +78,7 @@
                                 <div id="container-detail" class="col-lg-12 mt-2 ml-2">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h3>Détails</h3>
+                                            <h3>Modules du devis</h3>
                                         </div>
                                     </div>
                                     <br>        
@@ -91,7 +91,7 @@
                             <div id="footer" class="row">
                                 <div id="footer-detail" class="col-lg-12 mt-2 ml-2">
                                     <hr>                                     
-                                    <h3>Pied</h3>         
+                                    <h3>Montants</h3>         
                                     <div class="col-lg-6 pull-left">
                                         <form>
                                             <div class="form-group row">

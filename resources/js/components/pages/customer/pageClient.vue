@@ -80,7 +80,8 @@ export default {
     data(){
         return{
             client:{
-                city_id:'',
+                city:'',
+                country:'',
                 firstname:'',
                 lastname:'',
                 street:'',
