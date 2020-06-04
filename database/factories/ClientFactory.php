@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Client::class, function (Faker $faker) {
     return [
         'city' => $faker->city,
+        'country' => $faker->country,
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
         'street' => $faker->streetName,
