@@ -11,6 +11,11 @@ class ClientSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Models\Client', 20)->create();
+        factory('App\Models\Client', 5)->create();
+
+        factory('App\Models\Client')->create([
+            'firstname' => 'Client',
+            'lastname' => 'Test',
+        ]);
     }
 }
