@@ -81,7 +81,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->city = $request->city;
-        $client->country => $request->country;
+        $client->country = $request->country;
         $client->firstname = $request->firstname;
         $client->lastname = $request->lastname;
         $client->street = $request->street;
