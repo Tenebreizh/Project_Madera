@@ -61,7 +61,7 @@
 
             getQuotations(id) {
                 this.loadingData = true
-                axios.get("/api/client/" + id + "/quotations")
+                axios.get("/api/user/" + id + "/quotations")
                 .then(response => {
                     this.quotations = response.data
                     this.loadingData = false

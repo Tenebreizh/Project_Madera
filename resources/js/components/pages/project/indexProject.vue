@@ -107,7 +107,7 @@ export default {
             projects:[],
             project:{
                 client_id:'',
-                user_id:'',
+                user_idd:'',
                 state_id:1,
                 name:'',
                 description:'',

@@ -39,7 +39,7 @@ class ProjectController extends Controller
     {
         $project = Project::create([
             'client_id' => $request->client_id,
-            'user_id' => $request->user_id,
+            'user_id' => $request->user_idd,
             'state_id' => $request->state_id,
             'name' => $request->name,
             'description' => $request->description,
@@ -78,7 +78,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $project->client_id = $request->client_id;
-        $project->user_id = $request->user_id;
+        // $project->user_idd = $request->user_idd;
         $project->state_id = $request->state_id;
         $project->name = $request->name;
         $project->description = $request->description;
