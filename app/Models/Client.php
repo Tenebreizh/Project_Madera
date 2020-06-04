@@ -12,7 +12,7 @@ class Client extends Model
      * @var array
      */
     protected $fillable = [
-        'city', 'firstname', 'lastname', 'street', 'street_number', 'zipcode', 'email', 'phone'
+        'city', 'country', 'firstname', 'lastname', 'street', 'street_number', 'zipcode', 'email', 'phone'
     ];
 
     public function projects()
