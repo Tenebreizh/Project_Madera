@@ -11,17 +11,17 @@
                                     <input type="text" id="login" class="form-control" name="login" placeholder="Email" v-model="user.email" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" id="password" class="form-control" name="password" placeholder="Password" v-model="user.password" required>
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="Mot de passe" v-model="user.password" required>
                                 </div>
                             </div>
                             <button type="submit" class="form-control mt-3 btn-success" :disabled="loading">
                                 <i class="fas fa-sync fa-spin" v-if="loading"></i>
-                                Log In
+                                Connexion
                             </button>
                         </div>
                     </form>
                     <div id="formFooter">
-                        <a class="underlineHover" href="#">Forgot Password?</a>
+                        <a class="underlineHover" href="#">Mot de passe oublié?</a>
                     </div>
                 </div>
                 <div id="bloc-right" class="col-sm-3"></div>

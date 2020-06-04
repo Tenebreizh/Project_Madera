@@ -61,12 +61,13 @@
                                     <label for="cp">CP:</label>
                                     <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000" v-model='client.zipcode'>
                                 </div>
-                                <div class="col form-group">
+                                <!-- <div class="col form-group">
                                     <label for="city">Ville:</label>
                                     <select class="form-control" v-model='client.city_id'>
+                                        <option v-for="(city, key) in cities" :value="city.id" :key="key"> {{ city.name }} </option>
                                         <option v-for="(city,key) in cities" value="city.id" :key="key"></option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col form-group">
                                     <label for="country">Pays:</label>
                                     <input type="text" class="form-control" id="country" name="country">
@@ -108,8 +109,9 @@ export default {
                 {name: "street",    th: "Street"},
             ],
             cities:[],
+            city:{},
             client:{
-                city_id:'',
+                city_id:2,
                 firstname:'',
                 lastname:'',
                 street:'',
@@ -118,6 +120,7 @@ export default {
                 email:'',
                 phone:''
             },
+            connect_user:{},
             clients: [],
             actions: [
                 {text: "", icon: "fas fa-eye", color: "primary btn-pill mr-2", action: (row, index) => {
@@ -199,6 +202,7 @@ export default {
     },
 
     mounted() {
+        this.getUser()
         this.getClients()
     }
 }
