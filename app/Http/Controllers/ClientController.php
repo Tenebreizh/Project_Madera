@@ -38,7 +38,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $client = Client::create([
-            'city_id' => $request->city_id,
+            'city' => $request->city,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'street' => $request->street,
@@ -79,7 +79,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->city_id = $request->city_id;
+        $client->city = $request->city;
         $client->firstname = $request->firstname;
         $client->lastname = $request->lastname;
         $client->street = $request->street;
