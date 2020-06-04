@@ -39,7 +39,7 @@ class ProjectController extends Controller
     {
         $project = Project::create([
             'client_id' => $request->client_id,
-            'user_id' => $request->user_idd,
+            'user_id' => 8, // $request->user_idd
             'state_id' => $request->state_id,
             'name' => $request->name,
             'description' => $request->description,
