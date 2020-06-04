@@ -41,6 +41,8 @@ class UserSeeder extends Seeder
         // Client
         factory(App\User::class)->create([
             'email' => 'client@madera.com',
+            'firstname' => 'Client',
+            'lastname' => 'Test',
             'user_type_id' => factory(App\Models\UserType::class)->create([
                                 'name' => 'Client',
                                 'description' => ''
