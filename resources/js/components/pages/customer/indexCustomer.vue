@@ -61,17 +61,14 @@
                                     <label for="cp">CP:</label>
                                     <input type="text" class="form-control" id="cp" name="cp" pattern="[0-9]{5}" placeholder="00000" v-model='client.zipcode'>
                                 </div>
-                                <!-- <div class="col form-group">
+                                <div class="col form-group">
                                     <label for="city">Ville:</label>
-                                    <select class="form-control" v-model='client.city_id'>
-                                        <option v-for="(city, key) in cities" :value="city.id" :key="key"> {{ city.name }} </option>
-                                        <option v-for="(city,key) in cities" value="city.id" :key="key"></option>
-                                    </select>
-                                </div> -->
+                                    <input type="text" class="form-control" id="country" name="country" v-model='client.city'>
+                                </div>
                                 <div class="col form-group">
                                     <label for="country">Pays:</label>
-                                    <input type="text" class="form-control" id="country" name="country">
-                                </div>
+                                    <input type="text" class="form-control" id="country" name="country" v-model='client.country'>
+                                </div> 
                             </div>
                             <div class="form-group">
                                 <label for="phone">Téléphone:</label>

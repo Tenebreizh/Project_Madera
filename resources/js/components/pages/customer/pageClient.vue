@@ -43,11 +43,11 @@
                                     </div>
                                     <div class="col-sm-3 form-group">
                                         <label for="city">Ville:</label>
-                                        <select name="city" class="form-control"></select>
+                                        <input type="text" class="form-control" id="country" name="country" v-model='client.city'>
                                     </div>
                                     <div class="col-sm-3 form-group">
                                         <label for="country">Pays:</label>
-                                        <select name="country" class="form-control"></select>
+                                        <input type="text" class="form-control" id="country" name="country" v-model='client.country'>
                                     </div>
                                 </div>
                             </div>
