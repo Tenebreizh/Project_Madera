@@ -182,7 +182,7 @@ export default {
         },
 
         deleteProject(id){
-            axios.delete('/api/project/'+id, {params: {'user_id': this.connect_user.id}}s)
+            axios.delete('/api/project/'+id, {params: {'user_id': this.connect_user.id}})
             .then(response => {
                 this.getProjects()
                 this.$noty.success("Suppression réusite")
