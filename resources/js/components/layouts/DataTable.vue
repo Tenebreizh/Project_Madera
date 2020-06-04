@@ -8,31 +8,31 @@
 	<div class="data-table">
 		<div class="data-table-loading" v-if="loading || ajaxLoading">
 			<div class="data-table-loading-spinner"></div>
-			<div class="data-table-loading-text">Loading Data</div>
+			<div class="data-table-loading-text">Chargement...</div>
 		</div>
 		<div class="data-table-inner" v-else>
 			<div class="row data-table-control" v-if="header">
 				<div class="col-md-6" v-if="limitable">
 					<div class="form-group float-left">
 						<label>
-							Show 
+							Affiche 
 							<select  class="custom-select custom-select-sm" v-model="itemsPerPage">
 								<option value="10">10</option>
 								<option value="25">25</option>
 								<option value="50">50</option>
 								<option value="100">100</option>
 							</select> 
-							rows
+							lignes
 						</label>
 					</div>
 				</div>
 				<div class="col-md-6" v-if="searchable">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search..." @keyup="search(query)" v-model="query">
+						<input type="text" class="form-control" placeholder="Rechercher..." @keyup="search(query)" v-model="query">
 					</div>
 				</div>
 				<div class="col-auto ml-auto" v-if="showFilters">
-					Filters: 
+					Filtres: 
 					<div class="table-filters d-inline-block">
 						<div class="table-filter" v-for="(option, key) in filters" @click="filter(option)" :key="key">
 							<span>{{ option.title }}</span>
@@ -114,7 +114,7 @@
 					<tbody v-else>
 						<!-- Display Empty Message If No Items Are Rendered -->
 						<tr>
-							<td align="center" :colspan="headers.length + (actions.length ? 1 : 0) + (index ? 1 : 0)">No results</td>
+							<td align="center" :colspan="headers.length + (actions.length ? 1 : 0) + (index ? 1 : 0)">Pas de résultats</td>
 						</tr>
 					</tbody>
 				</table>
@@ -122,27 +122,27 @@
 			<div class="row" v-if="footer">
 				<div class="col-md-6" v-if="pageDetails">
 					<div class="showing float-left">
-						Showing 
+						Affiche de 
 						<!-- Current Page Starting Index -->
 						{{ paginatedItems.length ? (itemsPerPage * (currentPage - 1)) + 1 : 0 }} 
-						to 
+						à 
 						<!-- Current Page End Index -->
 						{{ (itemsPerPage * (currentPage -1 )) + paginatedItems.length }}  
-						of 
+						sur 
 						<!-- All Items Provided -->
-						{{ renderedItems.length }} items
+						{{ renderedItems.length }} lignes
 					</div>
 				</div>
 				<div class="col-md-6" v-if="paginate">
 					<ul class="pagination float-right" v-if="paginateLinks.length">
 						<li class="page-item" v-if="pages && currentPage != 1">
-							<span class="page-link" @click="prev">Prev</span>
+							<span class="page-link" @click="prev">Precedent</span>
 						</li>
 						<li class="page-item" v-bind:key="item.page" v-for="item in paginateLinks" :class="{active: currentPage == item.page}">
 							<span class="page-link" @click="paginate(item.page)">{{ item.page }}</span>
 						</li>
 						<li class="page-item" v-if="pages && currentPage < pages">
-							<span class="page-link" @click="next">Next</span>
+							<span class="page-link" @click="next">Suivant</span>
 						</li>
 					</ul>
 				</div>
